@@ -47,6 +47,9 @@ class _RegistrationState extends State<Registration> {
             decoration: InputDecoration(
               labelText: 'Username',
               hintText: 'Enter username',
+              border: OutlineInputBorder(  
+                borderRadius: BorderRadius.circular(50),
+               )
             ),
           ),
           SizedBox(
@@ -56,7 +59,10 @@ class _RegistrationState extends State<Registration> {
             controller: tcEmail,
             decoration: InputDecoration(
               labelText: 'Email',
-              hintText: 'Enter Email',            
+              hintText: 'Enter Email',
+              border: OutlineInputBorder(  
+                borderRadius: BorderRadius.circular(50),
+               )            
             ),
             keyboardType: TextInputType.emailAddress,
             autofillHints: [AutofillHints.email],
@@ -70,6 +76,9 @@ class _RegistrationState extends State<Registration> {
             decoration: InputDecoration(
               labelText: 'Password',
               hintText: 'Enter password',
+              border: OutlineInputBorder(  
+                borderRadius: BorderRadius.circular(50),
+               ),
               suffixIcon: IconButton(
                 onPressed: () {
                   isObscure = !isObscure;
@@ -90,6 +99,9 @@ class _RegistrationState extends State<Registration> {
             decoration: InputDecoration(
               labelText: 'Gender',
               hintText: 'Enter Gender',
+              border: OutlineInputBorder(  
+                borderRadius: BorderRadius.circular(50),
+               )
             ),
           ),
           SizedBox(
@@ -100,6 +112,9 @@ class _RegistrationState extends State<Registration> {
             decoration: InputDecoration(
               labelText: 'Number',
               hintText: 'Enter Number',
+              border: OutlineInputBorder(  
+                borderRadius: BorderRadius.circular(50),
+               ),
             ),
           ),
           SizedBox(
@@ -110,6 +125,9 @@ class _RegistrationState extends State<Registration> {
               decoration: InputDecoration(
                 labelText: 'Date of Birth',
                 hintText: 'Enter your date of birth',
+                border: OutlineInputBorder(  
+                borderRadius: BorderRadius.circular(50),
+               ),
               ),
               readOnly: true, // Prevents keyboard from appearing
               onTap: () async {
@@ -135,7 +153,6 @@ class _RegistrationState extends State<Registration> {
               style: ButtonStyle(foregroundColor: WidgetStateProperty.all<Color>(Colors.black),
               backgroundColor: WidgetStateProperty.all<Color>(Colors.lightBlue),),
             onPressed: () {
-              
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => Homepage(),
@@ -149,7 +166,8 @@ class _RegistrationState extends State<Registration> {
           ElevatedButton(
             style: ButtonStyle(
               foregroundColor: WidgetStateProperty.all<Color>(Colors.black),
-              backgroundColor: WidgetStateProperty.all<Color>(Colors.lightBlue)
+              backgroundColor: WidgetStateProperty.all<Color>(Colors.lightBlue),
+              animationDuration: Duration(seconds: 2),
             ),
               onPressed: () {
                 Navigator.of(context).pop(
@@ -183,6 +201,7 @@ class _RegistrationState extends State<Registration> {
             height:20 ,
           ),
           ElevatedButton(
+            
             style: ButtonStyle(
               foregroundColor: WidgetStateProperty.all<Color>(Colors.black),
               backgroundColor: WidgetStateProperty.all<Color>(Colors.lightBlue),

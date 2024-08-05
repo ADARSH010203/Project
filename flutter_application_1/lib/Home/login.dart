@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/Home/Registration.dart';
 import 'package:flutter_application_1/Home/homepage.dart';
 import 'package:flutter_social_button/flutter_social_button.dart';
@@ -77,7 +78,9 @@ class _LoginPageState extends State<LoginPage> {
             ),
             SizedBox(
               height: 20,),
+              
             Row(
+              
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
               ElevatedButton(
@@ -127,6 +130,7 @@ class _LoginPageState extends State<LoginPage> {
               style: ButtonStyle(
                 foregroundColor: WidgetStateProperty.all<Color>(Colors.black),
                 backgroundColor: WidgetStateProperty.all<Color>(Colors.lightBlue),
+                animationDuration:Duration(seconds: 26),
               ),
               onPressed: (){
               
