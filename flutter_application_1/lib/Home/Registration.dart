@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
+// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_application_1/Home/homepage.dart';
+// import 'package:flutter/services.dart';
+// import 'package:flutter/widgets.dart';
+// import 'package:flutter_application_1/Home/homepage.dart';
 import 'package:flutter_application_1/Home/login.dart';
 import 'package:flutter_social_button/flutter_social_button.dart';
 
@@ -155,7 +155,7 @@ class _RegistrationState extends State<Registration> {
             onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => Homepage(),
+                    builder: (context) => LoginPage(),
                   ),
                 );
               } ,

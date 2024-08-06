@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/Home/alarm.dart';
+import 'package:flutter_application_1/Home/drawerbar.dart';
 import 'package:flutter_application_1/Home/footer.dart';
 import 'package:flutter_application_1/Home/login.dart';
+import 'package:flutter_application_1/Home/todolist.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Homepage extends StatelessWidget {
@@ -16,6 +18,7 @@ class Homepage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 70,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -26,16 +29,21 @@ class Homepage extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset(
-                        'Adarsh2.png',
-                        height: kToolbarHeight * 0.6,
-                        fit: BoxFit.contain,
+                      ClipOval(
+                        child: Image.asset(
+                          'Adarsh2.png',
+                          height: kToolbarHeight * 0.99,
+                          fit: BoxFit.contain,
+                        ),
                       ),
                     ],
                   ),
                 ),
                 SizedBox(width: 8),
-                Text("Hello Adarsh"),
+                Text("Hello Adarsh", style: TextStyle  (  
+                  fontWeight: FontWeight.bold
+                )
+                ,),
               ],
             ),
             Row(
@@ -210,7 +218,7 @@ class Homepage extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => LoginPage()),
+                          MaterialPageRoute(builder: (context) => TodoScreen()),
                         );
                       },
                       child: Container(
@@ -316,20 +324,17 @@ class Homepage extends StatelessWidget {
                 ),
                 SizedBox(height: 30),
               ],
-            ),
+            ), 
           ),
         ),
       ),
       drawer: Drawer(
-        backgroundColor: Color.fromRGBO(196, 241, 205, 1.0),
+        // backgroundColor: Color.fromRGBO(196, 241, 205, 1.0),
+        child: Drawerbar(),
       ),
-      bottomNavigationBar: BottomAppBar(child: Footer(),),
+      bottomNavigationBar: BottomAppBar(child: Footer(),color: Color.fromARGB(255, 88, 185, 209),),
     );
   }
 }
 
-void main() {
-  runApp(MaterialApp(
-    home: Homepage(),
-  ));
-}
+

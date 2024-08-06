@@ -49,7 +49,7 @@ class _AlarmpageState extends State<Alarmpage> {
           
         ],
       ),
-      bottomNavigationBar:BottomAppBar(child: Footer(),),
+      bottomNavigationBar:BottomAppBar(child: Footer(),color: Color.fromARGB(255, 88, 185, 209),),
     );
   }
 
