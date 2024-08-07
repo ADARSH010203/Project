@@ -6,10 +6,15 @@ import 'package:flutter_application_1/Home/footer.dart';
 import 'package:flutter_application_1/Home/login.dart';
 import 'package:flutter_application_1/Home/todolist.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-class Homepage extends StatelessWidget {
+import 'desktop.dart';
+class Homepage extends StatefulWidget {
   const Homepage({super.key});
 
+  @override
+  State<Homepage> createState() => _HomepageState();
+}
+
+class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
