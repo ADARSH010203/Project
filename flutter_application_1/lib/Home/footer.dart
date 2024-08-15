@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Home/alarm.dart';
+import 'package:flutter_application_1/Home/StopWatch.dart';
+// import 'package:flutter_application_1/Home/alarm.dart';
 import 'package:flutter_application_1/Home/homepage.dart';
 import 'package:flutter_application_1/Home/login.dart';
 
@@ -25,7 +26,7 @@ class Footer extends StatelessWidget {
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => Homepage()),
+                  MaterialPageRoute(builder: (context) => Homepage(name1: '', password1: '', email: '', phone: '', dateOfBirth: '',)),
                 );
               },
               
@@ -38,7 +39,7 @@ class Footer extends StatelessWidget {
                 // Navigate to the about page when the about button is pressed
                 Navigator.push(
                   context,
-                 MaterialPageRoute(builder: (context) => Alarmpage()),
+                 MaterialPageRoute(builder: (context) => StopWatch()),
                 );
               },
             ),

@@ -1,9 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/Home/Registration.dart';
-import 'package:flutter_application_1/Home/homepage.dart';
+import 'package:flutter_application_1/Home/homepage.dart'; // Import Homepage
 import 'package:flutter_social_button/flutter_social_button.dart';
-// import 'homepage.dart';
-// import 'desktop.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart'; // Add this import
 
 class LoginPage extends StatefulWidget {
   LoginPage({super.key});
@@ -13,9 +14,12 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  String name = '';
+  String password = '';
+
   TextEditingController tcUsername = TextEditingController();
   TextEditingController tcPassword = TextEditingController();
-   bool isObscure = true;
+  bool isObscure = true;
 
   final _formKey = GlobalKey<FormState>();
   final String passwordPattern = r"^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$";
@@ -32,10 +36,21 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(
-                  'assets/APX.jpg',
-                  height: 300,
+                ClipOval(
+                  
+                  child: 
+                    Column(
+                      children: [
+                        Image.asset(
+                        'assets/APX.jpg',
+                        // alignment: Alignment.center,
+                        fit: BoxFit.contain,
+                                          height: 300,
+                                        ),
+                      ],
+                    ),
                 ),
+                
                 Text(
                   'Login Page',
                   style: TextStyle(
@@ -44,10 +59,12 @@ class _LoginPageState extends State<LoginPage> {
                     fontSize: 30,
                   ),
                 ),
+                
                 SizedBox(
                   height: 20,
                 ),
                 TextFormField(
+                
                   controller: tcUsername,
                   decoration: InputDecoration(
                     labelText: 'Username',
@@ -55,13 +72,18 @@ class _LoginPageState extends State<LoginPage> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(50),
                     ),
+                    prefixIcon: Icon(Icons.person)
                   ),
+                  
+                  
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter username';
                     }
                     return null;
                   },
+                  
+                  
                 ),
                 SizedBox(
                   height: 20,
@@ -75,15 +97,19 @@ class _LoginPageState extends State<LoginPage> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(50),
                     ),
+                    prefixIcon: Icon(Icons.lock),
                     suffixIcon: IconButton(
                       onPressed: () {
-                        isObscure = !isObscure;
-                        setState(() {});
+                        setState(() {
+                          isObscure = !isObscure;
+                        });
                       },
                       icon: Icon(
                         isObscure ? Icons.visibility_off : Icons.visibility,
+                        
                       ),
                     ),
+                    
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -94,6 +120,7 @@ class _LoginPageState extends State<LoginPage> {
                     }
                     return null;
                   },
+                  
                 ),
                 SizedBox(
                   height: 20,
@@ -101,26 +128,27 @@ class _LoginPageState extends State<LoginPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
+                    
                     ElevatedButton(
+                      
                       style: ButtonStyle(
+                      
                         foregroundColor: WidgetStateProperty.all<Color>(Colors.black),
                         backgroundColor: WidgetStateProperty.all<Color>(Colors.lightBlue),
                       ),
                       onPressed: () {
                         if (_formKey.currentState?.validate() == true) {
-                          // if (tcUsername.text == tcPassword.text) {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => Homepage(),
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => Homepage(
+                                name1: tcUsername.text,
+                                password1: tcPassword.text,
+                                email: '', // You may want to handle this or remove it if not used
+                                phone: '',  // You may want to handle this or remove it if not used
+                                dateOfBirth: '', // You may want to handle this or remove it if not used
                               ),
-                            );
-                          //  else {
-                          //   ScaffoldMessenger.of(context).showSnackBar(
-                          //     SnackBar(
-                          //       content: Text('Invalid credentials'),
-                          //     ),
-                          //   );
-                          // }
+                            ),
+                          );
                         }
                       },
                       child: Text('Login'),
@@ -144,17 +172,17 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(
                   height: 10,
                 ),
-                Text("- or Sign in With-"),
+                Text("- or Sign in With -"),
                 SizedBox(
                   height: 10,
                 ),
-                ElevatedButton(
-                  style: ButtonStyle(
-                    foregroundColor: WidgetStateProperty.all<Color>(Colors.black),
-                    backgroundColor: WidgetStateProperty.all<Color>(Colors.lightBlue),
-                    animationDuration: Duration(seconds: 26),
+                TextButton(
+                  style: TextButton.styleFrom(
+                    foregroundColor: Colors.black, backgroundColor: Colors.lightBlue,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    // Handle Facebook sign-in
+                  },
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -167,12 +195,15 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(
                   height: 20,
                 ),
-                ElevatedButton(
-                  style: ButtonStyle(
-                    foregroundColor: WidgetStateProperty.all<Color>(Colors.black),
-                    backgroundColor: WidgetStateProperty.all<Color>(Colors.lightBlue),
+                TextButton(
+                  style: TextButton.styleFrom(
+                    foregroundColor: Colors.black, backgroundColor: Colors.lightBlue,
                   ),
-                  onPressed: () {},
+                  
+                  onPressed: () {
+                    // Handle Google sign-in
+                  },
+                  
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [

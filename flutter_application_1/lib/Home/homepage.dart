@@ -1,14 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_application_1/Home/alarm.dart';
+import 'package:flutter_application_1/Home/AlamScreen.dart';
+import 'package:flutter_application_1/Home/Exercise.dart';
+import 'package:flutter_application_1/Home/Quotations.dart';
+// import 'package:flutter_application_1/Home/alarm.dart';
 import 'package:flutter_application_1/Home/drawerbar.dart';
 import 'package:flutter_application_1/Home/footer.dart';
 import 'package:flutter_application_1/Home/login.dart';
 import 'package:flutter_application_1/Home/todolist.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'desktop.dart';
+
 class Homepage extends StatefulWidget {
-  const Homepage({super.key});
+  final String name1;
+  final String password1;
+  final String email;
+  final String phone;
+  final String dateOfBirth;
+  
+
+  const Homepage({
+    super.key,
+    required this.name1,
+    required this.password1,
+    required this.email,
+    required this.phone,
+    required this.dateOfBirth,
+  });
 
   @override
   State<Homepage> createState() => _HomepageState();
@@ -36,7 +54,7 @@ class _HomepageState extends State<Homepage> {
                     children: [
                       ClipOval(
                         child: Image.asset(
-                          'Adarsh2.png',
+                          'assets/Adarsh2.png', // Ensure this path is correct
                           height: kToolbarHeight * 0.99,
                           fit: BoxFit.contain,
                         ),
@@ -45,10 +63,12 @@ class _HomepageState extends State<Homepage> {
                   ),
                 ),
                 SizedBox(width: 8),
-                Text("Hello Adarsh", style: TextStyle  (  
-                  fontWeight: FontWeight.bold
-                )
-                ,),
+                Text(
+                  "Hello ${widget.name1}",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ],
             ),
             Row(
@@ -83,9 +103,7 @@ class _HomepageState extends State<Homepage> {
             padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
             width: screenWidth * 0.9,
             child: Column(
-              //mainAxisAlignment: MainAxisAlignment.start,
-             crossAxisAlignment: CrossAxisAlignment.start,
-             
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextField(
                   cursorColor: Color.fromARGB(255, 83, 167, 203),
@@ -104,10 +122,8 @@ class _HomepageState extends State<Homepage> {
                 SizedBox(height: 20),
                 Text(
                   "Start With One Of These",
-                  style: TextStyle(
-                    fontFamily: GoogleFonts.inika().fontFamily,
+                  style: GoogleFonts.inika(
                     fontSize: 18,
-                    
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -118,7 +134,7 @@ class _HomepageState extends State<Homepage> {
                     GestureDetector(
                       onTap: () {
                         Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => LoginPage()),
+                          MaterialPageRoute(builder: (context) => Exercise()),
                         );
                       },
                       child: Container(
@@ -151,7 +167,7 @@ class _HomepageState extends State<Homepage> {
                     GestureDetector(
                       onTap: () {
                         Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => LoginPage()),
+                          MaterialPageRoute(builder: (context) => Quotations()),
                         );
                       },
                       child: Container(
@@ -190,7 +206,7 @@ class _HomepageState extends State<Homepage> {
                     GestureDetector(
                       onTap: () {
                         Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => Alarmpage()),
+                          MaterialPageRoute(builder: (context) => Alamscreen()),
                         );
                       },
                       child: Container(
@@ -329,17 +345,22 @@ class _HomepageState extends State<Homepage> {
                 ),
                 SizedBox(height: 30),
               ],
-            ), 
+            ),
           ),
         ),
       ),
       drawer: Drawer(
-        // backgroundColor: Color.fromRGBO(196, 241, 205, 1.0),
-        child: Drawerbar(),
+        child: Drawerbar(
+          name: widget.name1,
+          email: widget.email,
+          phone: widget.phone,
+          dateOfBirth: widget.dateOfBirth,
+        ),
       ),
-      bottomNavigationBar: BottomAppBar(child: Footer(),color: Color.fromARGB(255, 88, 185, 209),),
+      bottomNavigationBar: BottomAppBar(
+        child: Footer(),
+        color: Color.fromARGB(255, 88, 185, 209),
+      ),
     );
   }
 }
-
-

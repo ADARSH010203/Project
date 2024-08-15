@@ -5,14 +5,14 @@ import 'dart:async';
 
 import 'package:flutter_application_1/Home/footer.dart';
 
-class Alarmpage extends StatefulWidget {
-  const Alarmpage({super.key});
+class StopWatch extends StatefulWidget {
+  const StopWatch({super.key});
 
   @override
-  State<Alarmpage> createState() => _AlarmpageState();
+  State<StopWatch> createState() => _StopWatchState();
 }
 
-class _AlarmpageState extends State<Alarmpage> {
+class _StopWatchState extends State<StopWatch> {
   int milliseconds = 0;
   final laps = <int>[];
   Timer? timer;

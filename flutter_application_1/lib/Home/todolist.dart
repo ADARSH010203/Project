@@ -158,8 +158,9 @@ class _TodoScreenState extends State<TodoScreen> {
                         ),
                       ),
                       secondary: SizedBox(
-                        width: 80,
+                        width: 90,
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             _buildIconButton(Icons.edit, Colors.blue, () {
                               setState(() {
@@ -167,6 +168,7 @@ class _TodoScreenState extends State<TodoScreen> {
                                 selId = todos[index]['id'];
                               });
                             }),
+                            SizedBox(width: 10,),
                             _buildIconButton(Icons.delete, Colors.red, () {
                               setState(() {
                                 todos.removeWhere(
