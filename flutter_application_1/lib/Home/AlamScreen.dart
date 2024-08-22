@@ -15,7 +15,7 @@ class _AlamscreenState extends State<Alamscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Alarm')),
+      appBar: AppBar(title: const Text('Alarm')),
       body: ListView.builder(
         itemCount: alarms.length,
         itemBuilder: (context, index) {
@@ -54,7 +54,7 @@ class _AlamscreenState extends State<Alamscreen> {
         onPressed: () async {
           final newAlarm = await Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => SetAlarmsScreen()),
+            MaterialPageRoute(builder: (context) => const SetAlarmsScreen()),
           );
           if (newAlarm != null) {
             setState(() {
@@ -63,10 +63,10 @@ class _AlamscreenState extends State<Alamscreen> {
             });
           }
         },
-        child: Icon(Icons.add, color: Colors.white),
+        child: const Icon(Icons.add, color: Colors.white),
         backgroundColor: Colors.blue,
       ),
-      bottomNavigationBar: BottomAppBar(
+      bottomNavigationBar: const BottomAppBar(
         child: Footer(),
         color: Color.fromARGB(255, 88, 185, 209),
       ),
@@ -129,38 +129,40 @@ class AlarmsTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(8.0),
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.blue, style: BorderStyle.solid, width: 2.0),
-        borderRadius: BorderRadius.circular(25),
-      ),
-      child: ListTile(
-        title: Text(
-          alarm.time,
-          style: TextStyle(fontSize: 24),
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SetAlarmsScreen()));
+      },
+      child: Container(
+        margin: const EdgeInsets.all(8.0),
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.blue, style: BorderStyle.solid, width: 2.0),
+          borderRadius: BorderRadius.circular(25),
         ),
-        subtitle: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(alarm.label),
-            Text(alarm.repeatDays),
-          ],
-        ),
-        trailing: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Switch(
-              value: alarm.isActive,
-              activeTrackColor: Colors.blue,
-              activeColor: Color.fromARGB(255, 215, 215, 215),
-              onChanged: onToggle,
-            ),
-            IconButton(
-              icon: Icon(Icons.edit),
-              onPressed: onEdit,
-            ),
-          ],
+        child: ListTile(
+          title: Text(
+            alarm.time,
+            style: const TextStyle(fontSize: 24),
+          ),
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(alarm.label),
+              Text(alarm.repeatDays),
+            ],
+          ),
+          trailing: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Switch(
+                value: alarm.isActive,
+                activeTrackColor: Colors.blue,
+                activeColor: const Color.fromARGB(255, 215, 215, 215),
+                onChanged: onToggle,
+              ),
+             
+            ],
+          ),
         ),
       ),
     );

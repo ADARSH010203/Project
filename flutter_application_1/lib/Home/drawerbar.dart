@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_application_1/Home/BGMI_CALC.dart';
 import 'package:flutter_application_1/Home/login.dart';
 
 import 'profile.dart';
@@ -59,6 +60,16 @@ class Drawerbar extends StatelessWidget {
             'Help',
             () {
               Navigator.pop(context);
+            },
+          ),
+          _buildListTile(
+            context,
+            Icons.calculate_rounded,
+            'BMI Calculator',
+            () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => BgmiCalc()),
+              );
             },
           ),
           _buildListTile(

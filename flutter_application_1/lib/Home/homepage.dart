@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+// import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/Home/AlamScreen.dart';
 import 'package:flutter_application_1/Home/Exercise.dart';
 import 'package:flutter_application_1/Home/Quotations.dart';
@@ -41,7 +41,7 @@ class _HomepageState extends State<Homepage> {
 
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 70,
+        toolbarHeight: screenWidth * 0.09,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -72,6 +72,7 @@ class _HomepageState extends State<Homepage> {
               ],
             ),
             Row(
+              
               children: [
                 IconButton(
                   onPressed: () {},
