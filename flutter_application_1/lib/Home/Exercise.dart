@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Gym%20Workouts/Aerobic.dart';
+import 'package:flutter_application_1/Gym%20Workouts/GYM.dart';
+import 'package:flutter_application_1/Gym%20Workouts/Stretching.dart';
+import 'package:flutter_application_1/Gym%20Workouts/balance.dart';
 import 'package:flutter_application_1/Home/footer.dart';
 import 'package:flutter_application_1/Home/login.dart';
 
@@ -30,7 +34,7 @@ class Exercise extends StatelessWidget {
             label: 'Gym Workouts',
             onTap: () {
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => LoginPage()),
+                MaterialPageRoute(builder: (context) => gymwork()),
               );
             },
           ),
@@ -39,21 +43,27 @@ class Exercise extends StatelessWidget {
             label: 'Aerobic',
             
             onTap: () {
-              // Handle Aerobic tap
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => Aerobic()),
+              );
             },
           ),
           ExerciseCategory(
             image: 'assets/Strength.jpeg',
             label: 'Balance',
             onTap: () {
-              // Handle Balance tap
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => Balance()),
+              );
             },
           ),
           ExerciseCategory(
             image: 'assets/nature.webp',
             label: 'Strength Training',
             onTap: () {
-              // Handle Strength Training tap
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) =>Stretching()),
+              );
             },
           ),
           ExerciseCategory(
@@ -61,6 +71,8 @@ class Exercise extends StatelessWidget {
             label: 'Stretching',
             onTap: () {
               // Handle Stretching tap
+               Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) =>Stretching()),);
             },
           ),
         ],
