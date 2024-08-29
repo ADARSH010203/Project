@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Home/footer.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+final Email = "https://www.youtube.com/watch?v=hYo72r8Ivso";
 
 class Aerobic extends StatefulWidget {
   const Aerobic({super.key});
@@ -10,33 +11,28 @@ class Aerobic extends StatefulWidget {
 }
 
 class _AerobicState extends State<Aerobic> {
-  late YoutubePlayerController _deadliftcontroller;
+  
+  late YoutubePlayerController _email;
   late YoutubePlayerController _tbarcontroller;
   
 
   @override
   void initState() {
     super.initState();
-    _deadliftcontroller = YoutubePlayerController(
-      initialVideoId: YoutubePlayer.convertUrlToId(
-          "https://www.youtube.com/watch?v=hYo72r8Ivso")!, // Deadlift video
-      flags: YoutubePlayerFlags(autoPlay: true, mute: false),
+    final emailId = YoutubePlayer.convertUrlToId(Email);
+    _email = YoutubePlayerController(
+      initialVideoId: emailId!, // Deadlift video
+      flags: const YoutubePlayerFlags(autoPlay: false, mute: false),
     );
     _tbarcontroller = YoutubePlayerController(
-      initialVideoId: YoutubePlayer.convertUrlToId(
-          "https://www.youtube.com/watch?v=B7bqAsxee4I")!, // Replace with your video URL
+      initialVideoId: emailId!, // Replace with your video URL
       flags: YoutubePlayerFlags(
         autoPlay: false,
         mute: false,
       ),
     );
   }
-  @override
-  void dispose() {
-    _deadliftcontroller.dispose();
-    _tbarcontroller.dispose();
-    super.dispose();
-  }
+ 
   
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -56,7 +52,7 @@ class _AerobicState extends State<Aerobic> {
             Container(
               width: screenWeidth*0.9,
               margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(10.0),
               decoration: BoxDecoration(
               color: Color.fromARGB(255, 168, 219, 249),
               borderRadius: BorderRadius.circular(12),
@@ -69,15 +65,30 @@ class _AerobicState extends State<Aerobic> {
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
+                      fontFamily: AutofillHints.telephoneNumber,
                     ),
                     
                   ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: Colors.white,
+                    ),
+                    child: Column(children: [
+
+                   
                   const Text(
                       "The bread and butter of countless gym routines,his move, if done properly, will predominantly engage your back and legs, while building overall strength for you entire body. If you want to master the deadlift, check out this article.",
                     ),
                     InkWell(
                       onTap: (){
-
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context)=>Aerobic()),
+                        );
                       },
                       child: const Text(
                         "CHECK OUT THIS Article",
@@ -87,19 +98,46 @@ class _AerobicState extends State<Aerobic> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20,),
-                    YoutubePlayer(controller: _deadliftcontroller,
-                    showVideoProgressIndicator: false,
                     
-                    )
+                    SizedBox(height: 20,),
+                  Container(
+                    padding: EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(12)),
+                      color: Colors.white,
+                    ),
+                    height: 300,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        
+                    YoutubePlayer(
+                      controller: _email,
+                      showVideoProgressIndicator: false,
+                      onReady: () => debugPrint('Ready'),
+                      bottomActions: [
+                        CurrentPosition(
+                          
+                        ),
+                        ProgressBar(
+                          isExpanded: true,
+                          colors: const ProgressBarColors(
+                            playedColor: Colors.amber,
+                            handleColor: Colors.amberAccent,
+                          ),
+                        )
+                      ],
+                    
+                    ),],),), ],),
+                  )
                 ],
               ),
                      
             ),
             Container(
               width: screenWeidth*0.9,
-margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
-              padding: const EdgeInsets.all(16.0),
+              margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
+              padding: const EdgeInsets.all(10.0),
               decoration: BoxDecoration(
               color: Color.fromARGB(255, 168, 219, 249),
               borderRadius: BorderRadius.circular(12),
@@ -110,7 +148,7 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
-                      color: Colors.pink,
+                      // color: const Color.fromARGB(255, 131, 112, 118),
                     ),
                   child:  Column(
                     children: [
@@ -125,9 +163,18 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
                       ),
                     ],
                   ),),
-                  const Text(
-                  "As the favorite back exercise of Arnold Schwarzenegger himself, the T-bar row transcends all mere mortal workouts simply because of the Austrian Oak's blessing. Here's how to do it."
+                  SizedBox(height: 20,),
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),color: Colors.white,
                     ),
+                    child: Column(
+                      children: [
+                        const Text(
+                        "As the favorite back exercise of Arnold Schwarzenegger himself, the T-bar row transcends all mere mortal workouts simply because of the Austrian Oak's blessing. Here's how to do it."
+                          ),
+                    
                     InkWell(
                       onTap: (){
 
@@ -141,18 +188,32 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
                       ),
                     ),
                     SizedBox(height: 20,),
-                    YoutubePlayer(controller: _tbarcontroller,
-                    showVideoProgressIndicator: false,
-                    
+                    Container(
+                       padding: EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Column(
+                        children: [
+                          YoutubePlayer(controller: _tbarcontroller,
+                          showVideoProgressIndicator: false,
+                          
+                          ),
+                        ],
+                      ),
                     )
                 ],
               ),
                      
             ),
+              ],
+                    ),
+                  ),
             Container(
               width: screenWeidth*0.9,
 margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(10.0),
               decoration: BoxDecoration(
               color: Color.fromARGB(255, 168, 219, 249),
               borderRadius: BorderRadius.circular(12),
@@ -163,7 +224,7 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
-                      color: Colors.pink,
+                      // color: Colors.pink,
                     ),
                   child:  Column(
                     children: [
@@ -178,9 +239,19 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
                       ),
                     ],
                   ),),
-                  const Text(
-                  "As the favorite back exercise of Arnold Schwarzenegger himself, the T-bar row transcends all mere mortal workouts simply because of the Austrian Oak's blessing. Here's how to do it."
+                  Container(
+                     padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),color: Colors.white,
                     ),
+                    child: Column(
+                      children: [
+                        const Text(
+                        "As the favorite back exercise of Arnold Schwarzenegger himself, the T-bar row transcends all mere mortal workouts simply because of the Austrian Oak's blessing. Here's how to do it."
+                          ),
+                      
+                  
+                  
                     InkWell(
                       onTap: (){
 
@@ -194,18 +265,29 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
                       ),
                     ),
                     SizedBox(height: 20,),
-                    YoutubePlayer(controller: _tbarcontroller,
-                    showVideoProgressIndicator: false,
-                    
+                    Container(
+                       padding: EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Column(
+                        children: [
+                          YoutubePlayer(controller: _tbarcontroller,
+                          showVideoProgressIndicator: false,
+                          
+                          ),
+                        ],
+                      ),
                     )
                 ],
               ),
-                     
+          ),],),       
             ),
             Container(
               width: screenWeidth*0.9,
 margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(10.0),
               decoration: BoxDecoration(
               color: Color.fromARGB(255, 168, 219, 249),
               borderRadius: BorderRadius.circular(12),
@@ -231,8 +313,17 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
                       ),
                     ],
                   ),),
-                  const Text(
-"As the favorite back exercise of Arnold Schwarzenegger himself, the T-bar row transcends all mere mortal workouts simply because of the Austrian Oak’s blessing. Here’s how to do it."                    ),
+                  SizedBox(height: 20,),
+                  Container(
+                     padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),color: Colors.white,
+                    ),
+                    child: Column(
+                      children: [
+                        const Text(
+                        "As the favorite back exercise of Arnold Schwarzenegger himself, the T-bar row transcends all mere mortal workouts simply because of the Austrian Oak’s blessing. Here’s how to do it."                    ),
+                    
                     InkWell(
                       onTap: (){
                         
@@ -247,12 +338,26 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
                       ),
                     ),
                     SizedBox(height: 20,),
-                    YoutubePlayer(controller: _tbarcontroller,
-                    showVideoProgressIndicator: false,
-                    
+                    Container(
+                      padding: EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Column(
+                        children: [
+                          YoutubePlayer(controller: _tbarcontroller,
+                          showVideoProgressIndicator: false,
+                          
+                          ),
+                        ],
+                      ),
                     )
                 ],
               ),
+                  )]
+                    ),
+                  
                      
             ),
            

@@ -237,7 +237,9 @@ class _ProfileState extends State<Profile> {
                ElevatedButton(
                   onPressed: () {
                     Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context)=> TodoScreen())
+                      MaterialPageRoute(builder: (context)=> TodoScreen(name1: '',
+                        
+                      ))
                     );
                   },
                   style: ElevatedButton.styleFrom(

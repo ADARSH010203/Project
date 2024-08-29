@@ -19,7 +19,7 @@ class _BalanceState extends State<Balance> {
     super.initState();
     _deadliftcontroller = YoutubePlayerController(
       initialVideoId: YoutubePlayer.convertUrlToId(
-          "https://www.youtube.com/watch?v=hYo72r8Ivso")!, // Deadlift video
+          "assets/")!, // Deadlift video
       flags: YoutubePlayerFlags(autoPlay: true, mute: false),
     );
     _tbarcontroller = YoutubePlayerController(
