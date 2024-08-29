@@ -4,7 +4,8 @@ import 'package:flutter_application_1/Home/footer.dart';
 import 'package:flutter_application_1/Home/login.dart';
 
 class TodoScreen extends StatefulWidget {
-  const TodoScreen({super.key});
+  final String name1;
+  const TodoScreen({super.key,required this.name1});
 
   @override
   State<TodoScreen> createState() => _TodoScreenState();
@@ -18,7 +19,7 @@ class _TodoScreenState extends State<TodoScreen> {
 
   void _selectCategory(String category) {
     setState(() {
-      selectedCategory = "Hello user, you selected " + category;
+      selectedCategory = "Hello, ${widget.name1}, you selected " + category;
     });
   }
 

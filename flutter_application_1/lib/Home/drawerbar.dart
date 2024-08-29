@@ -8,15 +8,11 @@ import 'profile.dart';
 class Drawerbar extends StatelessWidget {
   final String name;
   final String email;
-  final String phone;
-  final String dateOfBirth;
 
   const Drawerbar({
     Key? key,
     required this.name,
     required this.email,
-    required this.phone,
-    required this.dateOfBirth,
   }) : super(key: key);
 
   @override
@@ -36,8 +32,7 @@ class Drawerbar extends StatelessWidget {
                   profileText(
                     name: name,
                     email: email,
-                    phone: phone,
-                    dateOfBirth: dateOfBirth,
+                   
                   ),
                 ],
               ),
@@ -148,15 +143,11 @@ class profileIma extends StatelessWidget {
 class profileText extends StatelessWidget {
   final String name;
   final String email;
-  final String phone;
-  final String dateOfBirth;
 
   const profileText({
     Key? key,
     required this.name,
     required this.email,
-    required this.phone,
-    required this.dateOfBirth,
   }) : super(key: key);
 
   @override
@@ -175,16 +166,7 @@ class profileText extends StatelessWidget {
             'Email: $email',
             style: TextStyle(fontSize: 14, color: Color.fromARGB(255, 14, 1, 56)),
           ),
-          SizedBox(height: 4),
-          Text(
-            'Phone: $phone',
-            style: TextStyle(fontSize: 14, color: Color.fromARGB(255, 14, 1, 56)),
-          ),
-          SizedBox(height: 4),
-          Text(
-            'Date of Birth: $dateOfBirth',
-            style: TextStyle(fontSize: 14, color: Color.fromARGB(255, 14, 1, 56)),
-          ),
+          
           SizedBox(height: 16),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -205,20 +187,7 @@ class profileText extends StatelessWidget {
                   style: TextStyle(fontSize: 16),
                 ),
               ),
-              ElevatedButton.icon(
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white, backgroundColor: Colors.red,
-                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                ),
-                onPressed: () {
-                  // Handle delete profile action
-                },
-                icon: Icon(Icons.delete),
-                label: Text(
-                  "Delete",
-                  style: TextStyle(fontSize: 16),
-                ),
-              ),
+              
             ],
           ),
         ],

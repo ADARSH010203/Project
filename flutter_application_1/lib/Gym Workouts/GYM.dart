@@ -12,6 +12,8 @@ class gymwork extends StatefulWidget {
 class _gymworkState extends State<gymwork> {
   late YoutubePlayerController _deadliftcontroller;
   late YoutubePlayerController _tbarcontroller;
+  late YoutubePlayerController _oneLegPlank;
+  late YoutubePlayerController _Arm;
   
 
   @override
@@ -30,6 +32,13 @@ class _gymworkState extends State<gymwork> {
         mute: false,
       ),
     );
+    _oneLegPlank = YoutubePlayerController(
+      initialVideoId:YoutubePlayer.convertUrlToId("https://www.youtube.com/watch?v=RKI4Hr9IsgY")!,
+      flags: YoutubePlayerFlags(autoPlay: false,mute: false));
+    _Arm = YoutubePlayerController(
+      initialVideoId: YoutubePlayer.convertUrlToId("https://www.youtube.com/watch?v=RKI4Hr9IsgY")!,
+      flags: YoutubePlayerFlags(autoPlay: false,mute: false),
+      );
   }
   @override
   void dispose() {
@@ -194,7 +203,7 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
                       ),
                     ),
                     SizedBox(height: 20,),
-                    YoutubePlayer(controller: _tbarcontroller,
+                    YoutubePlayer(controller: _oneLegPlank,
                     showVideoProgressIndicator: false,
                     
                     )
@@ -247,7 +256,7 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
                       ),
                     ),
                     SizedBox(height: 20,),
-                    YoutubePlayer(controller: _tbarcontroller,
+                    YoutubePlayer(controller: _Arm,
                     showVideoProgressIndicator: false,
                     
                     )
@@ -260,7 +269,7 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
       ),
       bottomNavigationBar: BottomAppBar(
         child: Footer(),
-                color: Color.fromARGB(255, 88, 185, 209),
+        color: Color.fromARGB(255, 88, 185, 209),
 
       ),
                 

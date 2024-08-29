@@ -8,6 +8,7 @@ import 'package:flutter_application_1/Home/drawerbar.dart';
 import 'package:flutter_application_1/Home/footer.dart';
 import 'package:flutter_application_1/Home/login.dart';
 import 'package:flutter_application_1/Home/todolist.dart';
+import 'package:flutter_application_1/Hydration/water.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'desktop.dart';
 
@@ -240,7 +241,9 @@ class _HomepageState extends State<Homepage> {
                     GestureDetector(
                       onTap: () {
                         Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => TodoScreen()),
+                          MaterialPageRoute(builder: (context) => TodoScreen(
+                            name1: widget.name1,
+                          )),
                         );
                       },
                       child: Container(
@@ -279,7 +282,7 @@ class _HomepageState extends State<Homepage> {
                     GestureDetector(
                       onTap: () {
                         Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => LoginPage()),
+                          MaterialPageRoute(builder: (context) => Hydration()),
                         );
                       },
                       child: Container(
@@ -354,8 +357,6 @@ class _HomepageState extends State<Homepage> {
         child: Drawerbar(
           name: widget.name1,
           email: widget.email,
-          phone: widget.phone,
-          dateOfBirth: widget.dateOfBirth,
         ),
       ),
       bottomNavigationBar: BottomAppBar(

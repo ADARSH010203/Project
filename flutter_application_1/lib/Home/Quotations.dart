@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_application_1/Home/footer.dart';
 
 class Quotations extends StatefulWidget {
   const Quotations({super.key});
@@ -9,378 +11,214 @@ class Quotations extends StatefulWidget {
 }
 
 class _QuotationsState extends State<Quotations> {
-  final List<bool> _isExpanded = [false];
-
-  void _handlePanelTap(int index, bool isExpanded) {
-    setState(() {
-      _isExpanded[index] = !isExpanded;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Quotations",
-          style: GoogleFonts.roboto(
-            fontSize: 32,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        title: Text("Quotations"),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
-              
-              child: Card(
-                color: Colors.amber,
-              // surfaceTintColor: Colors.black12,  
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25),
-                  
-                ),
-                // color: Color.fromARGB(255, 20, 156, 219),
-                // color:Colors.red,
-                // shadowColor: Colors.red,
-                child: ExpansionPanelList(
-                  expansionCallback: (int index, bool isExpanded) {
-                    _handlePanelTap(0, isExpanded);
-                  },
-                  expandedHeaderPadding: EdgeInsets.all(10),
-                  elevation: 1,
-                  children: [
+        child: Container(
+          margin: EdgeInsets.all(12),
+          child: Column(children: [
+            Column(
+              children: [
+                
+                Container(
+                  padding: EdgeInsets.all(12),
+                  margin: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),   
+                    color: Color.fromRGBO(162 ,207, 244, 1),
+                  ),
+                  child: ExpansionTile(
+                    backgroundColor: Colors.green,
+                    iconColor: Colors.white,
+                    // shape: ShapeBorder.lerp(a, b, t),
+
+                    title:Text(
+                      "Positive context",
+                    ),
+                    children: [
+                      Padding(padding: const EdgeInsets.symmetric(horizontal: 16.0,vertical: 16.0),
                     
-                    ExpansionPanel(
-                      headerBuilder: (BuildContext context, bool isExpanded) {
-                        return ListTile(
-                          
-                          title: Text(
-                            "Success Quotess",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                            
-                          ),
-                          trailing: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(isExpanded ? Icons.expand_less : Icons.expand_more),
-                              SizedBox(width: 8),
-                              Icon(Icons.add),
-                            ],
-                          ),
-                        );
-                      },
-                      body: Column(
-                        children: [
-                          ListTile(
-                            title: Text("The best way to predict the future is to create it."),
-                          ),
-                          ListTile(
-                            title: Text("Hello"),
-                          ),
-                        ],
+                      child: Text(
+                        "Stability ball exercises are key in many balance-focused routines, engaging your core and improving overall body control. These exercises are excellent for enhancing posture, coordination, and strength. If you're looking to get the most out of your stability ball workouts, take a look at this resource."
+                      ),),
+                    ],
+                    
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(12),
+                  margin: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),color: Color.fromRGBO(162 ,207, 244, 1),
+                  ),
+                  child: ExpansionTile(
+                    backgroundColor: Colors.green,
+                    iconColor: Colors.white,
+                    // shape: ShapeBorder.lerp(a, b, t),
+
+                    title:Text(
+                      "Motivational Quotes:",
+                    ),
+                    children: [
+                      Padding(padding: const EdgeInsets.symmetric(horizontal: 16.0,vertical: 16.0),
+                    
+                      child: Text(
+                        "Keep pushing forward, no matter the obstacles. Every challenge is an opportunity to grow stronger. Believe in your potential and never give up on your dreams",
+                      ),),
+                    ],
+                    
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(12),
+                  margin: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),color: Color.fromRGBO(162 ,207, 244, 1),
+                  ),
+                  child: ExpansionTile(
+                    backgroundColor: Colors.green,
+                    iconColor: Colors.white,
+                    // shape: ShapeBorder.lerp(a, b, t),
+
+                    title:Text(
+                      "Success Quotes:",
+                    ),
+                    children: [
+                      Padding(padding: const EdgeInsets.symmetric(horizontal: 16.0,vertical: 16.0),
+                    
+                      child: Text(
+"Success  the result of hard work, perseverance, and learning from failures. Stay focused, stay driven, and embrace every step of the journey"                      ),),
+                    ],
+                    
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(12),
+                  margin: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),color: Color.fromRGBO(162 ,207, 244, 1),
+                  ),
+                  child: ExpansionTile(
+                    backgroundColor:Color.fromRGBO(181, 217, 244, 1),
+                    iconColor: Colors.white,
+                    // shape: ShapeBorder.lerp(a, b, t),
+
+                    title:Text(
+                      "Blissful Quotes",
+                    ),
+                    children: [
+                      Padding(padding: const EdgeInsets.symmetric(horizontal: 16.0,vertical: 16.0),
+                    
+                      child: Text(
+"True happiness comes from within. Cherish the simple moments, find joy in the little things, and let positivity guide your life     "                 ),),
+         ],
+                    
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(12),
+                  margin: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),color: Color.fromRGBO(162 ,207, 244, 1),
+                  ),
+                  child: ExpansionTile(
+                    backgroundColor: Colors.green,
+                    iconColor: Colors.white,
+                    // shape: ShapeBorder.lerp(a, b, t),
+
+                    title:Text(
+                         "Self-love Quotes"                    
+                    ),
+                    children: [
+                      Padding(padding: const EdgeInsets.symmetric(horizontal: 16.0,vertical: 16.0),
+                    
+                      child: Text(
+                        "mbrace who you are, flaws and all. Self-love is the foundation of a fulfilled life. Treat yourself with kindness and prioritize your well-being."
+                      ),),
+                    ],
+                    
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(12),
+                  margin: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),color: Color.fromRGBO(162 ,207, 244, 1),
+                  ),
+                  child: ExpansionTile(
+                    backgroundColor: Colors.green,
+                    iconColor: Colors.white,
+                    // shape: ShapeBorder.lerp(a, b, t),
+
+                    title:Text(
+                      "Inspirational Quotes:",
+                    ),
+                    children: [
+                      Padding(padding: const EdgeInsets.symmetric(horizontal: 16.0,vertical: 16.0),
+                    
+                      child: Text(
+                        "Let your actions inspire others to dream big and achieve greatness. Believe in the power of your influence and the positive impact you can make."
+                      ),),
+                    ],
+                    
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.all(8),
+                  padding: EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: Colors.white,
+                    border: Border.symmetric(
+                      horizontal: BorderSide(
+                        width: 15,
+                        color: Color.fromRGBO(162 ,207, 244, 1),
+                        style: BorderStyle.solid,
                       ),
-                      isExpanded: _isExpanded[0],
-                    ),
-                  ],
-                ),
-                
-              ),
-            ),Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
-              
-              child: Card(
-                color: Colors.amber,
-              // surfaceTintColor: Colors.black12,  
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25),
+                      vertical: BorderSide(
+                        width: 15,
+                        color: Color.fromRGBO(162 ,207, 244, 1),
+                        style: BorderStyle.solid,
+                      )
+                    )
+                  ),
                   
-                ),
-                // color: Color.fromARGB(255, 20, 156, 219),
-                // color:Colors.red,
-                // shadowColor: Colors.red,
-                child: ExpansionPanelList(
-                  expansionCallback: (int index, bool isExpanded) {
-                    _handlePanelTap(0, isExpanded);
-                  },
-                  expandedHeaderPadding: EdgeInsets.all(10),
-                  elevation: 1,
-                  children: [
-                    
-                    ExpansionPanel(
-                      headerBuilder: (BuildContext context, bool isExpanded) {
-                        return ListTile(
+                  child: Column(
+                    children: [
+                      Text("Quotation of the day",style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),),
+                      SizedBox(height: 15,),
+                      Container(
+                        padding: EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
                           
-                          title: Text(
-                            "Positive Quotes",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                            
-                          ),
-                          trailing: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(isExpanded ? Icons.expand_less : Icons.expand_more),
-                              SizedBox(width: 8),
-                              Icon(Icons.add),
-                            ],
-                          ),
-                        );
-                      },
-                      body: Column(
-                        children: [
-                          ListTile(
-                            title: Text("The best way to predict the future is to create it."),
-                          ),
-                          ListTile(
-                            title: Text("Hello"),
-                          ),
-                        ],
-                      ),
-                      isExpanded: _isExpanded[0],
-                    ),
-                  ],
-                ),
-                
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
-              
-              child: Card(
-                color: Colors.amber,
-              // surfaceTintColor: Colors.black12,  
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25),
-                  
-                ),
-                // color: Color.fromARGB(255, 20, 156, 219),
-                // color:Colors.red,
-                // shadowColor: Colors.red,
-                child: ExpansionPanelList(
-                  expansionCallback: (int index, bool isExpanded) {
-                    _handlePanelTap(0, isExpanded);
-                  },
-                  expandedHeaderPadding: EdgeInsets.all(10),
-                  elevation: 1,
-                  children: [
-                    
-                    ExpansionPanel(
-                      headerBuilder: (BuildContext context, bool isExpanded) {
-                        return ListTile(
-                          
-                          title: Text(
-                            "Motivational Quotes",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                            
-                          ),
-                          trailing: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(isExpanded ? Icons.expand_less : Icons.expand_more),
-                              SizedBox(width: 8),
-                              Icon(Icons.add),
-                            ],
-                          ),
-                        );
-                      },
-                      body: Column(
-                        children: [
-                          ListTile(
-                            title: Text("The best way to predict the future is to create it."),
-                          ),
-                          ListTile(
-                            title: Text("Hello"),
-                          ),
-                        ],
-                      ),
-                      isExpanded: _isExpanded[0],
-                    ),
-                  ],
-                ),
-                
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
-              
-              child: Card(
-                color: Colors.amber,
-              // surfaceTintColor: Colors.black12,  
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25),
-                  
-                ),
-                // color: Color.fromARGB(255, 20, 156, 219),
-                // color:Colors.red,
-                // shadowColor: Colors.red,
-                child: ExpansionPanelList(
-                  expansionCallback: (int index, bool isExpanded) {
-                    _handlePanelTap(0, isExpanded);
-                  },
-                  expandedHeaderPadding: EdgeInsets.all(10),
-                  elevation: 1,
-                  children: [
-                    
-                    ExpansionPanel(
-                      headerBuilder: (BuildContext context, bool isExpanded) {
-                        return ListTile(
-                          
-                          title: Text(
-                            "Blissfull Quotes",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                            
-                          ),
-                          trailing: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(isExpanded ? Icons.expand_less : Icons.expand_more),
-                              SizedBox(width: 8),
-                              Icon(Icons.add),
-                            ],
-                          ),
-                        );
-                      },
-                      body: Column(
-                        children: [
-                          ListTile(
-                            title: Text("The best way to predict the future is to create it."),
-                          ),
-                          ListTile(
-                            title: Text("Hello"),
-                          ),
-                        ],
-                      ),
-                      isExpanded: _isExpanded[0],
-                    ),
-                  ],
-                ),
-                
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
-              
-              child: Card(
-                color: Colors.amber,
-              // surfaceTintColor: Colors.black12,  
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25),
-                  
-                ),
-                // color: Color.fromARGB(255, 20, 156, 219),
-                // color:Colors.red,
-                // shadowColor: Colors.red,
-                child: ExpansionPanelList(
-                  expansionCallback: (int index, bool isExpanded) {
-                    _handlePanelTap(0, isExpanded);
-                  },
-                  expandedHeaderPadding: EdgeInsets.all(10),
-                  elevation: 1,
-                  children: [
-                    
-                    ExpansionPanel(
-                      headerBuilder: (BuildContext context, bool isExpanded) {
-                        return ListTile(
-                          
-                          title: Text(
-                            "Self-Love Quotes",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                            
-                          ),
-                          trailing: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(isExpanded ? Icons.expand_less : Icons.expand_more),
-                              SizedBox(width: 8),
-                              Icon(Icons.add),
-                            ],
-                          ),
-                        );
-                      },
-                      body: Column(
-                        children: [
-                          ListTile(
-                            title: Text("The best way to predict the future is to create it."),
-                          ),
-                          ListTile(
-                            title: Text("Hello"),
-                          ),
-                        ],
-                      ),
-                      isExpanded: _isExpanded[0],
-                    ),
-                  ],
-                ),
-                
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
-              
-              child: Card(
-                color: Colors.amber,
-              // surfaceTintColor: Colors.black12,  
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25),
-                  
-                ),
-                // color: Color.fromARGB(255, 20, 156, 219),
-                // color:Colors.red,
-                // shadowColor: Colors.red,
-                child: ExpansionPanelList(
-                  expansionCallback: (int index, bool isExpanded) {
-                    _handlePanelTap(0, isExpanded);
-                  },
-                  expandedHeaderPadding: EdgeInsets.all(20),
-                  elevation: 1,
-                  children: [
-                    
-                    ExpansionPanel(
-                      headerBuilder: (BuildContext context, bool isExpanded) {
-                        return ListTile(
-                          
-                          title: Text(
-                            "Inspirational Quotes",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                            
-                          ),
-                          trailing: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              // Icon(isExpanded ? Icons.expand_less : Icons.expand_more),
-                              SizedBox(height: 6),
-                              IconButton(onPressed: (){
-                                // isExpanded ? Icons.expand_less:Icons.expand_more;
-                              }, icon: Icon(Icons.add)),
-                              
-                              IconButton(onPressed: (){
-                                isExpanded ? Icons.expand_less:Icons.expand_more;
-                              }, icon: Icon(Icons.more)),
-                            ],
-                          ),
-                        );
-                      },
-                      body: Column(
-                        children: [
-                          ListTile(
-                            title: Text("The best way to predict the future is to create it."),
-                          ),
-                          ListTile(
-                            title: Text("Hello"),
-                          ),
-                        ],
-                      ), 
-                      isExpanded: _isExpanded[0],
-                    ),
-                  ],
-                ),
-                
-              ),
-            ),
-          ],
+                        color: Color.fromRGBO(162 ,207, 244, 1),
+                        ),
+                        child: Column(
+                          children: [
+                            Text(
+                            "Just one small positive thought in the morning can change your whole day.",
+                        ),],
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            )
+          ],),
         ),
+      ),
+      bottomNavigationBar: BottomAppBar(child: Footer(),
+              color: Color.fromARGB(255, 88, 185, 209),
+      
       ),
     );
   }
