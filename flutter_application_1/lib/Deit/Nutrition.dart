@@ -1,6 +1,6 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Home/login.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Nutrition extends StatefulWidget {
   const Nutrition({super.key});
@@ -10,95 +10,86 @@ class Nutrition extends StatefulWidget {
 }
 
 class _NutritionState extends State<Nutrition> {
-  
   @override
   Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context);
-    final screenHeight = mediaQuery.size.height;
-    final screenWidth = mediaQuery.size.width; 
+    final M = MediaQuery.of(context);
+    final screenHeight = M.size.height;
+    final screenWidth = M.size.width;
     return Scaffold(
+
       appBar: AppBar(
-        title: Text("Nuetroin Page"),
-        backgroundColor: Colors.blue,
+        title: Text("Nutrition "),
       ),
       backgroundColor: Color.fromRGBO(255, 233, 169, 1),
       body: SingleChildScrollView(
         child: Container(
-          height: screenHeight*0.8,
-          width: screenWidth*0.8,
-           padding: EdgeInsets.all(20),
-          margin: EdgeInsets.all(20),
+          padding: EdgeInsets.all(12),
+          margin: EdgeInsets.all(15),
           child: Column(children: [
-            Row(
-           
-              children: [
-                Image.asset('assets/Profile.png',fit: BoxFit.cover,height: 60,),
-                SizedBox(width: 10,),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Hello ,Xiroza"),
-                    SizedBox(height: 5,),
-                    Text("What to Be Served Today?"),
-                  ],
-                ),
-                
-              ],
+            
+            Row(children: [
+              Image.asset('assets/APX.jpg',fit: BoxFit.cover,height: screenHeight*0.2,),
+              SizedBox(width: 20,),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Hello, Xiroza",style: TextStyle(fontFamily: GoogleFonts.istokWeb().fontFamily,fontSize: 13,fontWeight: FontWeight.bold),),
+                  SizedBox(width: 20,),
+                  Text("What to be served today? ",style: TextStyle(fontFamily: GoogleFonts.istokWeb().fontFamily,fontSize: 13),)
+                ],
+              ),
+              ],),
+              SizedBox(
+                height: 20,
+              ),
+              Center(
+                child: Text("Nutrition",style: TextStyle(
+                  fontFamily: GoogleFonts.istokWeb().fontFamily,
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                ),),
+              ),
+            Container(
+              width: screenWidth*0.9,
+              child: Row(
+                children: [
+                  Container(
+                    
+                    width: screenWidth*0.4,
+                    child: Image.asset("assets/Adarsh2.png",)
+                    ),
+                  SizedBox(width: screenWidth*0.05,),
+                  Container(
+                    width: screenWidth*0.4,
+                    child: Image.asset("assets/Adarsh2.png",fit: BoxFit.cover)),
+                ],
+              ),
             ),
             SizedBox(height: 20,),
-            Column(
-              children: [
-                Text("Nutration",
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                  ),
-                  ),
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Column(
-              children: [
-                Container(
-                  width: screenWidth*0.8,
-                  child: Row(
-                    children: [
-                      Row(
-                        
-                        children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.white,
+            Container(
+              width: screenWidth*0.9,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    width: screenWidth*0.85,
+                    height: screenWidth*0.85,
+                    
+                    child: Column(
+                      children: [
+                  
+                        GestureDetector(  
+                          child: Image.asset("assets/Adarsh2.png"), 
+                          onTap: (){  
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) =>  LoginPage()));
+                          }
                           ),
-                          child: Image.asset("assets/Adarsh2.png",height: 200,color:  Colors.white10,fit: BoxFit.cover,colorBlendMode:BlendMode.color,scale: sqrt1_2,)),
-                        ]
-                      ),
-                      SizedBox(width: 20,),
-                      Row(
-                        children: [
-                          Image.asset('APX.jpg',height: 200,),
-                        ],
-                      ),
-                      
-                    ],
-                  ),
-                ),
-
-                
-              ],
-            ),
-            SizedBox(height: 30,),
-            Column(
-              children: [
-              Image.asset('nature.webp',fit: BoxFit.contain,),
-              ],
+                      ],
+                    ),
+                  )
+                ],
+              ),
             )
-            
           ],),
         ),
       ),
