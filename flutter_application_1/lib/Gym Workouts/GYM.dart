@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Home/footer.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class gymwork extends StatefulWidget {
@@ -83,6 +84,8 @@ class _gymworkState extends State<gymwork> {
                   ),
                   const Text(
                       "The bread and butter of countless gym routines,his move, if done properly, will predominantly engage your back and legs, while building overall strength for you entire body. If you want to master the deadlift, check out this article.",
+                      style: TextStyle(fontWeight: FontWeight.bold,fontSize:12),
+                  
                     ),
                     InkWell(
                       onTap: (){
@@ -136,7 +139,8 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
                   ),),
                   const Text(
                   "As the favorite back exercise of Arnold Schwarzenegger himself, the T-bar row transcends all mere mortal workouts simply because of the Austrian Oak's blessing. Here's how to do it."
-                    ),
+                    ,
+                ),
                     InkWell(
                       onTap: (){
 
@@ -189,7 +193,8 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
                   ),),
                   const Text(
                   "As the favorite back exercise of Arnold Schwarzenegger himself, the T-bar row transcends all mere mortal workouts simply because of the Austrian Oak's blessing. Here's how to do it."
-                    ),
+                    ,
+                ),
                     InkWell(
                       onTap: (){
 
@@ -232,8 +237,9 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
                       Text(
                         "Back: T-Bar Row",
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 22,
                           fontWeight: FontWeight.bold,
+                          fontFamily: GoogleFonts.roboto().fontFamily,
                         ),
                         
                         
@@ -241,7 +247,10 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
                     ],
                   ),),
                   const Text(
-"As the favorite back exercise of Arnold Schwarzenegger himself, the T-bar row transcends all mere mortal workouts simply because of the Austrian Oak’s blessing. Here’s how to do it."                    ),
+                    "As the favorite back exercise of Arnold Schwarzenegger himself, the T-bar row transcends all mere mortal workouts simply because of the Austrian Oak’s blessing. Here’s how to do it."
+               ,style: TextStyle(fontWeight: FontWeight.bold,fontSize:18,color: Colors.black),
+
+                   ),
                     InkWell(
                       onTap: (){
                         

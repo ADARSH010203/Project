@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/Home/BGMI_CALC.dart';
 import 'package:flutter_application_1/Home/login.dart';
+import 'package:flutter_application_1/profilesection/Details.dart';
+import 'package:flutter_application_1/profilesection/update.dart';
+import 'package:flutter_application_1/Hydration/water.dart';
 
-import 'profile.dart';
 
 class Drawerbar extends StatelessWidget {
   final String name;
@@ -22,19 +24,21 @@ class Drawerbar extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           Container(
-            height: 280,
+            height: 250,
             child: DrawerHeader(
               padding: EdgeInsets.zero,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  profileIma(),
-                  profileText(
-                    name: name,
-                    email: email,
-                   
-                  ),
-                ],
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    updateIma(),
+                    updateText(
+                      name: name,
+                      email: email,
+                    ),
+                  ],
+                ),
               ),
               decoration: const BoxDecoration(
                 color: Color.fromARGB(255, 88, 185, 209),
@@ -81,7 +85,7 @@ class Drawerbar extends StatelessWidget {
             'Hydration',
             () {
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => LoginPage()),
+                MaterialPageRoute(builder: (context) => Hydration()),
               );
             },
           ),
@@ -119,8 +123,8 @@ class Drawerbar extends StatelessWidget {
   }
 }
 
-class profileIma extends StatelessWidget {
-  const profileIma({super.key});
+class updateIma extends StatelessWidget {
+  const updateIma({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -140,11 +144,11 @@ class profileIma extends StatelessWidget {
   }
 }
 
-class profileText extends StatelessWidget {
+class updateText extends StatelessWidget {
   final String name;
   final String email;
 
-  const profileText({
+  const updateText({
     Key? key,
     required this.name,
     required this.email,
@@ -154,43 +158,75 @@ class profileText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Name: $name',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 4),
-          Text(
-            'Email: $email',
-            style: TextStyle(fontSize: 14, color: Color.fromARGB(255, 14, 1, 56)),
-          ),
-          
-          SizedBox(height: 16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              ElevatedButton.icon(
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white, backgroundColor: Colors.green,
-                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center, // Aligns the text to the center
+          children: [
+            Text(
+              'Name: $name',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 4),
+            Text(
+              'Email: $email',
+              style: TextStyle(fontSize: 14, color: Color.fromARGB(255, 14, 1, 56)),
+            ),
+            SizedBox(height: 16),
+            Container(
+              child: Row(
+                
+                mainAxisAlignment: MainAxisAlignment.spaceAround, // Centers the "Update" button
+                children: [
+                  Row(
+                    children: [
+                  ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white, 
+                      backgroundColor: Colors.green,
+                      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => Details(name1: 'Xiroza',))
+                      );
+                    },
+                    icon: Icon(Icons.view_agenda),
+                    label: Text(
+                      "Update",
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),],),
+              Row(
+              mainAxisAlignment: MainAxisAlignment.center, // Centers the "Update" button
+              children: [
+                ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white, 
+                    backgroundColor: Colors.green,
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => Details(name1: name,
+                        
+                      ))
+                    );
+                  },
+                  icon: Icon(Icons.edit),
+                  label: Text(
+                    "Profile",
+                    style: TextStyle(fontSize: 14),
+                  ),
                 ),
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context)=>Profile())
-                  );
-                },
-                icon: Icon(Icons.edit),
-                label: Text(
-                  "Update",
-                  style: TextStyle(fontSize: 16),
-                ),
+              ],
+            ),
+                ],
               ),
-              
-            ],
-          ),
-        ],
+            ),
+            
+          ],
+        ),
       ),
     );
   }

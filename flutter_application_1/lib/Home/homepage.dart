@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter/widgets.dart';
+import 'package:flutter_application_1/Deit/Nutrition.dart';
 import 'package:flutter_application_1/Home/AlamScreen.dart';
 import 'package:flutter_application_1/Home/Exercise.dart';
 import 'package:flutter_application_1/Home/Quotations.dart';
-// import 'package:flutter_application_1/Home/alarm.dart';
+import 'package:flutter_application_1/Home/theme/Themeprovider.dart';
 import 'package:flutter_application_1/Home/drawerbar.dart';
 import 'package:flutter_application_1/Home/footer.dart';
 import 'package:flutter_application_1/Home/login.dart';
+import 'package:flutter_application_1/Home/theme/theme.dart';
 import 'package:flutter_application_1/Home/todolist.dart';
 import 'package:flutter_application_1/Hydration/water.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'desktop.dart';
+import 'package:provider/provider.dart';
+ // Import the ThemeProvider
 
 class Homepage extends StatefulWidget {
   final String name1;
@@ -18,7 +20,6 @@ class Homepage extends StatefulWidget {
   final String email;
   final String phone;
   final String dateOfBirth;
-  
 
   const Homepage({
     super.key,
@@ -55,7 +56,7 @@ class _HomepageState extends State<Homepage> {
                     children: [
                       ClipOval(
                         child: Image.asset(
-                          'assets/Adarsh2.png', // Ensure this path is correct
+                          'assets/Adarsh2.png',
                           height: kToolbarHeight * 0.99,
                           fit: BoxFit.contain,
                         ),
@@ -73,7 +74,6 @@ class _HomepageState extends State<Homepage> {
               ],
             ),
             Row(
-              
               children: [
                 IconButton(
                   onPressed: () {},
@@ -92,6 +92,13 @@ class _HomepageState extends State<Homepage> {
                     );
                   },
                   icon: Icon(Icons.logout),
+                ),
+                IconButton(
+                  onPressed: () {
+                    // Toggle the theme
+                    Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
+                  },
+                  icon: Icon(Icons.brightness_6),
                 ),
               ],
             ),
@@ -274,8 +281,8 @@ class _HomepageState extends State<Homepage> {
                       ),
                     ),
                   ],
-                ),
-                SizedBox(height: 30),
+  ),
+                               SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -315,7 +322,7 @@ class _HomepageState extends State<Homepage> {
                     GestureDetector(
                       onTap: () {
                         Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => LoginPage()),
+                          MaterialPageRoute(builder: (context) => Nutrition()),
                         );
                       },
                       child: Container(
@@ -366,3 +373,4 @@ class _HomepageState extends State<Homepage> {
     );
   }
 }
+

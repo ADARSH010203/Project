@@ -5,7 +5,7 @@ import 'package:flutter_application_1/Home/login.dart';
 
 class TodoScreen extends StatefulWidget {
   final String name1;
-  const TodoScreen({super.key,required this.name1});
+  const TodoScreen({super.key, required this.name1});
 
   @override
   State<TodoScreen> createState() => _TodoScreenState();
@@ -79,14 +79,19 @@ class _TodoScreenState extends State<TodoScreen> {
                   ),
                 ),
                 SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    _buildCategoryCard("EXERCISE", isMobile),
-                    _buildCategoryCard("MEDITATION", isMobile),
-                    _buildCategoryCard("FOOD", isMobile),
-                    _buildCategoryCard("BUSINESS", isMobile),
-                  ],
+                // Horizontal scroll for categories
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      _buildCategoryCard("EXERCISE", isMobile),
+                      _buildCategoryCard("Aerobic", isMobile),
+                      _buildCategoryCard("Balance", isMobile),
+                      _buildCategoryCard("Stretching", isMobile),
+                      _buildCategoryCard("Hydration", isMobile),
+                      _buildCategoryCard("Nutrition", isMobile),
+                    ],
+                  ),
                 ),
                 SizedBox(height: 20),
                 Row(
@@ -216,7 +221,7 @@ class _TodoScreenState extends State<TodoScreen> {
         backgroundColor: Colors.pink,
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Color.fromARGB(255, 88, 185, 209),
+        color: Color.fromRGBO(98, 169, 221, 1),
         child: Footer(),
       ),
     );
@@ -228,6 +233,7 @@ class _TodoScreenState extends State<TodoScreen> {
       child: Container(
         height: isMobile ? 70 : 80,
         width: isMobile ? 110 : 130,
+        margin: EdgeInsets.symmetric(horizontal: 8),
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         decoration: BoxDecoration(
           color: Color.fromARGB(255, 88, 185, 209),

@@ -149,6 +149,7 @@ class _HydrationState extends State<Hydration> {
                                       TextButton(
                                         onPressed: () {
                                           // Edit button action
+                                          myname();
                                         },
                                         child: Text("Edit"),
                                       ),
@@ -369,104 +370,199 @@ class _HydrationState extends State<Hydration> {
       ),
     );
   }
-
-  Future _displayBottomSheet(BuildContext context) {
-    
-    return showModalBottomSheet(
+  Future<void> _displayBottomSheet(BuildContext context) {
+  return showModalBottomSheet(
+    context: context,
+    builder: (BuildContext context) {
+      return Container(
+        height: 400,
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              "Log Your Water Intake",
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.blueAccent,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton(
+              onPressed: () {
+                _logWaterIntake();
+                Navigator.pop(context);
+              },
+              child: Text('Save', style: TextStyle(fontSize: 18)),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 110, 175, 228),
+                padding: EdgeInsets.symmetric(vertical: 15),
+              ),
+            ),
+            SizedBox(width: 20,),
+                Text(
+                  "Water Amount:",
+                  style: TextStyle(fontSize: 18),
+                ),
+                DropdownButton<int>(
+                  value: _waterAmount,
+                  items: [200, 250, 300, 350, 400,450]
+                      .map<DropdownMenuItem<int>>(
+                        (int value) => DropdownMenuItem<int>(
+                          value: value,
+                          child: Text("$value ml"),
+                        ),
+                      )
+                      .toList(),
+                  onChanged: (int? newValue) {
+                    setState(() {
+                      _waterAmount = newValue!;
+                    });
+                  },
+                ),
+              
+            
+            SizedBox(width: 20),
+            
+            
+            ElevatedButton(
+              onPressed: () {
+                _deleteWaterIntake();
+                Navigator.pop(context);
+              },
+              child: Text('Delete', style: TextStyle(fontSize: 18)),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color.fromARGB(255, 128, 160, 231),
+                padding: EdgeInsets.symmetric(vertical: 15),
+              ),
+            ),],
+        ),],
+        ),
       
+      );
+    },
+  );
+}
+
+void _logWaterIntake() {
+  setState(() {
+    currentHydration += _waterAmount;
+    waterIntakeLogs.add({
+      'amount': _waterAmount,
+      'time': TimeOfDay.now().format(context),
+    });
+  });
+  _saveWaterIntake();
+  _showConfirmationDialog('Water intake logged successfully.');
+}
+
+void _deleteWaterIntake() {
+  setState(() {
+    if (waterIntakeLogs.isNotEmpty) {
+      waterIntakeLogs.removeLast();
+      currentHydration -= _waterAmount; // Adjust as needed
+      if (currentHydration < 0) currentHydration = 0;
+    }
+  });
+  _saveWaterIntake();
+  _showConfirmationDialog('Last entry deleted.');
+}
+
+void _showConfirmationDialog(String message) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Confirmation'),
+        content: Text(message),
+        actions: [
+          TextButton(
+            child: Text('OK'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
+}
+
+Future<void> _saveWaterIntake() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  await prefs.setDouble('currentHydration', currentHydration);
+  await prefs.setStringList(
+    'waterIntakeLogs',
+    waterIntakeLogs.map((log) {
+      return "${log['amount']},${log['time']}";
+    }).toList(),
+  );
+}
+
+Future<void> _loadSavedWaterIntake() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  setState(() {
+    currentHydration = prefs.getDouble('currentHydration') ?? 0;
+    waterIntakeLogs = prefs
+        .getStringList('waterIntakeLogs')
+        ?.map((logString) {
+          final parts = logString.split(',');
+          return {'amount': int.parse(parts[0]), 'time': parts[1]};
+        }).toList() ??
+        [];
+  });
+}
+
+
+  
+  void myname() {
+    showDialog(
       context: context,
       builder: (BuildContext context) {
-        return Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Text(
-                    "Log Your Water Intake",
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        double newTargetHydration = targetHydration;
+        return AlertDialog(
+          title: Text('Edit Target Hydration'),
+          content: Row(
+            children: [
+              Expanded(
+                child: TextField(
+                  keyboardType: TextInputType.number,
+                  onChanged: (value) {
+                    newTargetHydration = double.tryParse(value) ?? targetHydration;
+                  },
+                  decoration: InputDecoration(
+                    hintText: targetHydration.toString(),
                   ),
-                  SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Water Amount:",
-                        style: TextStyle(fontSize: 18),
-                      ),
-                      DropdownButton<int>(
-                        value: _waterAmount,
-                        items: [200, 250, 300, 350, 400]
-                            .map<DropdownMenuItem<int>>(
-                              (int value) => DropdownMenuItem<int>(
-                                value: value,
-                                child: Text("$value ml"),
-                              ),
-                            )
-                            .toList(),
-                        onChanged: (int? newValue) {
-                          setState(() {
-                            _waterAmount = newValue!;
-                          });
-                        },
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                  ElevatedButton(
-                    onPressed: () => _logWaterIntake(),
-                    child: Text('Save'),
-                  ),
-                  ElevatedButton(onPressed: (){
-                    
-                  }, child: Text("Delete")),],)
-                ],
+                ),
               ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              child: Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text('Save'),
+              onPressed: () {
+                setState(() {
+                  targetHydration = newTargetHydration;
+                });
+                Navigator.of(context).pop();
+              },
             ),
           ],
         );
       },
     );
-  }
 
-  void _logWaterIntake() {
-    setState(() {
-      currentHydration += _waterAmount;
-      waterIntakeLogs.add({
-        'amount': _waterAmount,
-        'time': TimeOfDay.now().format(context),
-      });
-    });
-    _saveWaterIntake();
-    Navigator.pop(context);
-  }
-
-  Future<void> _saveWaterIntake() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setDouble('currentHydration', currentHydration);
-    await prefs.setStringList(
-        'waterIntakeLogs',
-        waterIntakeLogs.map((log) {
-          return "${log['amount']},${log['time']}";
-        }).toList());
-  }
-
-  Future<void> _loadSavedWaterIntake() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      currentHydration = prefs.getDouble('currentHydration') ?? 0;
-      waterIntakeLogs = prefs
-              .getStringList('waterIntakeLogs')
-              ?.map((logString) {
-                final parts = logString.split(',');
-                return {'amount': int.parse(parts[0]), 'time': parts[1]};
-              }).toList() ??
-          [];
-    });
   }
 }

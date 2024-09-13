@@ -24,20 +24,22 @@ class _DesktopState extends State<Desktop> {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => LoginPage()),
         );
-      } else {
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(
-            builder: (context) => Homepage(
-              name1: username,
-              password1: password,
-              email: '',
-              phone: '',
-              dateOfBirth: '',
+       } 
+      //  else {
+        // Navigator.of(context).pushReplacement(
+        //   MaterialPageRoute(
+        //     // builder: (context) => Homepage(
+        //     //   name1: username,
+        //     //   password1: password,
+        //     //   email: '',
+        //     //   phone: '',
+        //     //   dateOfBirth: '',
+        //     //   themeMode: ThemeMode,
 
-            ),
-          ),
-        );
-      }
+        //     ),
+        //   ),
+        // );
+      // }
     });
   }
 
