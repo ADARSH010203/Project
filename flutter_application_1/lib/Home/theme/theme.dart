@@ -17,7 +17,7 @@ class MyTheme {
   static ThemeData darkTheme(BuildContext context) => ThemeData(
         brightness: Brightness.dark,
         iconTheme: IconThemeData(color: Colors.white),
-        dialogBackgroundColor: Colors.black,
+        dialogBackgroundColor: Color.fromARGB(255, 170, 34, 34),
         scaffoldBackgroundColor: Color.fromARGB(255, 9, 8, 8),
         textTheme: Theme.of(context).textTheme.apply(bodyColor: Color.fromARGB(255, 15, 14, 14)),
       );
