@@ -87,11 +87,11 @@ class _InformationState extends State<Information> {
                           children: [
                             Text(
                               'Name:',
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.teal),
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                             Text(
                               '${widget.name}',
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.teal),
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -105,11 +105,11 @@ class _InformationState extends State<Information> {
                           children: [
                             Text(
                               'UserName:',
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.teal),
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                             Text(
                               '${widget.UserName}',
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.teal),
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -123,11 +123,11 @@ class _InformationState extends State<Information> {
                           children: [
                             Text(
                               'Password:',
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.teal),
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                             Text(
                               '${widget.password}',
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.teal),
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -141,11 +141,11 @@ class _InformationState extends State<Information> {
                           children: [
                             Text(
                               'Phone:',
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.teal),
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                             Text(
                               '${widget.phone}',
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.teal),
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -159,11 +159,11 @@ class _InformationState extends State<Information> {
                           children: [
                             Text(
                               'Gender:',
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.teal),
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                             Text(
                               '${widget.gender}',
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.teal),
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -177,11 +177,11 @@ class _InformationState extends State<Information> {
                           children: [
                             Text(
                               'Height:',
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.teal),
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                             Text(
                               '${widget.height}',
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.teal),
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -195,11 +195,11 @@ class _InformationState extends State<Information> {
                           children: [
                             Text(
                               'Weight:',
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.teal),
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                             Text(
                               '${widget.weight}',
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.teal),
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -213,11 +213,11 @@ class _InformationState extends State<Information> {
                           children: [
                             Text(
                               'Date of Birth:',
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.teal),
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                             Text(
                               '${widget.dateOfBirth}',
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.teal),
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -231,11 +231,11 @@ class _InformationState extends State<Information> {
                           children: [
                             Text(
                               'Blood Group:',
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.teal),
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                             Text(
                               '${widget.blood}',
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.teal),
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -249,11 +249,11 @@ class _InformationState extends State<Information> {
                           children: [
                             Text(
                               'Address:',
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.teal),
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                             Text(
                               '${widget.address}',
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.teal),
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -267,11 +267,11 @@ class _InformationState extends State<Information> {
                           children: [
                             Text(
                               'Nationality:',
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.teal),
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                             Text(
                               '${widget.Nationality}',
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.teal),
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),

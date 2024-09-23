@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Deit/n_list.dart';
+import 'package:flutter_application_1/Home/StopWatch.dart';
 import 'package:flutter_application_1/Home/theme/Themeprovider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
             theme: MyTheme.lightTheme(context),
             darkTheme: MyTheme.darkTheme(context),
             routes: {
-              "/": (context) => Aerobic(),
+              "/": (context) => StopWatch(),
               // Add other routes here
             },
           );
