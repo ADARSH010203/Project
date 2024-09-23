@@ -36,7 +36,7 @@ class _HydrationState extends State<Hydration> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red,
+        // backgroundColor: Colors.red,
         title: Text(
           "Water",
           style: GoogleFonts.openSans(),
@@ -301,7 +301,7 @@ class _HydrationState extends State<Hydration> {
                             child: Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12),
-                                color: Colors.yellow,
+                                // color: Colors.yellow,
                               ),
                               child: ListView.builder(
                                 shrinkWrap: true,

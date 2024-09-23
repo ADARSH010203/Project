@@ -1,3 +1,5 @@
+import 'dart:core';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Home/StopWatch.dart';
 // import 'package:flutter_application_1/Home/alarm.dart';
@@ -29,12 +31,10 @@ class Footer extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => Homepage(name1: '', password1: '', email: '', phone: '', dateOfBirth: '',)),
                 );
               },
-              
-
             ),
             
             IconButton(
-              icon: Icon(Icons.info),
+              icon: Icon(Icons.timer),
               onPressed: () {
                 // Navigate to the about page when the about button is pressed
                 Navigator.push(
@@ -43,7 +43,7 @@ class Footer extends StatelessWidget {
                 );
               },
             ),
-            IconButton(icon: Icon(Icons.help),
+            IconButton(icon: Icon(Icons.stop),
             onPressed: (){
               Navigator.push(
                   context,
