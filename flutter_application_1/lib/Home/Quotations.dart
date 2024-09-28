@@ -32,7 +32,7 @@ class _QuotationsState extends State<Quotations> {
                     color: Color.fromRGBO(162 ,207, 244, 1),
                   ),
                   child: ExpansionTile(
-                    backgroundColor: Colors.green,
+                    backgroundColor: const Color.fromARGB(255, 178, 251, 181),
                     iconColor: Colors.white,
                     // shape: ShapeBorder.lerp(a, b, t),
 
@@ -56,7 +56,7 @@ class _QuotationsState extends State<Quotations> {
                     borderRadius: BorderRadius.circular(12),color: Color.fromRGBO(162 ,207, 244, 1),
                   ),
                   child: ExpansionTile(
-                    backgroundColor: Colors.green,
+                    backgroundColor: const Color.fromARGB(255, 178, 251, 181),
                     iconColor: Colors.white,
                     // shape: ShapeBorder.lerp(a, b, t),
 
@@ -80,7 +80,7 @@ class _QuotationsState extends State<Quotations> {
                     borderRadius: BorderRadius.circular(12),color: Color.fromRGBO(162 ,207, 244, 1),
                   ),
                   child: ExpansionTile(
-                    backgroundColor: Colors.green,
+                    backgroundColor: const Color.fromARGB(255, 178, 251, 181),
                     iconColor: Colors.white,
                     // shape: ShapeBorder.lerp(a, b, t),
 
@@ -103,7 +103,7 @@ class _QuotationsState extends State<Quotations> {
                     borderRadius: BorderRadius.circular(12),color: Color.fromRGBO(162 ,207, 244, 1),
                   ),
                   child: ExpansionTile(
-                    backgroundColor:Color.fromRGBO(181, 217, 244, 1),
+                    backgroundColor: const Color.fromARGB(255, 178, 251, 181),
                     iconColor: Colors.white,
                     // shape: ShapeBorder.lerp(a, b, t),
 
@@ -126,7 +126,7 @@ class _QuotationsState extends State<Quotations> {
                     borderRadius: BorderRadius.circular(12),color: Color.fromRGBO(162 ,207, 244, 1),
                   ),
                   child: ExpansionTile(
-                    backgroundColor: Colors.green,
+                    backgroundColor: const Color.fromARGB(255, 178, 251, 181),
                     iconColor: Colors.white,
                     // shape: ShapeBorder.lerp(a, b, t),
 
@@ -150,7 +150,7 @@ class _QuotationsState extends State<Quotations> {
                     borderRadius: BorderRadius.circular(12),color: Color.fromRGBO(162 ,207, 244, 1),
                   ),
                   child: ExpansionTile(
-                    backgroundColor: Colors.green,
+                    backgroundColor: const Color.fromARGB(255, 178, 251, 181),
                     iconColor: Colors.white,
                     // shape: ShapeBorder.lerp(a, b, t),
 

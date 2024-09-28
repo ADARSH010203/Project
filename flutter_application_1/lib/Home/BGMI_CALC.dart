@@ -44,7 +44,7 @@ class _BgmiCalcState extends State<BgmiCalc> {
           "Calculate Your BMI",
           style: GoogleFonts.roboto(fontSize: 22, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.teal,
+        // backgroundColor: Colors.teal,
       ),
       body: SingleChildScrollView(
         child: Center(
