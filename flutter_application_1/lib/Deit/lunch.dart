@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Deit/lunch.dart';
 import 'package:flutter_application_1/Home/Registration.dart';
 import 'package:flutter_application_1/Home/footer.dart';
 import 'package:flutter_application_1/Home/login.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Nutrition extends StatefulWidget {
-  const Nutrition({super.key});
+import 'Fluits.dart';
+
+class Lunch extends StatefulWidget {
+  const Lunch({super.key});
 
   @override
-  State<Nutrition> createState() => _NutritionState();
+  State<Lunch> createState() => _LunchState();
 }
 
-class _NutritionState extends State<Nutrition> {
+class _LunchState extends State<Lunch> {
   @override
   Widget build(BuildContext context) {
     
@@ -26,7 +27,7 @@ class _NutritionState extends State<Nutrition> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("Nutrition"),
+            Text("Lunch"),
             Icon(Icons.notification_add),
           ],
         ),
@@ -65,83 +66,13 @@ class _NutritionState extends State<Nutrition> {
               ),
             ),
             Text(
-              "Nutrition",
+              "Lunch",
               style: TextStyle(
                 fontSize: 32,
                 fontFamily: GoogleFonts.istokWeb().fontFamily,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Row(
-              children: [
-                Column(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        // Add your desired functionality here
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context)=>Registration())
-                        );
-                      },
-                
-                      child: Container(
-                        height: screenHeight*0.25,
-                        width: screenWidth*0.4,
-                        margin: EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          image: DecorationImage(image: AssetImage("assets/deit/rice.jpg"),fit: BoxFit.cover),
-                          boxShadow: [
-                            BoxShadow(
-                              // color: Colors.black,
-                              blurRadius: 10,
-                              offset: const Offset(0, 5),
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            
-                            Spacer(),
-                            SizedBox(
-                              width: double.infinity,
-                              height: 50,
-                              child: TextButton(
-                                onPressed: () {
-                                  // Add the TextButton functionality here
-                                  Navigator.of(context).push(
-                                    MaterialPageRoute(builder: (context)=>LoginPage())
-                                  );
-                                },
-                                style: TextButton.styleFrom(
-                                  backgroundColor: Colors.orange, // Match the button color
-                                  shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(15),
-                                      bottomRight: Radius.circular(15),
-                                    ),
-                                  ),
-                                ),
-                                child: const Text(
-                                  "BreakFast",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              
-            
             Column(
               children: [
                 GestureDetector(
@@ -149,17 +80,17 @@ class _NutritionState extends State<Nutrition> {
                     // Add your desired functionality here
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context)=>Lunch())
+                        builder: (context)=>Fluits())
                     );
                   },
 
                   child: Container(
                     height: screenHeight*0.25,
-                    width: screenWidth*0.4,
+                    width: screenWidth*0.75,
                     margin: EdgeInsets.all(20),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
-                      image: DecorationImage(image: AssetImage("assets/deit/sanvid.jpg"),fit: BoxFit.cover),
+                      image: DecorationImage(image: AssetImage("assets/deit/rice.jpg"),fit: BoxFit.cover),
                       boxShadow: [
                         BoxShadow(
                           // color: Colors.black,
@@ -180,7 +111,7 @@ class _NutritionState extends State<Nutrition> {
                             onPressed: () {
                               // Add the TextButton functionality here
                               Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context)=>Lunch())
+                                MaterialPageRoute(builder: (context)=>Fluits())
                               );
                             },
                             style: TextButton.styleFrom(
@@ -193,7 +124,7 @@ class _NutritionState extends State<Nutrition> {
                               ),
                             ),
                             child: const Text(
-                              "Lunch",
+                              "Fruit/Salad",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
@@ -207,7 +138,7 @@ class _NutritionState extends State<Nutrition> {
                   ),
                 ),
               ],
-            ),],),
+            ),
             Column(
               children: [
                 GestureDetector(
@@ -220,11 +151,11 @@ class _NutritionState extends State<Nutrition> {
                   },
                   child: Container(
                     height: screenHeight*0.25,
-                    width: screenWidth*0.90,
+                    width: screenWidth*0.75,
                     margin: EdgeInsets.all(20),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
-                      image: DecorationImage(image: AssetImage("assets/deit/eatig.jpg"),fit: BoxFit.cover),
+                      image: DecorationImage(image: AssetImage("assets/APX.jpg"),fit: BoxFit.cover),
                       boxShadow: [
                         BoxShadow(
                           // color: Colors.black,
@@ -258,7 +189,7 @@ class _NutritionState extends State<Nutrition> {
                               ),
                             ),
                             child: const Text(
-                              "Dinner",
+                              "Breakfast",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,

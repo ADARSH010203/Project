@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Deit/Nutrition.dart';
+import 'package:flutter_application_1/Deit/n_list.dart';
 import 'package:flutter_application_1/Home/AlamScreen.dart';
 import 'package:flutter_application_1/Home/Exercise.dart';
 import 'package:flutter_application_1/Home/Quotations.dart';
@@ -322,7 +323,7 @@ class _HomepageState extends State<Homepage> {
                     GestureDetector(
                       onTap: () {
                         Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => Nutrition()),
+                          MaterialPageRoute(builder: (context) => NList()),
                         );
                       },
                       child: Container(

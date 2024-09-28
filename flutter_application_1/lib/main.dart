@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Deit/Nutrition.dart';
+import 'package:flutter_application_1/Deit/lunch.dart';
 import 'package:flutter_application_1/Deit/n_list.dart';
 import 'package:flutter_application_1/Home/StopWatch.dart';
 import 'package:flutter_application_1/Home/theme/Themeprovider.dart';
@@ -29,7 +31,7 @@ class MyApp extends StatelessWidget {
             theme: MyTheme.lightTheme(context),
             darkTheme: MyTheme.darkTheme(context),
             routes: {
-              "/": (context) => StopWatch(),
+              "/": (context) => Nutrition(),
               // Add other routes here
             },
           );
