@@ -43,7 +43,7 @@ class Footer extends StatelessWidget {
                 );
               },
             ),
-            IconButton(icon: Icon(Icons.stop),
+            IconButton(icon: Icon(Icons.logout),
             onPressed: (){
               Navigator.push(
                   context,

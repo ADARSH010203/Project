@@ -46,7 +46,7 @@ class _DesktopState extends State<Desktop> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(102, 205, 224, 1),
+       backgroundColor: Color.fromRGBO(102, 205, 224, 1),
       body: Container(
         padding: EdgeInsets.all(40),
         child: Center(
@@ -64,18 +64,7 @@ class _DesktopState extends State<Desktop> {
                 SizedBox(
                   height: 40,
                 ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  """Developed By :Adarsh
-                            Priyanka
-                            Xiroza""",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              
             ],
           ),
         ),
