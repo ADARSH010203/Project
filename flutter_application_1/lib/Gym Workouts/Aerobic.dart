@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Home/footer.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 final Email = "https://www.youtube.com/watch?v=hYo72r8Ivso";
 
@@ -61,7 +62,7 @@ class _AerobicState extends State<Aerobic> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    "Back Deadlift",
+                    "Aerobic : Running",
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -82,13 +83,11 @@ class _AerobicState extends State<Aerobic> {
 
                    
                   const Text(
-                      "The bread and butter of countless gym routines,his move, if done properly, will predominantly engage your back and legs, while building overall strength for you entire body. If you want to master the deadlift, check out this article.",
+                    "The cornerstone of countless fitness programs, running, when done correctly, primarily targets your cardiovascular system while also engaging your leg muscles. It’s a go-to exercise for improving endurance, burning calories, and boosting overall fitness. If you're looking to perfect your running technique, check out this guide."
                     ),
                     InkWell(
                       onTap: (){
-                        Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context)=>Aerobic()),
-                        );
+                        launchUrl(Uri.parse("https://marathonhandbook.com/aerobic-vs-anaerobic-training/#:~:text=Aerobic%20literally%20means%20%E2%80%9C%20with%20oxygen%20%E2%80%9D.%20Aerobic,aerobic.%20Even%20an%20800m%20race%20is%2060-70%25%20aerobic%21"));
                       },
                       child: const Text(
                         "CHECK OUT THIS Article",
@@ -145,74 +144,82 @@ class _AerobicState extends State<Aerobic> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const Text(
+                    "Aerobic: Cycling",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: AutofillHints.telephoneNumber,
+                    ),
+                    
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Container(
+                    padding: EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
-                      // color: const Color.fromARGB(255, 131, 112, 118),
+                      color: Colors.white,
                     ),
-                  child:  Column(
-                    children: [
-                      Text(
-                        "Back: T-Bar Row",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        
-                        
-                      ),
-                    ],
-                  ),),
-                  SizedBox(height: 20,),
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),color: Colors.white,
-                    ),
-                    child: Column(
-                      children: [
-                        const Text(
-                        "As the favorite back exercise of Arnold Schwarzenegger himself, the T-bar row transcends all mere mortal workouts simply because of the Austrian Oak's blessing. Here's how to do it."
-                          ),
-                    
+                    child: Column(children: [
+
+                   
+                  const Text(
+" staple in many workout routines, cycling is an effective, low-impact exercise that primarily works your lower body while enhancing cardiovascular health. Whether you're cycling outdoors or on a stationary bike, this activity is great for building strength and endurance. To learn how to optimize your cycling workouts, check out this article."                    ),
                     InkWell(
                       onTap: (){
+                        
+                      launchUrl(Uri.parse("https://www.healthline.com/health/fitness-exercise/cycling-benefits"));
 
                       },
                       child: const Text(
-                        "CHECK OUT THIS Article",
+                        "12 Benefits of Cycling, Plus Safety Tips ",
                         style: TextStyle(
-                          color: Color.fromARGB(255, 191, 131, 131),
+                          color: Colors.black,
                           decoration: TextDecoration.underline,
                         ),
                       ),
                     ),
+                    
                     SizedBox(height: 20,),
-                    Container(
-                       padding: EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        children: [
-                          YoutubePlayer(controller: _tbarcontroller,
-                          showVideoProgressIndicator: false,
+                  Container(
+                    padding: EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(12)),
+                      color: Colors.white,
+                    ),
+                    height: 300,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        
+                    YoutubePlayer(
+                      controller: _email,
+                      showVideoProgressIndicator: false,
+                      onReady: () => debugPrint('Ready'),
+                      bottomActions: [
+                        CurrentPosition(
                           
+                        ),
+                        ProgressBar(
+                          isExpanded: true,
+                          colors: const ProgressBarColors(
+                            playedColor: Colors.amber,
+                            handleColor: Colors.amberAccent,
                           ),
-                        ],
-                      ),
-                    )
+                        )
+                      ],
+                    
+                    ),],),), ],),
+                  )
                 ],
               ),
                      
             ),
-              ],
-                    ),
-                  ),
             Container(
               width: screenWeidth*0.9,
-margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
+              margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
               padding: const EdgeInsets.all(10.0),
               decoration: BoxDecoration(
               color: Color.fromARGB(255, 168, 219, 249),
@@ -221,72 +228,84 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const Text(
+                    "Aerobic: Jump",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: AutofillHints.telephoneNumber,
+                    ),
+                    
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Container(
+                    padding: EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
-                      // color: Colors.pink,
+                      color: Colors.white,
                     ),
-                  child:  Column(
-                    children: [
-                      Text(
-                        "Back: “The Bird-Dog” aka One-Arm, One-Leg Plank",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        
-                        
-                      ),
-                    ],
-                  ),),
-                  Container(
-                     padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),color: Colors.white,
-                    ),
-                    child: Column(
-                      children: [
-                        const Text(
-                        "As the favorite back exercise of Arnold Schwarzenegger himself, the T-bar row transcends all mere mortal workouts simply because of the Austrian Oak's blessing. Here's how to do it."
-                          ),
-                      
-                  
-                  
+                    child: Column(children: [
+
+                   
+                  const Text(
+"Jump rope is a versatile, high-intensity workout that engages the entire body, improving coordination, cardiovascular fitness, and agility. It’s ideal for burning calories quickly and enhancing overall fitness. For those seeking to refine their skills, following a proper guide can lead to better results."
+
+                  ),
                     InkWell(
                       onTap: (){
+                        
+                      launchUrl(Uri.parse("https://health.clevelandclinic.org/jump-rope-benefits"));
 
                       },
                       child: const Text(
-                        "CHECK OUT THIS Article",
+                        "6 Benefits of jumping Rope ",
                         style: TextStyle(
-                          color: Color.fromARGB(255, 191, 131, 131),
+                          color: Colors.black,
                           decoration: TextDecoration.underline,
                         ),
                       ),
                     ),
+                    
                     SizedBox(height: 20,),
-                    Container(
-                       padding: EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        children: [
-                          YoutubePlayer(controller: _tbarcontroller,
-                          showVideoProgressIndicator: false,
+                  Container(
+                    padding: EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(12)),
+                      color: Colors.white,
+                    ),
+                    height: 300,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        
+                    YoutubePlayer(
+                      controller: _email,
+                      showVideoProgressIndicator: false,
+                      onReady: () => debugPrint('Ready'),
+                      bottomActions: [
+                        CurrentPosition(
                           
+                        ),
+                        ProgressBar(
+                          isExpanded: true,
+                          colors: const ProgressBarColors(
+                            playedColor: Colors.amber,
+                            handleColor: Colors.amberAccent,
                           ),
-                        ],
-                      ),
-                    )
+                        )
+                      ],
+                    
+                    ),],),), ],),
+                  )
                 ],
               ),
-          ),],),       
+                     
             ),
             Container(
               width: screenWeidth*0.9,
-margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
+              margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
               padding: const EdgeInsets.all(10.0),
               decoration: BoxDecoration(
               color: Color.fromARGB(255, 168, 219, 249),
@@ -295,69 +314,77 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const Text(
+                    "Aerobic:Swimming",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: AutofillHints.telephoneNumber,
+                    ),
+                    
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Container(
+                    padding: EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
-                      // color: Colors.pink,
+                      color: Colors.white,
                     ),
-                  child:  Column(
-                    children: [
-                      Text(
-                        "Back: T-Bar Row",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        
-                        
-                      ),
-                    ],
-                  ),),
-                  SizedBox(height: 20,),
-                  Container(
-                     padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),color: Colors.white,
-                    ),
-                    child: Column(
-                      children: [
-                        const Text(
-                        "As the favorite back exercise of Arnold Schwarzenegger himself, the T-bar row transcends all mere mortal workouts simply because of the Austrian Oak’s blessing. Here’s how to do it."                    ),
-                    
+                    child: Column(children: [
+
+                   
+                  const Text(
+" staple in many workout routines, cycling is an effective, low-impact exercise that primarily works your lower body while enhancing cardiovascular health. Whether you're cycling outdoors or on a stationary bike, this activity is great for building strength and endurance. To learn how to optimize your cycling workouts, check out this article."                    ),
                     InkWell(
                       onTap: (){
                         
-                      
+                      launchUrl(Uri.parse("https://www.healthline.com/health/fitness-exercise/cycling-benefits"));
+
                       },
                       child: const Text(
-                        "CHECK OUT THIS Article",
+                        "12 Benefits of Cycling, Plus Safety Tips ",
                         style: TextStyle(
-                          color: Color.fromARGB(255, 191, 131, 131),
+                          color: Colors.black,
                           decoration: TextDecoration.underline,
                         ),
                       ),
                     ),
+                    
                     SizedBox(height: 20,),
-                    Container(
-                      padding: EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        children: [
-                          YoutubePlayer(controller: _tbarcontroller,
-                          showVideoProgressIndicator: false,
+                  Container(
+                    padding: EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(12)),
+                      color: Colors.white,
+                    ),
+                    height: 300,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        
+                    YoutubePlayer(
+                      controller: _email,
+                      showVideoProgressIndicator: false,
+                      onReady: () => debugPrint('Ready'),
+                      bottomActions: [
+                        CurrentPosition(
                           
+                        ),
+                        ProgressBar(
+                          isExpanded: true,
+                          colors: const ProgressBarColors(
+                            playedColor: Colors.amber,
+                            handleColor: Colors.amberAccent,
                           ),
-                        ],
-                      ),
-                    )
+                        )
+                      ],
+                    
+                    ),],),), ],),
+                  )
                 ],
               ),
-                  )]
-                    ),
-                  
                      
             ),
            

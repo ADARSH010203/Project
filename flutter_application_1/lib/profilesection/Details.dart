@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Home/footer.dart';
+import 'package:flutter_application_1/Home/pageTransition.dart';
 import 'package:flutter_application_1/profilesection/emergencyPage.dart';
+import 'package:flutter_application_1/profilesection/personal.dart';
 import 'package:flutter_application_1/profilesection/update.dart';
 
 class Details extends StatefulWidget {
@@ -14,233 +16,114 @@ class Details extends StatefulWidget {
 class _DetailsState extends State<Details> {
   @override
   Widget build(BuildContext context) {
-    final ma = MediaQuery.of(context);
-    final screenHeight = ma.size.height;
-    final screenWidth = ma.size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: Text(
           "User Display",
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
+        elevation: 0,
+        leading: Icon(Icons.arrow_back, color: Colors.black),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey[100],
       body: SingleChildScrollView(
         child: Container(
-          height: screenHeight,
           width: screenWidth,
-          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05, vertical: screenHeight * 0.02),
+          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Center(
-                child: Column(
-                  children: [
-                    Image.asset(
-                      "assets/profile.png",
-                      height: screenHeight * 0.1,
-                      fit: BoxFit.cover,
+              SizedBox(height: screenHeight * 0.05),
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  Container(
+                    height: screenHeight * 0.15,
+                    width: screenHeight * 0.15,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.blue.shade100,
                     ),
-                    SizedBox(height: screenHeight * 0.03),
-                    Text(
-                      widget.name1,
-                      style: TextStyle(
-                        fontSize: screenHeight * 0.03,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: screenHeight * 0.015),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        foregroundColor: Colors.white, backgroundColor: Colors.blue,
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => Update()),
-                        );
+                  ),
+                  Image.asset(
+                    "assets/profile.png",
+                    height: screenHeight * 0.1,
+                    fit: BoxFit.cover,
+                  ),
+                  Positioned(
+                    bottom: 0,
+                    right: 0,  // Position the camera icon on the right side
+                    child: InkWell(
+                      onTap: () {
+                        // Logic to update profile image
                       },
-                      child: Text(
-                        "Edit Profile",
-                        style: TextStyle(fontSize: screenHeight * 0.02),
+                      child: Container(
+                        padding: EdgeInsets.all(screenHeight * 0.008),
+                        decoration: BoxDecoration(
+                          color: Colors.blueAccent,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          Icons.camera_alt,
+                          size: screenHeight * 0.02,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
-                  ],
+                  ),
+                ],
+              ),
+              SizedBox(height: screenHeight * 0.02),
+              Text(
+                widget.name1,
+                style: TextStyle(
+                  fontSize: screenHeight * 0.03,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
+              ),
+              SizedBox(height: screenHeight * 0.015),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.2, vertical: screenHeight * 0.015),
+                ),
+                onPressed: () {
+                  Navigator.of(context).push(
+                    PageTransition(page: Update(), beginOffset: Offset(-1.0, -1.0), endOffset: Offset.zero),
+                  );
+                },
+                child: Text(
+                  "Edit Profile",
+                  style: TextStyle(fontSize: screenHeight * 0.02),
                 ),
               ),
               SizedBox(height: screenHeight * 0.04),
 
-              // Personal Information Row
-              Padding(
-                padding: EdgeInsets.only(left: screenWidth * 0.02),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(Icons.person, size: screenHeight * 0.04, color: Colors.black),
-                    SizedBox(width: screenWidth * 0.05),
-                    Expanded(
-                      child: TextButton(
-                        onPressed: () {
-                          // Handle Personal Information button click'
-                          Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => Update() )
-                          );
-                        },
-                        child: Text(
-                          "Personal Information",
-                          style: TextStyle(fontSize: screenHeight * 0.025, color: Colors.black),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: screenHeight * 0.015),
-
-              // Emergency Contacts Row
-              Padding(
-                padding: EdgeInsets.only(left: screenWidth * 0.02),
-                child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(Icons.emergency, size: screenHeight * 0.04, color: Colors.black),
-                    SizedBox(width: screenWidth * 0.05),
-                    Expanded(
-                      child: TextButton(
-                        onPressed: () {
-                          // Handle Emergency Contacts button click
-                          Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context)=> EmergencyPage())
-                          );
-                        },
-                        child: Text(
-                          "Emergency Contacts",
-                          style: TextStyle(fontSize: screenHeight * 0.025, color: Colors.black),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: screenHeight * 0.015),
-
-              // Help Row
-              Padding(
-                padding: EdgeInsets.only(left: screenWidth * 0.02),
-                child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(Icons.help, size: screenHeight * 0.04, color: Colors.black),
-                    SizedBox(width: screenWidth * 0.05),
-                    Expanded(
-                      child: TextButton(
-                        onPressed: () {
-                          // Handle Help button click
-                        },
-                        child: Text(
-                          "Help",
-                          style: TextStyle(fontSize: screenHeight * 0.025, color: Colors.black),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: screenHeight * 0.015),
-
-              // Settings Row
-              Padding(
-                padding: EdgeInsets.only(left: screenWidth * 0.02),
-                child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(Icons.settings, size: screenHeight * 0.04, color: Colors.black),
-                    SizedBox(width: screenWidth * 0.05),
-                    Expanded(
-                      child: TextButton(
-                        onPressed: () {
-                          // Handle Settings button click
-                        },
-                        child: Text(
-                          "Settings",
-                          style: TextStyle(fontSize: screenHeight * 0.025, color: Colors.black),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: screenHeight * 0.015),
-
-              // Notifications Row
-              Padding(
-                padding: EdgeInsets.only(left: screenWidth * 0.02),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(Icons.notifications, size: screenHeight * 0.04, color: Colors.black),
-                    SizedBox(width: screenWidth * 0.05),
-                    Expanded(
-                      child: TextButton(
-                        onPressed: () {
-                          // Handle Notifications button click
-                        },
-                        child: Text(
-                          "Notifications",
-                          style: TextStyle(fontSize: screenHeight * 0.025, color: Colors.black),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: screenHeight * 0.015),
-
-              // About Us Row
-              Padding(
-                padding: EdgeInsets.only(left: screenWidth * 0.02),
-                child: Row(
-                  children: [
-                    Icon(Icons.info, size: screenHeight * 0.04, color: Colors.black),
-                    SizedBox(width: screenWidth * 0.05),
-                    Expanded(
-                      child: TextButton(
-                        onPressed: () {
-                          // Handle About Us button click
-                        },
-                        child: Text(
-                          "About Us",
-                          style: TextStyle(fontSize: screenHeight * 0.025, color: Colors.black),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: screenHeight * 0.015),
-
-              // Logout Row
-              Padding(
-                padding: EdgeInsets.only(left: screenWidth * 0.02),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(Icons.logout, size: screenHeight * 0.04, color: Colors.black),
-                    SizedBox(width: screenWidth * 0.05),
-                    Expanded(
-                      child: TextButton(
-                        onPressed: () {
-                          // Handle Logout button click
-                        },
-                        child: Text(
-                          "Logout",
-                          style: TextStyle(fontSize: screenHeight * 0.025, color: Colors.black),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+              // Profile options
+              Column(
+                children: [
+                  ProfileOption(icon: Icons.person, label: "Personal Information", onTap: () {
+                    Navigator.of(context).push(PageTransition(page: Information(
+                      name: '', password: '', phone: '', gender: '', height: '', weight: '', dateOfBirth: '', address: '', blood: '', nationality: '', userName: '', UserName: '',
+                    ),beginOffset:Offset(-1.0,-1.0),endOffset:Offset.zero));
+                  }),
+                  ProfileOption(icon: Icons.contacts, label: "Emergency Contacts", onTap: () {
+                    Navigator.of(context).push(PageTransition(page: EmergencyPage(),beginOffset: Offset(-1.0, -1.0), endOffset: Offset.zero));
+                  }),
+                  ProfileOption(icon: Icons.help_outline, label: "Help", onTap: () {}),
+                  ProfileOption(icon: Icons.settings_outlined, label: "Settings", onTap: () {}),
+                  ProfileOption(icon: Icons.notifications_none, label: "Notifications", onTap: () {}),
+                  ProfileOption(icon: Icons.info_outline, label: "About Us", onTap: () {}),
+                  ProfileOption(icon: Icons.logout, label: "Logout", onTap: () {}),
+                ],
               ),
             ],
           ),
@@ -249,6 +132,54 @@ class _DetailsState extends State<Details> {
       bottomNavigationBar: BottomAppBar(
         child: Footer(),
         color: Color.fromARGB(255, 88, 185, 209),
+      ),
+    );
+  }
+}
+
+// Reusable ProfileOption widget for each row with modern styling
+class ProfileOption extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final VoidCallback onTap;
+
+  const ProfileOption({
+    Key? key,
+    required this.icon,
+    required this.label,
+    required this.onTap,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: screenHeight * 0.008),
+      child: Material(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(15),
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(15),
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: screenHeight * 0.02, horizontal: screenWidth * 0.05),
+            child: Row(
+              children: [
+                Icon(icon, size: screenHeight * 0.04, color: Colors.blueAccent),
+                SizedBox(width: screenWidth * 0.05),
+                Expanded(
+                  child: Text(
+                    label,
+                    style: TextStyle(fontSize: screenHeight * 0.025, color: Colors.black87),
+                  ),
+                ),
+                Icon(Icons.arrow_forward_ios, size: screenHeight * 0.02, color: Colors.grey),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
