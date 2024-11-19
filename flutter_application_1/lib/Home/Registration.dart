@@ -1,11 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Home/homepage.dart';
 import 'package:flutter_application_1/Home/login.dart';
+import 'package:flutter_application_1/Home/pageTransition.dart';
+import 'package:flutter_application_1/service/database.dart';
+import 'package:flutter_application_1/service/utils.dart';
 import 'package:flutter_social_button/flutter_social_button.dart';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Home/login.dart';
-import 'package:flutter_application_1/Home/drawerbar.dart'; // Import the drawerbar
+import 'package:random_string/random_string.dart';
 
 class Registration extends StatefulWidget {
   Registration({super.key});
@@ -15,6 +16,7 @@ class Registration extends StatefulWidget {
 }
 
 class _RegistrationState extends State<Registration> {
+  final FirebaseAuth auth = FirebaseAuth.instance;
   String name = '';
   TextEditingController tcUsername = TextEditingController();
   TextEditingController tcEmail = TextEditingController();
@@ -23,11 +25,54 @@ class _RegistrationState extends State<Registration> {
   TextEditingController tcNumber = TextEditingController();
   TextEditingController tcDateofBirth = TextEditingController();
   bool isObscure = true;
+  bool isLoading = false;
 
   final _formKey = GlobalKey<FormState>();
   final regex = RegExp(r"^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$");
   final passwordPattern = r"^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$";
+  Future<void> register() async {
+    setState(() {
+      isLoading = true;
+    });
 
+    auth
+        .createUserWithEmailAndPassword(
+      email: tcEmail.text.trim(),
+      password: tcPassword.text.trim(),
+    )
+        .then((value) {
+      setState(() {
+        isLoading = false;
+        String user_id = randomNumeric(5);
+        Map<String, dynamic> userData = {
+          'user_id': user_id,
+          'user_name': tcUsername.text.trim(),
+          'user_email':tcEmail.text.trim(),
+          'user_password': tcPassword.text.trim(),
+          'user_Gender': tcGender.text.trim(),
+          'user_phone': tcNumber.text.trim(),
+          'user_dateofbirth':tcDateofBirth.text.trim(),
+        };
+        DatabaseMethods().addUserDetails(userData, user_id);
+        Utils().toasMessage("Registered Successfully");
+        Navigator.of(context).push(
+                              PageTransition(
+                                page: LoginPage(
+                                ),
+                                beginOffset: Offset(1.0,0.0),
+                                endOffset: Offset.zero
+                              ),
+                            );
+      });
+    }).onError(
+      (error, stackTrace) {
+        Utils().toasMessage(error.toString());
+        setState(() {
+          isLoading = false;
+        });
+   },
+   );
+   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -185,16 +230,7 @@ class _RegistrationState extends State<Registration> {
                         ),
                         onPressed: () {
                           if (_formKey.currentState?.validate() == true) {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => Homepage(
-                                  name1: tcUsername.text,
-                                  email: tcEmail.text,
-                                  phone: tcNumber.text,
-                                  dateOfBirth: tcDateofBirth.text, password1: '',
-                                ),
-                              ),
-                            );
+                            register();
                           }
                         },
                         child: Text('Register'),
@@ -207,10 +243,12 @@ class _RegistrationState extends State<Registration> {
                         ),
                         onPressed: () {
                           Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => LoginPage(),
-                            ),
-                          );
+                            PageTransition(
+                              page:LoginPage(),
+                            beginOffset:Offset(0.0, -1.0),
+                            endOffset:Offset.zero,
+                            ),);
+                          
                         },
                         child: Text('Login'),
                       ),

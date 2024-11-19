@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Deit/Nutrition.dart';
 import 'package:flutter_application_1/Deit/n_list.dart';
 import 'package:flutter_application_1/Home/AlamScreen.dart';
 import 'package:flutter_application_1/Home/Exercise.dart';
 import 'package:flutter_application_1/Home/Quotations.dart';
+import 'package:flutter_application_1/Home/pageTransition.dart';
 import 'package:flutter_application_1/Home/theme/Themeprovider.dart';
 import 'package:flutter_application_1/Home/drawerbar.dart';
 import 'package:flutter_application_1/Home/footer.dart';
 import 'package:flutter_application_1/Home/login.dart';
-import 'package:flutter_application_1/Home/theme/theme.dart';
 import 'package:flutter_application_1/Home/todolist.dart';
 import 'package:flutter_application_1/Hydration/water.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -86,9 +85,12 @@ class _HomepageState extends State<Homepage> {
                 ),
                 IconButton(
                   onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => LoginPage(),
+                        Navigator.of(context).push(
+                          PageTransition(
+                            page: LoginPage(),
+                            
+                            beginOffset: Offset(-1.0, 0.0),
+                            endOffset: Offset.zero,
                       ),
                     );
                   },
@@ -143,8 +145,11 @@ class _HomepageState extends State<Homepage> {
                   children: [
                     GestureDetector(
                       onTap: () {
+
                         Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => Exercise()),
+                          PageTransition(
+                            page: Exercise(),beginOffset: Offset(-1.0, -1.0),
+                            endOffset: Offset.zero,),
                         );
                       },
                       child: Container(
@@ -176,8 +181,12 @@ class _HomepageState extends State<Homepage> {
                     ),
                     GestureDetector(
                       onTap: () {
+
                         Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => Quotations()),
+                          PageTransition(
+                            page: Quotations(), beginOffset: Offset(-1.0, -1.0),
+                            endOffset: Offset.zero,),
+                            
                         );
                       },
                       child: Container(
@@ -215,8 +224,11 @@ class _HomepageState extends State<Homepage> {
                   children: [
                     GestureDetector(
                       onTap: () {
+
                         Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => Alamscreen()),
+                          PageTransition(
+                            page: Alamscreen(),beginOffset: Offset(-1.0, -1.0),
+                            endOffset: Offset.zero,),
                         );
                       },
                       child: Container(
@@ -248,10 +260,13 @@ class _HomepageState extends State<Homepage> {
                     ),
                     GestureDetector(
                       onTap: () {
+
                         Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => TodoScreen(
+                          PageTransition(
+                            page: TodoScreen(
                             name1: widget.name1,
-                          )),
+                          ), endOffset: Offset.zero, beginOffset: Offset(-1.0, -1.0)
+                          ),
                         );
                       },
                       child: Container(
@@ -289,8 +304,12 @@ class _HomepageState extends State<Homepage> {
                   children: [
                     GestureDetector(
                       onTap: () {
+
                         Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => Hydration()),
+                          PageTransition(
+                            page: Hydration(),
+                            beginOffset: Offset(-1.0, -1.0),
+                            endOffset: Offset.zero,),
                         );
                       },
                       child: Container(
@@ -322,8 +341,13 @@ class _HomepageState extends State<Homepage> {
                     ),
                     GestureDetector(
                       onTap: () {
+
                         Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => NList()),
+                          PageTransition(
+                            page: NList(),
+                            beginOffset: Offset(-1.0, -1.0),
+                            endOffset: Offset.zero,
+                            ),
                         );
                       },
                       child: Container(

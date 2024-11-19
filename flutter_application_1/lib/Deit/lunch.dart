@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Deit/Food.dart';
 import 'package:flutter_application_1/Home/Registration.dart';
 import 'package:flutter_application_1/Home/footer.dart';
 import 'package:flutter_application_1/Home/login.dart';
@@ -176,7 +177,7 @@ class _LunchState extends State<Lunch> {
                             onPressed: () {
                               // Add the TextButton functionality here
                               Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context)=>LoginPage())
+                                MaterialPageRoute(builder: (context)=>Food())
                               );
                             },
                             style: TextButton.styleFrom(

@@ -21,12 +21,12 @@ class _DesktopState extends State<Desktop> {
       String password = prefs.getString('password') ?? '';
 
       if (username.isEmpty) {
-        Navigator.of(context).pushReplacement(
+        Navigator.of(context).push(
           MaterialPageRoute(builder: (context) => LoginPage()),
         );
        } 
       //  else {
-        // Navigator.of(context).pushReplacement(
+        // Navigator.of(context).push(
         //   MaterialPageRoute(
         //     // builder: (context) => Homepage(
         //     //   name1: username,
@@ -46,36 +46,58 @@ class _DesktopState extends State<Desktop> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(102, 205, 224, 1),
       body: Container(
-        padding: EdgeInsets.all(40),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xFF66c3d6), Color(0xFF3b9ab8)],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
         child: Center(
           child: Column(
-            
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              
-                ClipOval(
-                
-                child: Column(
-                  children: [
-                  Image.asset('assets/APX.jpg',fit: BoxFit.contain),], // Ensure the image path is correct
-                ),
-                ),
-                SizedBox(
-                  height: 40,
-                ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  """Developed By :Adarsh
-                            Priyanka
-                            Xiroza""",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+              ClipOval(
+                child: Container(
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 20,
+                        offset: Offset(0, 10),
+                      ),
+                    ],
+                  ),
+                  child: Image.asset(
+                    'assets/APX.jpg',
+                    fit: BoxFit.cover,
+                    height: 150,
+                    width: 150,
                   ),
                 ),
               ),
+              SizedBox(height: 40),
+              Text(
+                "Welcome Back!",
+                style: TextStyle(
+                  fontSize: 28,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 10),
+              Text(
+                "Swipe to continue to the login page",
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.white70,
+                ),
+              ),
+              SizedBox(height: 80),
+              
+                
             ],
           ),
         ),

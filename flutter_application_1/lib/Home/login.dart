@@ -1,8 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_application_1/Gym%20Workouts/Aerobic.dart';
 import 'package:flutter_application_1/Home/Registration.dart';
 import 'package:flutter_application_1/Home/homepage.dart'; // Import Homepage
+import 'package:flutter_application_1/Home/pageTransition.dart';
+import 'package:flutter_application_1/service/utils.dart';
 import 'package:flutter_social_button/flutter_social_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart'; // Add this import
 
@@ -16,14 +20,32 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   String name = '';
   String password = '';
-
+  bool isLoading = false;
+  
   TextEditingController tcUsername = TextEditingController();
   TextEditingController tcPassword = TextEditingController();
   bool isObscure = true;
 
   final _formKey = GlobalKey<FormState>();
   final String passwordPattern = r"^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$";
+  final auth = FirebaseAuth.instance;
 
+  void login() {
+    auth
+        .signInWithEmailAndPassword(
+            email: tcUsername.text.trim(),
+            password: tcPassword.text.toString())
+        .then((value) {
+      Utils().toasMessage("Login Succesfully");
+      Navigator.of(context).pushReplacement(
+        PageTransition(
+          page:  Homepage(name1: tcUsername.text, password1:tcPassword.text, phone: '', dateOfBirth: '', email: tcUsername.text,), beginOffset: Offset(1.0,0.0),endOffset: Offset.zero,
+        ),
+      );
+    }).onError((error, stackTrace) {
+      Utils().toasMessage(error.toString());
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,20 +59,16 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ClipOval(
-                  
-                  child: 
-                    Column(
-                      children: [
-                        Image.asset(
+                  child: Column(
+                    children: [
+                      Image.asset(
                         'assets/APX.jpg',
-                        // alignment: Alignment.center,
                         fit: BoxFit.contain,
-                                          height: 300,
-                                        ),
-                      ],
-                    ),
+                        height: 300,
+                      ),
+                    ],
+                  ),
                 ),
-                
                 Text(
                   'Login Page',
                   style: TextStyle(
@@ -59,12 +77,8 @@ class _LoginPageState extends State<LoginPage> {
                     fontSize: 30,
                   ),
                 ),
-                
-                SizedBox(
-                  height: 20,
-                ),
+                SizedBox(height: 20),
                 TextFormField(
-                
                   controller: tcUsername,
                   decoration: InputDecoration(
                     labelText: 'Username',
@@ -72,22 +86,16 @@ class _LoginPageState extends State<LoginPage> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(50),
                     ),
-                    prefixIcon: Icon(Icons.person)
+                    prefixIcon: Icon(Icons.person),
                   ),
-                  
-                  
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter username';
                     }
                     return null;
                   },
-                  
-                  
                 ),
-                SizedBox(
-                  height: 20,
-                ),
+                SizedBox(height: 20),
                 TextFormField(
                   controller: tcPassword,
                   obscureText: isObscure,
@@ -106,10 +114,8 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       icon: Icon(
                         isObscure ? Icons.visibility_off : Icons.visibility,
-                        
                       ),
                     ),
-                    
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -120,48 +126,34 @@ class _LoginPageState extends State<LoginPage> {
                     }
                     return null;
                   },
-                  
                 ),
-                SizedBox(
-                  height: 20,
-                ),
+                SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    
                     ElevatedButton(
-                      
                       style: ButtonStyle(
-                      
-                        foregroundColor: WidgetStateProperty.all<Color>(Colors.black),
-                        backgroundColor: WidgetStateProperty.all<Color>(Colors.lightBlue),
+                        foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                        backgroundColor: MaterialStateProperty.all<Color>(Colors.lightBlue),
                       ),
                       onPressed: () {
                         if (_formKey.currentState?.validate() == true) {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => Homepage(
-                                name1: tcUsername.text,
-                                password1: tcPassword.text,
-                                email: '', // You may want to handle this or remove it if not used
-                                phone: '',  // You may want to handle this or remove it if not used
-                                dateOfBirth: '', // You may want to handle this or remove it if not used
-                              ),
-                            ),
-                          );
+                          login();
                         }
                       },
                       child: Text('Login'),
                     ),
                     ElevatedButton(
                       style: ButtonStyle(
-                        foregroundColor: WidgetStateProperty.all<Color>(Colors.black),
-                        backgroundColor: WidgetStateProperty.all<Color>(Colors.lightBlue),
+                        foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                        backgroundColor: MaterialStateProperty.all<Color>(Colors.lightBlue),
                       ),
                       onPressed: () {
                         Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => Registration(),
+                          PageTransition(
+                            page: Registration(),
+                            beginOffset: Offset(-1.0, -1.0),
+                            endOffset: Offset.zero,
                           ),
                         );
                       },
@@ -169,20 +161,15 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 10,
-                ),
+                SizedBox(height: 10),
                 Text("- or Sign in With -"),
-                SizedBox(
-                  height: 10,
-                ),
+                SizedBox(height: 10),
                 TextButton(
                   style: TextButton.styleFrom(
-                    foregroundColor: Colors.black, backgroundColor: Colors.lightBlue,
+                    foregroundColor: Colors.black,
+                    backgroundColor: Colors.lightBlue,
                   ),
-                  onPressed: () {
-                    // Handle Facebook sign-in
-                  },
+                  onPressed: () {},
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -192,24 +179,17 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: 20,
-                ),
+                SizedBox(height: 20),
                 TextButton(
                   style: TextButton.styleFrom(
-                    foregroundColor: Colors.black, backgroundColor: Colors.lightBlue,
+                    foregroundColor: Colors.black,
+                    backgroundColor: Colors.lightBlue,
                   ),
-                  
-                  onPressed: () {
-                    // Handle Google sign-in
-                  },
-                  
+                  onPressed: () {},
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(
-                        FontAwesomeIcons.google,
-                      ),
+                      Icon(FontAwesomeIcons.google),
                       SizedBox(width: 8),
                       Text("Sign Up With Google"),
                     ],

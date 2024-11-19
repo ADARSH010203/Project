@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/Gym%20Workouts/Aerobic.dart';
 import 'package:flutter_application_1/Gym%20Workouts/GYM.dart';
 import 'package:flutter_application_1/Gym%20Workouts/Stretching.dart';
 import 'package:flutter_application_1/Gym%20Workouts/balance.dart';
 import 'package:flutter_application_1/Home/footer.dart';
 import 'package:flutter_application_1/Home/login.dart';
+import 'package:flutter_application_1/Home/pageTransition.dart';
 
 class Exercise extends StatelessWidget {
   const Exercise({super.key});
@@ -15,14 +17,17 @@ class Exercise extends StatelessWidget {
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
-          children: const [
+          children:  [
             Text(
+
               "Exercise",
               style: TextStyle(
                 fontFamily: 'Roboto',
                 fontWeight: FontWeight.bold,
               ),
             ),
+ 
+
           ],
         ),
         backgroundColor: Colors.white,
@@ -34,7 +39,7 @@ class Exercise extends StatelessWidget {
             label: 'Gym Workouts',
             onTap: () {
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => gymwork()),
+                PageTransition(page:gymwork(),beginOffset: Offset(-1.0,-1.0),endOffset: Offset.zero),
               );
             },
           ),
@@ -42,9 +47,9 @@ class Exercise extends StatelessWidget {
             image: 'assets/aerobics.jpg',
             label: 'Aerobic',
             
-            onTap: () {
+            onTap: () {              
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => Aerobic()),
+                PageTransition(page: Aerobic(), beginOffset: Offset(-1.0,-1.0),endOffset: Offset.zero),
               );
             },
           ),
@@ -53,7 +58,7 @@ class Exercise extends StatelessWidget {
             label: 'Balance',
             onTap: () {
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => Balance()),
+                PageTransition(page:  Balance(),beginOffset: Offset(-1.0,-1.0),endOffset: Offset.zero),
               );
             },
           ),
@@ -62,7 +67,7 @@ class Exercise extends StatelessWidget {
             label: 'Strength Training',
             onTap: () {
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) =>Stretching()),
+                PageTransition(page:Stretching(),beginOffset: Offset(-1.0,-1.0),endOffset: Offset.zero),
               );
             },
           ),
@@ -72,7 +77,7 @@ class Exercise extends StatelessWidget {
             onTap: () {
               // Handle Stretching tap
                Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) =>Stretching()),);
+                PageTransition(page:Stretching(),beginOffset: Offset(-1.0,-1.0),endOffset: Offset.zero),);
             },
           ),
         ],

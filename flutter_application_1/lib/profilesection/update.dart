@@ -1,9 +1,8 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/Home/footer.dart';
+import 'package:flutter_application_1/Home/pageTransition.dart';
 import 'package:flutter_application_1/profilesection/personal.dart';
 import 'package:flutter_application_1/Home/todolist.dart';
 
@@ -32,433 +31,143 @@ class _UpdateState extends State<Update> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Profile Page"),
-        backgroundColor: Colors.teal, // Added background color for consistency
+        backgroundColor: Colors.teal.shade700,
+        elevation: 2,
       ),
       body: SingleChildScrollView(
-        child: Center(
-          child: Container(
-            padding: const EdgeInsets.all(16), // Increased padding for better spacing
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center, // Center align the content vertically
-              // crossAxisAlignment: CrossAxisAlignment.start, // Align content to the start
-              children: [
-                ClipOval(
-                  child: Image.asset(
-                    'assets/Adarsh2.png', // Ensure the correct path to your image
-                    height: 120, // Consistent size for circular profile image
-                    width: 120,
-                    fit: BoxFit.cover,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  // Add functionality for updating profile picture
+                },
+                child: CircleAvatar(
+                  radius: 60,
+                  backgroundImage: AssetImage('assets/Adarsh2.png'),
+                  backgroundColor: Colors.teal.shade100,
+                ),
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                'Profile Page',
+                style: TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.teal,
+                ),
+              ),
+              const SizedBox(height: 20),
+              _buildTextField("Name", tc, Icons.verified_user, 'Update your name'),
+              _buildTextField("UserName", UserName, Icons.person_3, 'Enter your UserName'),
+              _buildTextField("Password", pass, Icons.lock, 'Enter your password', obscureText: true),
+              _buildDatePickerField("Date of Birth", tcDateofBirth, Icons.calendar_month),
+              _buildTextField("Phone Number", number, Icons.phone_android_sharp, 'Enter your phone number'),
+              _buildTextField("Gender", gender, Icons.male_rounded, 'Enter your gender'),
+              _buildTextField("Blood Group", blood, Icons.bloodtype, 'Enter your blood group'),
+              _buildTextField("Height (cm)", hg, Icons.height, 'Enter your height'),
+              _buildTextField("Weight (kg)", wc, Icons.monitor_weight, 'Enter your weight'),
+              _buildTextField("Nationality", flag, Icons.flag, 'Enter your country'),
+              _buildTextField("Address", address, Icons.home, 'Enter your address'),
+              const SizedBox(height: 24),
+              ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.of(context).push(PageTransition(
+                    page:Information(
+                      name: tc.text,
+                      UserName: UserName.text,
+                      dateOfBirth: tcDateofBirth.text,
+                      password: pass.text,
+                      address: address.text,
+                      blood: blood.text,
+                      nationality: flag.text,
+                      phone: number.text,
+                      gender: gender.text,
+                      height: hg.text,
+                      weight: wc.text, userName: '',
+                    ), beginOffset: Offset(-1,-1),
+                    endOffset: Offset.zero,
+                    
+                  ));
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal,
+                  padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 24),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
                   ),
                 ),
-                const SizedBox(height: 16),
-                const Text(
-                  'Profile Page',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.teal, // Text color matching the AppBar
-                  ),
+                icon: const Icon(Icons.save, size: 24),
+                label: const Text(
+                  "Save",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(height: 20),
-
-                // Name field
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Row(
-                    children: [
-                      const Expanded(
-                        flex: 2,
-                        child: Text(
-                          "Name",
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 3,
-                        child: TextFormField(
-                          controller: tc,
-                          decoration: InputDecoration(
-                            labelText: 'Name',
-                            hintText: 'Update your name',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            prefixIcon: const Icon(Icons.verified_user),
-                            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8), // Padding inside the text field
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Row(
-                    children: [
-                      const Expanded(
-                        flex: 2,
-                        child: Text(
-                          "UserName",
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 3,
-                        child: TextFormField(
-                          controller: UserName,
-                         // Hide password input
-                          decoration: InputDecoration(
-                            labelText: 'UserName',
-                            hintText: 'Enter your UserName',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            prefixIcon: const Icon(Icons.person_3),
-                            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                // Password field
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Row(
-                    children: [
-                      const Expanded(
-                        flex: 2,
-                        child: Text(
-                          "Password",
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 3,
-                        child: TextFormField(
-                          controller: pass,
-                          obscureText: true, // Hide password input
-                          decoration: InputDecoration(
-                            labelText: 'Password',
-                            hintText: 'Enter your password',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            prefixIcon: const Icon(Icons.password_sharp),
-                            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Row(
-                    children: [
-                      const Expanded(
-                        flex: 2,
-                        child: Text(
-                          
-                        'Date OF Birth',
-                        style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600,),
-                        ),
-                        ),
-                        Expanded(
-                          flex: 3,
-                          child: TextFormField(
-                        controller: tcDateofBirth,
-                      decoration: InputDecoration(
-                      labelText: 'Date of Birth',
-                      hintText: 'Enter your date of birth',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                      prefixIcon: const Icon(Icons.calendar_month)
-                    ),
-                      readOnly: true,
-                      onTap: () async {
-                      DateTime? pickedDate = await showDatePicker(
-                        context: context,
-                        initialDate: DateTime.now(),
-                        firstDate: DateTime(1900),
-                        lastDate: DateTime.now(),
-                        );
-                        if (pickedDate != null) {
-                        String formattedDate =
-                            "${pickedDate.day}/${pickedDate.month}/${pickedDate.year}";
-                            tcDateofBirth.text = formattedDate;
-                      }
-                    },
-                                  
-
-                        ))
-
-                  ],),  
-                ),
-                // Phone Number field
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Row(
-                    children: [
-                      const Expanded(
-                        flex: 2,
-                        child: Text(
-                          "Phone Number",
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 3,
-                        child: TextFormField(
-                          controller: number,
-                          decoration: InputDecoration(
-                            labelText: 'Phone Number',
-                            hintText: 'Enter your phone number',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            prefixIcon: const Icon(Icons.phone_android_sharp),
-                            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                // Gender field
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Row(
-                    children: [
-                      const Expanded(
-                        flex: 2,
-                        child: Text(
-                          "Gender",
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 3,
-                        child: TextFormField(
-                          controller: gender,
-                          decoration: InputDecoration(
-                            labelText: 'Gender',
-                            hintText: 'Enter your gender',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            prefixIcon: const Icon(Icons.male_rounded),
-                            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Row(
-                    children: [
-                      const Expanded(
-                        flex: 2,
-                        child: Text(
-                          "Blood Group",
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 3,
-                        child: TextFormField(
-                          controller: blood,
-                          // Hide password input
-                          decoration: InputDecoration(
-                            labelText: 'Blood ',
-                            hintText: 'Enter your password',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            prefixIcon: const Icon(Icons.bloodtype),
-                            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                // Height field
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Row(
-                    children: [
-                      const Expanded(
-                        flex: 2,
-                        child: Text(
-                          "Height (cm)",
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 3,
-                        child: TextFormField(
-                          controller: hg,
-                          decoration: InputDecoration(
-                            labelText: 'Height (cm)',
-                            hintText: 'Enter your height',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            prefixIcon: const Icon(Icons.height
-                            ),
-                            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                // Weight field
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Row(
-                    children: [
-                      const Expanded(
-                        flex: 2,
-                        child: Text(
-                          "Weight (kg)",
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 3,
-                        child: TextFormField(
-                          controller: wc,
-                          decoration: InputDecoration(
-                            labelText: 'Weight (kg)',
-                            hintText: 'Enter your weight',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            prefixIcon: const Icon(Icons.monitor_weight),
-                            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Row(
-                    children: [
-                      const Expanded(
-                        flex: 2,
-                        child: Text(
-                          "Nationality",
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 3,
-                        child: TextFormField(
-                          controller: flag,
-                          decoration: InputDecoration(
-                            labelText: 'Nationality',
-                            hintText: 'Enter your Country name',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            prefixIcon: const Icon(Icons.flag),
-                            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Row(
-                    children: [
-                      const Expanded(
-                        flex: 2,
-                        child: Text(
-                          "Address",
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 3,
-                        child: TextFormField(
-                          controller: address,
-                          decoration: InputDecoration(
-                            labelText: 'Address',
-                            hintText: 'Enter your weight',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            prefixIcon: const Icon(Icons.home_max),
-                            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                const SizedBox(height: 24),
-
-                // Save button
-              
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          minimumSize: const Size(100,50),
-                          backgroundColor: Colors.teal,
-                          padding: const EdgeInsets.symmetric(vertical: 16),
-                          textStyle: const TextStyle(fontSize: 18,fontWeight: FontWeight.bold),
-                        ),
-                        
-                        onPressed: (){
-                        Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context)=>Information(
-                            name:tc.text,
-                            UserName:UserName.text,
-                            dateOfBirth:tcDateofBirth.text,
-                            password:pass.text,
-                            address:address.text,
-                            blood:blood.text,
-                            Nationality:flag.text,
-                            phone: number.text,
-                            gender:gender.text,
-                            height:hg.text,
-                            weight:wc.text, 
-                          ))
-                        );
-                      }, child: const Row(
-                        children: [
-                          Icon(Icons.save),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          Text("Save")
-                        ],
-                      ))
-                    ],
-                  ),
-                
-            ])
+              ),
+            ],
           ),
         ),
-        
-      ),bottomNavigationBar: const BottomAppBar(
-        child: Footer(),
+      ),
+      bottomNavigationBar: const BottomAppBar(
         color: Color.fromARGB(255, 88, 185, 209),
+        child: Footer(),
+      ),
+    );
+  }
+
+  Widget _buildTextField(String label, TextEditingController controller, IconData icon, String hintText, {bool obscureText = false}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: TextFormField(
+        controller: controller,
+        obscureText: obscureText,
+        decoration: InputDecoration(
+          labelText: label,
+          hintText: hintText,
+          prefixIcon: Icon(icon, color: Colors.teal),
+          filled: true,
+          fillColor: Colors.teal.shade50,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20),
+            borderSide: BorderSide.none,
+          ),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDatePickerField(String label, TextEditingController controller, IconData icon) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: TextFormField(
+        controller: controller,
+        decoration: InputDecoration(
+          labelText: label,
+          hintText: 'Select your date of birth',
+          prefixIcon: Icon(icon, color: Colors.teal),
+          filled: true,
+          fillColor: Colors.teal.shade50,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20),
+            borderSide: BorderSide.none,
+          ),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        ),
+        readOnly: true,
+        onTap: () async {
+          DateTime? pickedDate = await showDatePicker(
+            context: context,
+            initialDate: DateTime.now(),
+            firstDate: DateTime(1900),
+            lastDate: DateTime.now(),
+          );
+          if (pickedDate != null) {
+            String formattedDate = "${pickedDate.day}/${pickedDate.month}/${pickedDate.year}";
+            controller.text = formattedDate;
+          }
+        },
       ),
     );
   }

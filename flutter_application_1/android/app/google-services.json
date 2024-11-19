@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1063049645044",
+    "project_id": "apex-great",
+    "storage_bucket": "apex-great.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1063049645044:android:a7a6d3984bf62fee2d87a1",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkrdZVsa9uPGBTJP3mveT45ZRBt82FHks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1063049645044:android:91791615aa2ccf8e2d87a1",
+        "android_client_info": {
+          "package_name": "com.example.flutter_appplication_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkrdZVsa9uPGBTJP3mveT45ZRBt82FHks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

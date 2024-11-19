@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Home/footer.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class gymwork extends StatefulWidget {
@@ -55,8 +56,13 @@ class _gymworkState extends State<gymwork> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Gym Workouts"),
-
+        title: Row(
+          children: [
+            // Icon(Icons.arrow_back),
+            Text("Gym Workouts"),
+          ],
+        ),
+        
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
@@ -82,14 +88,23 @@ class _gymworkState extends State<gymwork> {
                     ),
                     
                   ),
-                  const Text(
-                      "The bread and butter of countless gym routines,his move, if done properly, will predominantly engage your back and legs, while building overall strength for you entire body. If you want to master the deadlift, check out this article.",
-                      style: TextStyle(fontWeight: FontWeight.bold,fontSize:12),
-                  
+                  Container(
+                    padding: EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: Colors.white,
                     ),
+                    child: Column(
+                      children: [
+                        const Text(
+                            "The bread and butter of countless gym routines,his move, if done properly, will predominantly engage your back and legs, while building overall strength for you entire body. If you want to master the deadlift, check out this article.",
+                            style: TextStyle(fontWeight: FontWeight.bold,fontSize:12),
+                        
+                          ),
+                    
                     InkWell(
                       onTap: (){
-
+                        launchUrl(Uri.parse("https://www.bodybuilding.com/content/how-to-deadlift-beginners-guide.html"));
                       },
                       child: const Text(
                         "CHECK OUT THIS Article",
@@ -100,17 +115,34 @@ class _gymworkState extends State<gymwork> {
                       ),
                     ),
                     SizedBox(height: 20,),
-                    YoutubePlayer(controller: _deadliftcontroller,
-                    showVideoProgressIndicator: false,
                     
+                    Container(
+                      padding: EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(12)),
+                      color: Colors.white,
+                    ),
+                    // height: 300,
+                      child: Column(
+                        children: [
+                          YoutubePlayer(controller: _deadliftcontroller,
+                          showVideoProgressIndicator: false,
+                          
+                          ),
+                        ],
+                      ),
                     )
+                      ],
+                    ),
+                  ),
                 ],
               ),
+                
                      
             ),
             Container(
               width: screenWeidth*0.9,
-margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
+              margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
               padding: const EdgeInsets.all(16.0),
               decoration: BoxDecoration(
               color: Color.fromARGB(255, 168, 219, 249),
@@ -119,52 +151,68 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const Text(
+                    "T-BAR ROW",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    
+                  ),
                   Container(
+                    padding: EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
-                      color: Colors.pink,
+                      color: Colors.white,
                     ),
-                  child:  Column(
-                    children: [
-                      Text(
-                        "Back: T-Bar Row",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    child: Column(
+                      children: [
+                        const Text("As the favorite back exercise of Arnold Schwarzenegger himself, the T-bar row transcends all mere mortal workouts simply because of the Austrian Oak’s blessing. Here’s how to do it.",
+                            style: TextStyle(fontWeight: FontWeight.bold,fontSize:12),
                         
-                        
-                      ),
-                    ],
-                  ),),
-                  const Text(
-                  "As the favorite back exercise of Arnold Schwarzenegger himself, the T-bar row transcends all mere mortal workouts simply because of the Austrian Oak's blessing. Here's how to do it."
-                    ,
-                ),
+                          ),
+                    
                     InkWell(
                       onTap: (){
-
+                        launchUrl(Uri.parse("https://www.muscleandfitness.com/workouts/back-exercises/t-bar-row-2/"));
                       },
                       child: const Text(
                         "CHECK OUT THIS Article",
                         style: TextStyle(
-                          color: Color.fromARGB(255, 191, 131, 131),
+                          color: Colors.black,
                           decoration: TextDecoration.underline,
                         ),
                       ),
                     ),
                     SizedBox(height: 20,),
-                    YoutubePlayer(controller: _tbarcontroller,
-                    showVideoProgressIndicator: false,
                     
+                    Container(
+                      padding: EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(12)),
+                      color: Colors.white,
+                    ),
+                    // height: 300,
+                      child: Column(
+                        children: [
+                          YoutubePlayer(controller: _deadliftcontroller,
+                          showVideoProgressIndicator: false,
+                          
+                          ),
+                        ],
+                      ),
                     )
+                      ],
+                    ),
+                  ),
                 ],
               ),
+                
                      
             ),
             Container(
               width: screenWeidth*0.9,
-margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
+              margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
               padding: const EdgeInsets.all(16.0),
               decoration: BoxDecoration(
               color: Color.fromARGB(255, 168, 219, 249),
@@ -173,52 +221,68 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const Text(
+                    "Back: “The Bird-Dog” aka One-Arm, One-Leg Plank",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    
+                  ),
                   Container(
+                    padding: EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
-                      color: Colors.pink,
+                      color: Colors.white,
                     ),
-                  child:  Column(
-                    children: [
-                      Text(
-                        "Back: “The Bird-Dog” aka One-Arm, One-Leg Plank",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    child: Column(
+                      children: [
+                        const Text("As the favorite back exercise of Arnold Schwarzenegger himself, the T-bar row transcends all mere mortal workouts simply because of the Austrian Oak’s blessing. Here’s how to do it.",
+                            style: TextStyle(fontWeight: FontWeight.bold,fontSize:12),
                         
-                        
-                      ),
-                    ],
-                  ),),
-                  const Text(
-                  "As the favorite back exercise of Arnold Schwarzenegger himself, the T-bar row transcends all mere mortal workouts simply because of the Austrian Oak's blessing. Here's how to do it."
-                    ,
-                ),
+                          ),
+                    
                     InkWell(
                       onTap: (){
-
+                        launchUrl(Uri.parse("https://www.muscleandfitness.com/workouts/back-exercises/t-bar-row-2/"));
                       },
                       child: const Text(
                         "CHECK OUT THIS Article",
                         style: TextStyle(
-                          color: Color.fromARGB(255, 191, 131, 131),
+                          color: Colors.black,
                           decoration: TextDecoration.underline,
                         ),
                       ),
                     ),
                     SizedBox(height: 20,),
-                    YoutubePlayer(controller: _oneLegPlank,
-                    showVideoProgressIndicator: false,
                     
+                    Container(
+                      padding: EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(12)),
+                      color: Colors.white,
+                    ),
+                    // height: 300,
+                      child: Column(
+                        children: [
+                          YoutubePlayer(controller: _deadliftcontroller,
+                          showVideoProgressIndicator: false,
+                          
+                          ),
+                        ],
+                      ),
                     )
+                      ],
+                    ),
+                  ),
                 ],
               ),
+                
                      
             ),
             Container(
               width: screenWeidth*0.9,
-margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
+              margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
               padding: const EdgeInsets.all(16.0),
               decoration: BoxDecoration(
               color: Color.fromARGB(255, 168, 219, 249),
@@ -227,50 +291,65 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const Text(
+                    "Arm Drips",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    
+                  ),
                   Container(
+                    padding: EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
-                      // color: Colors.pink,
+                      color: Colors.white,
                     ),
-                  child:  Column(
-                    children: [
-                      Text(
-                        "Back: T-Bar Row",
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: GoogleFonts.roboto().fontFamily,
-                        ),
+                    child: Column(
+                      children: [
+                        const Text(
+"You don’t need any fancy equipment for dips (even a park bench will do), which makes this an ideal bodyweight workout for triceps. The different variations available can also target your pecs. ",                            style: TextStyle(fontWeight: FontWeight.bold,fontSize:12),
                         
-                        
-                      ),
-                    ],
-                  ),),
-                  const Text(
-                    "As the favorite back exercise of Arnold Schwarzenegger himself, the T-bar row transcends all mere mortal workouts simply because of the Austrian Oak’s blessing. Here’s how to do it."
-               ,style: TextStyle(fontWeight: FontWeight.bold,fontSize:18,color: Colors.black),
-
-                   ),
+                          ),
+                    
                     InkWell(
                       onTap: (){
-                        
-                      
+                        launchUrl(Uri.parse("https://www.verywellfit.com/the-chair-dip-triceps-exercise-3120734"));
                       },
                       child: const Text(
                         "CHECK OUT THIS Article",
                         style: TextStyle(
-                          color: Color.fromARGB(255, 191, 131, 131),
+                          
+                          color: Colors.black,
                           decoration: TextDecoration.underline,
+                          // fontFamily: GoogleFonts.roboto().fontFamily,
                         ),
                       ),
                     ),
                     SizedBox(height: 20,),
-                    YoutubePlayer(controller: _Arm,
-                    showVideoProgressIndicator: false,
                     
+                    Container(
+                      padding: EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(12)),
+                      color: Colors.white,
+                    ),
+                    // height: 300,
+                      child: Column(
+                        children: [
+                          YoutubePlayer(controller: _deadliftcontroller,
+                          showVideoProgressIndicator: false,
+                          
+                          ),
+                        ],
+                      ),
                     )
+                      ],
+                    ),
+                  ),
                 ],
               ),
+                
                      
             ),
            
