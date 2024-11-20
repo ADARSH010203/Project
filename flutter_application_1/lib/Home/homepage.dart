@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Deit/n_list.dart';
 import 'package:flutter_application_1/Home/AlamScreen.dart';
@@ -10,24 +11,16 @@ import 'package:flutter_application_1/Home/footer.dart';
 import 'package:flutter_application_1/Home/login.dart';
 import 'package:flutter_application_1/Home/todolist.dart';
 import 'package:flutter_application_1/Hydration/water.dart';
+import 'package:flutter_application_1/service/database.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
  // Import the ThemeProvider
 
 class Homepage extends StatefulWidget {
-  final String name1;
-  final String password1;
-  final String email;
-  final String phone;
-  final String dateOfBirth;
-
+  final String? userId;
   const Homepage({
     super.key,
-    required this.name1,
-    required this.password1,
-    required this.email,
-    required this.phone,
-    required this.dateOfBirth,
+    this.userId
   });
 
   @override
@@ -35,6 +28,22 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  final auth = FirebaseAuth.instance;
+  Map<String, dynamic>? userData = {};
+
+  @override
+  void initState() {
+    DatabaseMethods(userId: widget.userId).getUserDetails().then((snapshot) {
+      if(snapshot.exists) {
+        userData = snapshot.data() as Map<String, dynamic>?;
+      }
+      setState(() {
+        
+      });
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -64,10 +73,11 @@ class _HomepageState extends State<Homepage> {
                     ],
                   ),
                 ),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 Text(
-                  "Hello ${widget.name1}",
-                  style: TextStyle(
+                  
+                  "Hello ${userData?['user_name']}",
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -77,53 +87,56 @@ class _HomepageState extends State<Homepage> {
               children: [
                 IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.notifications),
+                  icon: const Icon(Icons.notifications),
                 ),
                 IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.settings),
+                  icon: const Icon(Icons.settings),
                 ),
                 IconButton(
                   onPressed: () {
-                        Navigator.of(context).push(
-                          PageTransition(
+                    auth.signOut().then((value){
+                    Navigator.push(context,
+                      PageTransition(
                             page: LoginPage(),
                             
-                            beginOffset: Offset(-1.0, 0.0),
+                            beginOffset: const Offset(-1.0, 0.0),
                             endOffset: Offset.zero,
-                      ),
-                    );
+                    ));
+                    });
+                          
+                    
                   },
-                  icon: Icon(Icons.logout),
+                  icon: const Icon(Icons.logout),
                 ),
                 IconButton(
                   onPressed: () {
                     // Toggle the theme
                     Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
                   },
-                  icon: Icon(Icons.brightness_6),
+                  icon: const Icon(Icons.brightness_6),
                 ),
               ],
             ),
           ],
         ),
       ),
-      backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+      backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
       body: SingleChildScrollView(
         child: Center(
           child: Container(
-            padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+            padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
             width: screenWidth * 0.9,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextField(
-                  cursorColor: Color.fromARGB(255, 83, 167, 203),
+                  cursorColor: const Color.fromARGB(255, 83, 167, 203),
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.mood, color: Color.fromARGB(255, 83, 167, 203)),
+                    prefixIcon: const Icon(Icons.mood, color: Color.fromARGB(255, 83, 167, 203)),
                     hintText: "What's your mood now?",
                     filled: true,
-                    fillColor: Color.fromARGB(255, 83, 167, 203),
+                    fillColor: const Color.fromARGB(255, 83, 167, 203),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(80),
                       borderSide: BorderSide.none,
@@ -131,7 +144,7 @@ class _HomepageState extends State<Homepage> {
                   ),
                   keyboardType: TextInputType.text,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Text(
                   "Start With One Of These",
                   style: GoogleFonts.inika(
@@ -139,7 +152,7 @@ class _HomepageState extends State<Homepage> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -148,7 +161,7 @@ class _HomepageState extends State<Homepage> {
 
                         Navigator.of(context).push(
                           PageTransition(
-                            page: Exercise(),beginOffset: Offset(-1.0, -1.0),
+                            page: const Exercise(),beginOffset: const Offset(-1.0, -1.0),
                             endOffset: Offset.zero,),
                         );
                       },
@@ -156,9 +169,9 @@ class _HomepageState extends State<Homepage> {
                         height: screenHeight * 0.3,
                         width: screenWidth * 0.4,
                         decoration: BoxDecoration(
-                          color: Color.fromRGBO(196, 241, 205, 1),
+                          color: const Color.fromRGBO(196, 241, 205, 1),
                           borderRadius: BorderRadius.circular(15),
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               color: Colors.black26,
                               blurRadius: 10,
@@ -166,7 +179,7 @@ class _HomepageState extends State<Homepage> {
                             ),
                           ],
                         ),
-                        child: Column(
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(Icons.fitness_center, size: 50),
@@ -184,7 +197,7 @@ class _HomepageState extends State<Homepage> {
 
                         Navigator.of(context).push(
                           PageTransition(
-                            page: Quotations(), beginOffset: Offset(-1.0, -1.0),
+                            page: const Quotations(), beginOffset: const Offset(-1.0, -1.0),
                             endOffset: Offset.zero,),
                             
                         );
@@ -193,9 +206,9 @@ class _HomepageState extends State<Homepage> {
                         height: screenHeight * 0.3,
                         width: screenWidth * 0.4,
                         decoration: BoxDecoration(
-                          color: Color.fromRGBO(244, 212, 184, 1),
+                          color: const Color.fromRGBO(244, 212, 184, 1),
                           borderRadius: BorderRadius.circular(15),
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               color: Colors.black26,
                               blurRadius: 10,
@@ -203,7 +216,7 @@ class _HomepageState extends State<Homepage> {
                             ),
                           ],
                         ),
-                        child: Column(
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(Icons.format_quote, size: 50),
@@ -218,7 +231,7 @@ class _HomepageState extends State<Homepage> {
                     ),
                   ],
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -227,7 +240,7 @@ class _HomepageState extends State<Homepage> {
 
                         Navigator.of(context).push(
                           PageTransition(
-                            page: Alamscreen(),beginOffset: Offset(-1.0, -1.0),
+                            page: const Alamscreen(),beginOffset: const Offset(-1.0, -1.0),
                             endOffset: Offset.zero,),
                         );
                       },
@@ -235,9 +248,9 @@ class _HomepageState extends State<Homepage> {
                         height: screenHeight * 0.3,
                         width: screenWidth * 0.4,
                         decoration: BoxDecoration(
-                          color: Color.fromRGBO(229, 238, 194, 1),
+                          color: const Color.fromRGBO(229, 238, 194, 1),
                           borderRadius: BorderRadius.circular(15),
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               color: Colors.black26,
                               blurRadius: 10,
@@ -245,7 +258,7 @@ class _HomepageState extends State<Homepage> {
                             ),
                           ],
                         ),
-                        child: Column(
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(Icons.alarm, size: 50),
@@ -264,8 +277,8 @@ class _HomepageState extends State<Homepage> {
                         Navigator.of(context).push(
                           PageTransition(
                             page: TodoScreen(
-                            name1: widget.name1,
-                          ), endOffset: Offset.zero, beginOffset: Offset(-1.0, -1.0)
+                            name1: userData?['user_name'],
+                          ), endOffset: Offset.zero, beginOffset: const Offset(-1.0, -1.0)
                           ),
                         );
                       },
@@ -273,9 +286,9 @@ class _HomepageState extends State<Homepage> {
                         height: screenHeight * 0.3,
                         width: screenWidth * 0.4,
                         decoration: BoxDecoration(
-                          color: Color.fromRGBO(223, 241, 217, 1),
+                          color: const Color.fromRGBO(223, 241, 217, 1),
                           borderRadius: BorderRadius.circular(15),
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               color: Colors.black26,
                               blurRadius: 10,
@@ -283,7 +296,7 @@ class _HomepageState extends State<Homepage> {
                             ),
                           ],
                         ),
-                        child: Column(
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(Icons.checklist, size: 50),
@@ -298,7 +311,7 @@ class _HomepageState extends State<Homepage> {
                     ),
                   ],
   ),
-                               SizedBox(height: 30),
+                               const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -307,8 +320,8 @@ class _HomepageState extends State<Homepage> {
 
                         Navigator.of(context).push(
                           PageTransition(
-                            page: Hydration(),
-                            beginOffset: Offset(-1.0, -1.0),
+                            page: const Hydration(),
+                            beginOffset: const Offset(-1.0, -1.0),
                             endOffset: Offset.zero,),
                         );
                       },
@@ -316,17 +329,17 @@ class _HomepageState extends State<Homepage> {
                         height: screenHeight * 0.3,
                         width: screenWidth * 0.4,
                         decoration: BoxDecoration(
-                          color: Color.fromRGBO(181, 217, 244, 1),
+                          color: const Color.fromRGBO(181, 217, 244, 1),
                           borderRadius: BorderRadius.circular(15),
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               color: Colors.black26,
                               blurRadius: 10,
                               offset: Offset(0, 5),
                             ),
                           ],
-                        ),
-                        child: Column(
+                        ), 
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(Icons.local_drink, size: 50),
@@ -344,8 +357,8 @@ class _HomepageState extends State<Homepage> {
 
                         Navigator.of(context).push(
                           PageTransition(
-                            page: NList(),
-                            beginOffset: Offset(-1.0, -1.0),
+                            page: const NList(),
+                            beginOffset: const Offset(-1.0, -1.0),
                             endOffset: Offset.zero,
                             ),
                         );
@@ -354,9 +367,9 @@ class _HomepageState extends State<Homepage> {
                         height: screenHeight * 0.3,
                         width: screenWidth * 0.4,
                         decoration: BoxDecoration(
-                          color: Color.fromRGBO(31, 136, 217, 1),
+                          color: const Color.fromRGBO(31, 136, 217, 1),
                           borderRadius: BorderRadius.circular(15),
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               color: Colors.black26,
                               blurRadius: 10,
@@ -364,7 +377,7 @@ class _HomepageState extends State<Homepage> {
                             ),
                           ],
                         ),
-                        child: Column(
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(Icons.restaurant, size: 50),
@@ -379,7 +392,7 @@ class _HomepageState extends State<Homepage> {
                     ),
                   ],
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
               ],
             ),
           ),
@@ -387,13 +400,13 @@ class _HomepageState extends State<Homepage> {
       ),
       drawer: Drawer(
         child: Drawerbar(
-          name: widget.name1,
-          email: widget.email,
+          name: userData?['user_name'],
+          email: userData?['user_email'],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: Footer(),
+      bottomNavigationBar: const BottomAppBar(
         color: Color.fromARGB(255, 88, 185, 209),
+        child: Footer(),
       ),
     );
   }

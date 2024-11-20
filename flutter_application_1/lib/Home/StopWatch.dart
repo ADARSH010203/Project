@@ -49,7 +49,7 @@ class _StopWatchState extends State<StopWatch> {
           
         ],
       ),
-      bottomNavigationBar:BottomAppBar(child: Footer(),color: Color.fromARGB(255, 88, 185, 209),),
+      bottomNavigationBar:const BottomAppBar(color: Color.fromARGB(255, 88, 185, 209),child: Footer(),),
     );
   }
 
@@ -199,7 +199,7 @@ class CirclePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Color.fromARGB(255, 69, 192, 208)
+      ..color = const Color.fromARGB(255, 69, 192, 208)
       ..strokeWidth = 10
       ..style = PaintingStyle.stroke;
 

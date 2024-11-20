@@ -22,12 +22,12 @@ class _DetailsState extends State<Details> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text(
+        title: const Text(
           "User Display",
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
         elevation: 0,
-        leading: Icon(Icons.arrow_back, color: Colors.black),
+        leading: const Icon(Icons.arrow_back, color: Colors.black),
       ),
       backgroundColor: Colors.grey[100],
       body: SingleChildScrollView(
@@ -63,7 +63,7 @@ class _DetailsState extends State<Details> {
                       },
                       child: Container(
                         padding: EdgeInsets.all(screenHeight * 0.008),
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Colors.blueAccent,
                           shape: BoxShape.circle,
                         ),
@@ -97,7 +97,7 @@ class _DetailsState extends State<Details> {
                 ),
                 onPressed: () {
                   Navigator.of(context).push(
-                    PageTransition(page: Update(), beginOffset: Offset(-1.0, -1.0), endOffset: Offset.zero),
+                    PageTransition(page: const Update(), beginOffset: const Offset(-1.0, -1.0), endOffset: Offset.zero),
                   );
                 },
                 child: Text(
@@ -111,12 +111,12 @@ class _DetailsState extends State<Details> {
               Column(
                 children: [
                   ProfileOption(icon: Icons.person, label: "Personal Information", onTap: () {
-                    Navigator.of(context).push(PageTransition(page: Information(
+                    Navigator.of(context).push(PageTransition(page: const Information(
                       name: '', password: '', phone: '', gender: '', height: '', weight: '', dateOfBirth: '', address: '', blood: '', nationality: '', userName: '', UserName: '',
-                    ),beginOffset:Offset(-1.0,-1.0),endOffset:Offset.zero));
+                    ),beginOffset:const Offset(-1.0,-1.0),endOffset:Offset.zero));
                   }),
                   ProfileOption(icon: Icons.contacts, label: "Emergency Contacts", onTap: () {
-                    Navigator.of(context).push(PageTransition(page: EmergencyPage(),beginOffset: Offset(-1.0, -1.0), endOffset: Offset.zero));
+                    Navigator.of(context).push(PageTransition(page: const EmergencyPage(),beginOffset: const Offset(-1.0, -1.0), endOffset: Offset.zero));
                   }),
                   ProfileOption(icon: Icons.help_outline, label: "Help", onTap: () {}),
                   ProfileOption(icon: Icons.settings_outlined, label: "Settings", onTap: () {}),
@@ -129,9 +129,9 @@ class _DetailsState extends State<Details> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: Footer(),
+      bottomNavigationBar: const BottomAppBar(
         color: Color.fromARGB(255, 88, 185, 209),
+        child: Footer(),
       ),
     );
   }
@@ -144,11 +144,11 @@ class ProfileOption extends StatelessWidget {
   final VoidCallback onTap;
 
   const ProfileOption({
-    Key? key,
+    super.key,
     required this.icon,
     required this.label,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

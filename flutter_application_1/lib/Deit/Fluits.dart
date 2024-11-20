@@ -25,16 +25,16 @@ class _FluitsState extends State<Fluits> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ListTile(
-                leading: Icon(Icons.image, color: Colors.orange),
-                title: Text('Image', style: TextStyle(fontSize: 18)),
+                leading: const Icon(Icons.image, color: Colors.orange),
+                title: const Text('Image', style: TextStyle(fontSize: 18)),
                 onTap: () {
                   // Add your functionality here
                   Navigator.pop(context); // Close the bottom sheet after selection
                 },
               ),
               ListTile(
-                leading: Icon(Icons.text_fields, color: Colors.orange),
-                title: Text('Text', style: TextStyle(fontSize: 18)),
+                leading: const Icon(Icons.text_fields, color: Colors.orange),
+                title: const Text('Text', style: TextStyle(fontSize: 18)),
                 onTap: () {
                   // Add your functionality here
                   Navigator.pop(context); // Close the bottom sheet after selection
@@ -53,9 +53,9 @@ class _FluitsState extends State<Fluits> {
     final screenWidth = mediaQuery.size.width;
     final screenHeight = mediaQuery.size.height;
     return Scaffold(
-      backgroundColor: Color.fromRGBO(255, 233, 169, 1),
+      backgroundColor: const Color.fromRGBO(255, 233, 169, 1),
       appBar: AppBar(
-        title: Row(
+        title: const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text("Fluits"),
@@ -67,12 +67,12 @@ class _FluitsState extends State<Fluits> {
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.all(6),
-              margin: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(6),
+              margin: const EdgeInsets.all(10),
               child: Row(
                 children: [
                   Image.asset("profile.png", height: 70, width: 70),
-                  SizedBox(width: 15),
+                  const SizedBox(width: 15),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -116,24 +116,24 @@ class _FluitsState extends State<Fluits> {
                       child: Container(
                         height: screenHeight * 0.25,
                         width: screenWidth * 0.4,
-                        margin: EdgeInsets.all(20),
+                        margin: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
-                          image: DecorationImage(
+                          image: const DecorationImage(
                             image: AssetImage("assets/deit/app.jpg"),
                             fit: BoxFit.cover,
                           ),
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               blurRadius: 10,
-                              offset: const Offset(0, 5),
+                              offset: Offset(0, 5),
                             ),
                           ],
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Spacer(),
+                            const Spacer(),
                             SizedBox(
                               width: double.infinity,
                               height: 50,
@@ -172,36 +172,36 @@ class _FluitsState extends State<Fluits> {
                     GestureDetector(
                       onTap: () {
                         Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => Lunch()));
+                            MaterialPageRoute(builder: (context) => const Lunch()));
                       },
                       child: Container(
                         height: screenHeight * 0.25,
                         width: screenWidth * 0.4,
-                        margin: EdgeInsets.all(20),
+                        margin: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
-                          image: DecorationImage(
+                          image: const DecorationImage(
                             image: AssetImage("assets/deit/orarnge.jpg"),
                             fit: BoxFit.cover,
                           ),
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               blurRadius: 10,
-                              offset: const Offset(0, 5),
+                              offset: Offset(0, 5),
                             ),
                           ],
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Spacer(),
+                            const Spacer(),
                             SizedBox(
                               width: double.infinity,
                               height: 50,
                               child: TextButton(
                                 onPressed: () {
                                   Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => Lunch()));
+                                      builder: (context) => const Lunch()));
                                 },
                                 style: TextButton.styleFrom(
                                   backgroundColor: Colors.orange,
@@ -230,7 +230,7 @@ class _FluitsState extends State<Fluits> {
                 ),
               ],
             ),
-            Container(padding: EdgeInsets.fromLTRB(0, 0, 40, 0),
+            Container(padding: const EdgeInsets.fromLTRB(0, 0, 40, 0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -240,7 +240,7 @@ class _FluitsState extends State<Fluits> {
                       foregroundColor: Colors.white,
                       backgroundColor: Colors.orange,
                       onPressed: _showBottomSheet,
-                      child: Icon(Icons.add),
+                      child: const Icon(Icons.add),
                     ),
                   ),
                 ],
@@ -256,9 +256,9 @@ class _FluitsState extends State<Fluits> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: Footer(),
+      bottomNavigationBar: const BottomAppBar(
         color: Color.fromARGB(255, 88, 185, 209),
+        child: Footer(),
       ),
     );
   }

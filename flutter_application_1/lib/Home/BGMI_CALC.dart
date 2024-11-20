@@ -49,7 +49,7 @@ class _BgmiCalcState extends State<BgmiCalc> {
       body: SingleChildScrollView(
         child: Center(
           child: Container(
-            padding: EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(15.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -71,7 +71,7 @@ class _BgmiCalcState extends State<BgmiCalc> {
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black.withOpacity(0.2),
-                              offset: Offset(2, 2),
+                              offset: const Offset(2, 2),
                               blurRadius: 5,
                             ),
                           ],
@@ -79,12 +79,12 @@ class _BgmiCalcState extends State<BgmiCalc> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.male,
                               size: 80,
                               color: Colors.white,
                             ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             Text(
                               "Male",
                               style: GoogleFonts.roboto(
@@ -112,7 +112,7 @@ class _BgmiCalcState extends State<BgmiCalc> {
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black.withOpacity(0.2),
-                              offset: Offset(2, 2),
+                              offset: const Offset(2, 2),
                               blurRadius: 5,
                             ),
                           ],
@@ -120,12 +120,12 @@ class _BgmiCalcState extends State<BgmiCalc> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.female,
                               size: 80,
                               color: Colors.white,
                             ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             Text(
                               "Female",
                               style: GoogleFonts.roboto(
@@ -140,21 +140,21 @@ class _BgmiCalcState extends State<BgmiCalc> {
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 
                 Container(
                   
                   height: screenHeight * 0.3,
                   width: screenWidth * 0.8,
-                  margin: EdgeInsets.all(20),
-                  padding: EdgeInsets.all(15),
+                  margin: const EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(15),
                   decoration: BoxDecoration(
                     color: Colors.blue[100],
                     borderRadius: BorderRadius.circular(15),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black.withOpacity(0.1),
-                        offset: Offset(2, 2),
+                        offset: const Offset(2, 2),
                         blurRadius: 8,
                       ),
                     ],
@@ -169,7 +169,7 @@ class _BgmiCalcState extends State<BgmiCalc> {
                           color: Colors.blue[900],
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Text(
                         "${_height.toInt()} cm",
                         style: GoogleFonts.roboto(
@@ -194,12 +194,12 @@ class _BgmiCalcState extends State<BgmiCalc> {
                     ],
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
-                      padding: EdgeInsets.all(15),
+                      padding: const EdgeInsets.all(15),
                         height: screenHeight * 0.3,
                         width: screenWidth * 0.4,
                       decoration: BoxDecoration(
@@ -208,7 +208,7 @@ class _BgmiCalcState extends State<BgmiCalc> {
                         boxShadow: [
                           BoxShadow(
                             color: Colors.black.withOpacity(0.1),
-                            offset: Offset(2, 2),
+                            offset: const Offset(2, 2),
                             blurRadius: 8,
                           ),
                         ],
@@ -246,7 +246,7 @@ class _BgmiCalcState extends State<BgmiCalc> {
                                       _weight--;
                                     });
                                   },
-                                  icon: Icon(Icons.remove, color: Colors.white),
+                                  icon: const Icon(Icons.remove, color: Colors.white),
                                 ),
                               ),
                               Container(
@@ -261,7 +261,7 @@ class _BgmiCalcState extends State<BgmiCalc> {
                                       _weight++;
                                     });
                                   },
-                                  icon: Icon(Icons.add, color: Colors.white),
+                                  icon: const Icon(Icons.add, color: Colors.white),
                                 ),
                               ),
                             ],
@@ -270,7 +270,7 @@ class _BgmiCalcState extends State<BgmiCalc> {
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.all(15),
+                      padding: const EdgeInsets.all(15),
                                               height: screenHeight * 0.3,
                         width: screenWidth * 0.4,
                       decoration: BoxDecoration(
@@ -279,7 +279,7 @@ class _BgmiCalcState extends State<BgmiCalc> {
                         boxShadow: [
                           BoxShadow(
                             color: Colors.black.withOpacity(0.1),
-                            offset: Offset(2, 2),
+                            offset: const Offset(2, 2),
                             blurRadius: 8,
                           ),
                         ],
@@ -317,7 +317,7 @@ class _BgmiCalcState extends State<BgmiCalc> {
                                       _age--;
                                     });
                                   },
-                                  icon: Icon(Icons.remove, color: Colors.white),
+                                  icon: const Icon(Icons.remove, color: Colors.white),
                                 ),
                               ),
                               Container(
@@ -332,7 +332,7 @@ class _BgmiCalcState extends State<BgmiCalc> {
                                       _age++;
                                     });
                                   },
-                                  icon: Icon(Icons.add, color: Colors.white),
+                                  icon: const Icon(Icons.add, color: Colors.white),
                                 ),
                               ),
                             ],
@@ -342,19 +342,19 @@ class _BgmiCalcState extends State<BgmiCalc> {
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Container(
                   height: screenWidth * 0.4,
                   width: screenWidth * 0.8,
-                  margin: EdgeInsets.all(20),
-                  padding: EdgeInsets.all(15),
+                  margin: const EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(15),
                   decoration: BoxDecoration(
                     color: Colors.blue[100],
                     borderRadius: BorderRadius.circular(15),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black.withOpacity(0.1),
-                        offset: Offset(2, 2),
+                        offset: const Offset(2, 2),
                         blurRadius: 8,
                       ),
                     ],
@@ -370,7 +370,7 @@ class _BgmiCalcState extends State<BgmiCalc> {
                           color: Colors.blue[900],
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Text(
                         _bmi.toStringAsFixed(1),
                         style: GoogleFonts.roboto(
@@ -379,7 +379,7 @@ class _BgmiCalcState extends State<BgmiCalc> {
                           color: Colors.black,
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Text(
                         bmiMessage,
                         textAlign: TextAlign.center,
@@ -391,11 +391,11 @@ class _BgmiCalcState extends State<BgmiCalc> {
                     ],
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.teal,
-                    padding: EdgeInsets.symmetric(vertical: 15),
+                    padding: const EdgeInsets.symmetric(vertical: 15),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -419,9 +419,9 @@ class _BgmiCalcState extends State<BgmiCalc> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
+      bottomNavigationBar: const BottomAppBar(
+        color: Color.fromARGB(255, 88, 185, 209),
         child: Footer(),
-                color: Color.fromARGB(255, 88, 185, 209),
 
       ),
     );

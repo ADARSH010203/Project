@@ -20,10 +20,10 @@ class _NutritionState extends State<Nutrition> {
     final screenWidth = mediaQuery.size.width;
     final screenHeight = mediaQuery.size.height;
     return Scaffold(
-      backgroundColor: Color.fromRGBO(255, 233, 169, 1),
+      backgroundColor: const Color.fromRGBO(255, 233, 169, 1),
       appBar: AppBar(
       
-        title: Row(
+        title: const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text("Nutrition"),
@@ -35,12 +35,12 @@ class _NutritionState extends State<Nutrition> {
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.all(6),
-              margin: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(6),
+              margin: const EdgeInsets.all(10),
               child: Row(
                 children: [
                   Image.asset("profile.png", height: 70, width: 70),
-                  SizedBox(width: 15),
+                  const SizedBox(width: 15),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -88,15 +88,15 @@ class _NutritionState extends State<Nutrition> {
                       child: Container(
                         height: screenHeight*0.25,
                         width: screenWidth*0.4,
-                        margin: EdgeInsets.all(20),
+                        margin: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
-                          image: DecorationImage(image: AssetImage("assets/deit/rice.jpg"),fit: BoxFit.cover),
-                          boxShadow: [
+                          image: const DecorationImage(image: AssetImage("assets/deit/rice.jpg"),fit: BoxFit.cover),
+                          boxShadow: const [
                             BoxShadow(
                               // color: Colors.black,
                               blurRadius: 10,
-                              offset: const Offset(0, 5),
+                              offset: Offset(0, 5),
                             ),
                           ],
                         ),
@@ -104,7 +104,7 @@ class _NutritionState extends State<Nutrition> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             
-                            Spacer(),
+                            const Spacer(),
                             SizedBox(
                               width: double.infinity,
                               height: 50,
@@ -149,22 +149,22 @@ class _NutritionState extends State<Nutrition> {
                     // Add your desired functionality here
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context)=>Lunch())
+                        builder: (context)=>const Lunch())
                     );
                   },
 
                   child: Container(
                     height: screenHeight*0.25,
                     width: screenWidth*0.4,
-                    margin: EdgeInsets.all(20),
+                    margin: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
-                      image: DecorationImage(image: AssetImage("assets/deit/sanvid.jpg"),fit: BoxFit.cover),
-                      boxShadow: [
+                      image: const DecorationImage(image: AssetImage("assets/deit/sanvid.jpg"),fit: BoxFit.cover),
+                      boxShadow: const [
                         BoxShadow(
                           // color: Colors.black,
                           blurRadius: 10,
-                          offset: const Offset(0, 5),
+                          offset: Offset(0, 5),
                         ),
                       ],
                     ),
@@ -172,7 +172,7 @@ class _NutritionState extends State<Nutrition> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         
-                        Spacer(),
+                        const Spacer(),
                         SizedBox(
                           width: double.infinity,
                           height: 50,
@@ -180,7 +180,7 @@ class _NutritionState extends State<Nutrition> {
                             onPressed: () {
                               // Add the TextButton functionality here
                               Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context)=>Lunch())
+                                MaterialPageRoute(builder: (context)=>const Lunch())
                               );
                             },
                             style: TextButton.styleFrom(
@@ -221,15 +221,15 @@ class _NutritionState extends State<Nutrition> {
                   child: Container(
                     height: screenHeight*0.25,
                     width: screenWidth*0.90,
-                    margin: EdgeInsets.all(20),
+                    margin: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
-                      image: DecorationImage(image: AssetImage("assets/deit/eatig.jpg"),fit: BoxFit.cover),
-                      boxShadow: [
+                      image: const DecorationImage(image: AssetImage("assets/deit/eatig.jpg"),fit: BoxFit.cover),
+                      boxShadow: const [
                         BoxShadow(
                           // color: Colors.black,
                           blurRadius: 10,
-                          offset: const Offset(0, 5),
+                          offset: Offset(0, 5),
                         ),
                       ],
                     ),
@@ -237,7 +237,7 @@ class _NutritionState extends State<Nutrition> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         
-                        Spacer(),
+                        const Spacer(),
                         SizedBox(
                           width: double.infinity,
                           height: 50,
@@ -245,7 +245,7 @@ class _NutritionState extends State<Nutrition> {
                             onPressed: () {
                               // Add the TextButton functionality here
                               Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context)=>Lunch())
+                                MaterialPageRoute(builder: (context)=>const Lunch())
                               );
                             },
                             style: TextButton.styleFrom(
@@ -278,9 +278,9 @@ class _NutritionState extends State<Nutrition> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: Footer(),
+      bottomNavigationBar: const BottomAppBar(
         color: Color.fromARGB(255, 88, 185, 209),
+        child: Footer(),
       ),
     );
   }

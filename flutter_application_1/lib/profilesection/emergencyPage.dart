@@ -19,7 +19,7 @@ class _EmergencyPageState extends State<EmergencyPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Emergency"),
+        title: const Text("Emergency"),
         backgroundColor: Colors.red[800],
       ),
       body: Padding(
@@ -34,7 +34,7 @@ class _EmergencyPageState extends State<EmergencyPage> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: ListTile(
+              child: const ListTile(
                 leading: Icon(Icons.warning, color: Colors.red, size: 30),
                 title: Text(
                   "In case of emergency, call the numbers below.",
@@ -46,53 +46,53 @@ class _EmergencyPageState extends State<EmergencyPage> {
                 ),
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
 
             // Emergency Numbers Section
             ListTile(
-              title: Text("Police", style: TextStyle(fontWeight: FontWeight.bold)),
-              subtitle: Text("Dial 100"),
-              leading: Icon(Icons.local_police, color: Colors.blue, size: 30),
+              title: const Text("Police", style: TextStyle(fontWeight: FontWeight.bold)),
+              subtitle: const Text("Dial 100"),
+              leading: const Icon(Icons.local_police, color: Colors.blue, size: 30),
               trailing: IconButton(
-                icon: Icon(Icons.phone, color: Colors.green),
+                icon: const Icon(Icons.phone, color: Colors.green),
                 onPressed: () {
                   _callEmergency("tel:100");
                 },
               ),
             ),
-            Divider(),
+            const Divider(),
             ListTile(
-              title: Text("Ambulance", style: TextStyle(fontWeight: FontWeight.bold)),
-              subtitle: Text("Dial 102"),
-              leading: Icon(Icons.local_hospital, color: Colors.red, size: 30),
+              title: const Text("Ambulance", style: TextStyle(fontWeight: FontWeight.bold)),
+              subtitle: const Text("Dial 102"),
+              leading: const Icon(Icons.local_hospital, color: Colors.red, size: 30),
               trailing: IconButton(
-                icon: Icon(Icons.phone, color: Colors.green),
+                icon: const Icon(Icons.phone, color: Colors.green),
                 onPressed: () {
                   _callEmergency("tel:102");
                 },
               ),
             ),
-            Divider(),
+            const Divider(),
             ListTile(
-              title: Text("Fire Brigade", style: TextStyle(fontWeight: FontWeight.bold)),
-              subtitle: Text("Dial 101"),
-              leading: Icon(Icons.local_fire_department, color: Colors.orange, size: 30),
+              title: const Text("Fire Brigade", style: TextStyle(fontWeight: FontWeight.bold)),
+              subtitle: const Text("Dial 101"),
+              leading: const Icon(Icons.local_fire_department, color: Colors.orange, size: 30),
               trailing: IconButton(
-                icon: Icon(Icons.phone, color: Colors.green),
+                icon: const Icon(Icons.phone, color: Colors.green),
                 onPressed: () {
                   _callEmergency("tel:101");
                 },
               ),
             ),
-            Divider(),
+            const Divider(),
 
             // Emergency Contact - User Custom Entry
             ListTile(
               title: Text(emergencyContactName.isNotEmpty ? emergencyContactName : "Emergency Contact"),
               subtitle: Text(emergencyContactNumber.isNotEmpty ? emergencyContactNumber : "Add your emergency contact"),
-              leading: Icon(Icons.contact_phone, color: Colors.purple, size: 30),
+              leading: const Icon(Icons.contact_phone, color: Colors.purple, size: 30),
               trailing: IconButton(
-                icon: Icon(Icons.phone, color: Colors.green),
+                icon: const Icon(Icons.phone, color: Colors.green),
                 onPressed: emergencyContactNumber.isNotEmpty
                     ? () {
                         _callEmergency("tel:$emergencyContactNumber");
@@ -103,15 +103,15 @@ class _EmergencyPageState extends State<EmergencyPage> {
                 _showAddEmergencyContactDialog(context);
               },
             ),
-            Divider(),
+            const Divider(),
             // Display Family Contacts
             ...familyContacts.map((contact) {
               return ListTile(
                 title: Text(contact['name'] ?? ''),
                 subtitle: Text(contact['number'] ?? ''),
-                leading: Icon(Icons.phone, color: Colors.purple),
+                leading: const Icon(Icons.phone, color: Colors.purple),
                 trailing: IconButton(
-                  icon: Icon(Icons.phone, color: Colors.green),
+                  icon: const Icon(Icons.phone, color: Colors.green),
                   onPressed: contact['number'] != null
                       ? () {
                           _callEmergency("tel:${contact['number']}");
@@ -119,12 +119,12 @@ class _EmergencyPageState extends State<EmergencyPage> {
                       : null,
                 ),
               );
-            }).toList(),
+            }),
             // Add Family Member Section
             ListTile(
-              title: Text("Family Members", style: TextStyle(fontWeight: FontWeight.bold)),
-              leading: Icon(Icons.group, color: Colors.blue, size: 30),
-              trailing: Icon(Icons.add, color: Colors.blue),
+              title: const Text("Family Members", style: TextStyle(fontWeight: FontWeight.bold)),
+              leading: const Icon(Icons.group, color: Colors.blue, size: 30),
+              trailing: const Icon(Icons.add, color: Colors.blue),
               onTap: () {
                 _showAddFamilyMemberDialog(context);
               },
@@ -133,26 +133,26 @@ class _EmergencyPageState extends State<EmergencyPage> {
             // Display Family Contacts
             
 
-            Divider(),
+            const Divider(),
 
             // Action Button: Emergency Resources
             ElevatedButton.icon(
               onPressed: () {
                 launchUrl(Uri.parse("https://112.gov.in/about#:~:text=Emergency%20Response%20Support%20System%20in%20India%20%2D%20112.gov.in"));
               },
-              icon: Icon(Icons.health_and_safety),
-              label: Text("More Emergency Resources",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.black),),
+              icon: const Icon(Icons.health_and_safety),
+              label: const Text("More Emergency Resources",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.black),),
               style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(vertical: 16.0),
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
                 backgroundColor: Colors.red,
               ),
             ),
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: Footer(),
+      bottomNavigationBar: const BottomAppBar(
         color: Color.fromARGB(255, 88, 185, 209),
+        child: Footer(),
       ),
     );
   }
@@ -175,13 +175,13 @@ class _EmergencyPageState extends State<EmergencyPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Add Emergency Contact"),
+          title: const Text("Add Emergency Contact"),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               TextField(
                 controller: nameController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: "Contact Name",
                   hintText: "e.g. John Doe",
                 ),
@@ -189,7 +189,7 @@ class _EmergencyPageState extends State<EmergencyPage> {
               TextField(
                 controller: numberController,
                 keyboardType: TextInputType.phone,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: "Contact Number",
                   hintText: "e.g. 1234567890",
                 ),
@@ -198,13 +198,13 @@ class _EmergencyPageState extends State<EmergencyPage> {
           ),
           actions: [
             TextButton(
-              child: Text("Cancel"),
+              child: const Text("Cancel"),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: Text("Save"),
+              child: const Text("Save"),
               onPressed: () {
                 setState(() {
                   emergencyContactName = nameController.text;
@@ -228,13 +228,13 @@ class _EmergencyPageState extends State<EmergencyPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Add Family Member"),
+          title: const Text("Add Family Member"),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               TextField(
                 controller: nameController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: "Family Member Name",
                   hintText: "e.g. Jane Doe",
                 ),
@@ -242,14 +242,14 @@ class _EmergencyPageState extends State<EmergencyPage> {
               TextField(
                 controller: numberController,
                 keyboardType: TextInputType.phone,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: "Contact Number",
                   hintText: "e.g. 9876543210",
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               // Radio buttons for selecting relation
-              Text("Select Relationship:", style: TextStyle(fontWeight: FontWeight.bold)),
+              const Text("Select Relationship:", style: TextStyle(fontWeight: FontWeight.bold)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -268,7 +268,7 @@ class _EmergencyPageState extends State<EmergencyPage> {
                           
                           ),
                           
-                          Text("father"),
+                          const Text("father"),
                         ],
                       ),
                       Row(
@@ -284,7 +284,7 @@ class _EmergencyPageState extends State<EmergencyPage> {
                           }
                           ),
                           
-                          Text("friend"),
+                          const Text("friend"),
                         ],
                       ),
                       Row(
@@ -300,7 +300,7 @@ class _EmergencyPageState extends State<EmergencyPage> {
                           }
                           ),
                           
-                          Text("Mother"),
+                          const Text("Mother"),
                         ],
                       )
                     ],
@@ -311,13 +311,13 @@ class _EmergencyPageState extends State<EmergencyPage> {
           
           actions: [
             TextButton(
-              child: Text("Cancel"),
+              child: const Text("Cancel"),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: Text("Save"),
+              child: const Text("Save"),
               onPressed: () {
                 setState(() {
                   selectedRelation = tempSelectedRelation;

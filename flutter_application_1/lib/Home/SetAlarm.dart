@@ -25,7 +25,7 @@ class _SetAlarmsScreenState extends State<SetAlarmsScreen> {
       labelController = TextEditingController(text: widget.existingAlarm!.label);
       repeatDays = _parseRepeatDays(widget.existingAlarm!.repeatDays);
     } else {
-      selectedTime = TimeOfDay(hour: 7, minute: 30);
+      selectedTime = const TimeOfDay(hour: 7, minute: 30);
       labelController = TextEditingController(text: "Wake Up!");
       repeatDays = [false, false, false, false, false, false, false];
     }
@@ -38,13 +38,13 @@ class _SetAlarmsScreenState extends State<SetAlarmsScreen> {
         title: Text('Set Alarm', style: GoogleFonts.istokWeb(fontSize: 24)),
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
+          icon: const Icon(Icons.arrow_back_ios),
           onPressed: () => Navigator.pop(context),
         ),
       ),
       body: Container(
         width: double.infinity,
-        padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -64,21 +64,21 @@ class _SetAlarmsScreenState extends State<SetAlarmsScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             TextField(
               controller: labelController,
               decoration: InputDecoration(
                 labelText: 'Label',
                 labelStyle: GoogleFonts.istokWeb(fontSize: 20, color: Colors.blueGrey),
-                focusedBorder: UnderlineInputBorder(
+                focusedBorder: const UnderlineInputBorder(
                   borderSide: BorderSide(color: Colors.blueAccent),
                 ),
               ),
               style: GoogleFonts.istokWeb(fontSize: 22),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             Text('Repeat', style: GoogleFonts.istokWeb(fontSize: 20, color: Colors.blueGrey)),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: List.generate(7, (index) {
@@ -103,16 +103,16 @@ class _SetAlarmsScreenState extends State<SetAlarmsScreen> {
                 );
               }),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             Text('Ringtones', style: GoogleFonts.istokWeb(fontSize: 20, color: Colors.blueGrey)),
             ListTile(
               title: Text(ringtone, style: GoogleFonts.istokWeb(fontSize: 18)),
-              trailing: Icon(Icons.arrow_forward_ios, color: Colors.blueAccent),
+              trailing: const Icon(Icons.arrow_forward_ios, color: Colors.blueAccent),
               onTap: () {
                 // Handle ringtone selection
               },
             ),
-            Spacer(),
+            const Spacer(),
             SizedBox(
               width: double.infinity,
               height: 60,

@@ -24,22 +24,22 @@ class _gymworkState extends State<gymwork> {
     _deadliftcontroller = YoutubePlayerController(
       initialVideoId: YoutubePlayer.convertUrlToId(
           "https://www.youtube.com/watch?v=hYo72r8Ivso")!, // Deadlift video
-      flags: YoutubePlayerFlags(autoPlay: true, mute: false),
+      flags: const YoutubePlayerFlags(autoPlay: true, mute: false),
     );
     _tbarcontroller = YoutubePlayerController(
       initialVideoId: YoutubePlayer.convertUrlToId(
           "https://www.youtube.com/watch?v=B7bqAsxee4I")!, // Replace with your video URL
-      flags: YoutubePlayerFlags(
+      flags: const YoutubePlayerFlags(
         autoPlay: false,
         mute: false,
       ),
     );
     _oneLegPlank = YoutubePlayerController(
       initialVideoId:YoutubePlayer.convertUrlToId("https://www.youtube.com/watch?v=RKI4Hr9IsgY")!,
-      flags: YoutubePlayerFlags(autoPlay: false,mute: false));
+      flags: const YoutubePlayerFlags(autoPlay: false,mute: false));
     _Arm = YoutubePlayerController(
       initialVideoId: YoutubePlayer.convertUrlToId("https://www.youtube.com/watch?v=RKI4Hr9IsgY")!,
-      flags: YoutubePlayerFlags(autoPlay: false,mute: false),
+      flags: const YoutubePlayerFlags(autoPlay: false,mute: false),
       );
   }
   @override
@@ -49,6 +49,7 @@ class _gymworkState extends State<gymwork> {
     super.dispose();
   }
   
+  @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final screenHeight = mediaQuery.size.height;
@@ -56,7 +57,7 @@ class _gymworkState extends State<gymwork> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Row(
+        title: const Row(
           children: [
             // Icon(Icons.arrow_back),
             Text("Gym Workouts"),
@@ -65,7 +66,7 @@ class _gymworkState extends State<gymwork> {
         
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           
           children: [
@@ -74,7 +75,7 @@ class _gymworkState extends State<gymwork> {
               margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
               padding: const EdgeInsets.all(16.0),
               decoration: BoxDecoration(
-              color: Color.fromARGB(255, 168, 219, 249),
+              color: const Color.fromARGB(255, 168, 219, 249),
               borderRadius: BorderRadius.circular(12),
               ),
               child: Column(
@@ -89,7 +90,7 @@ class _gymworkState extends State<gymwork> {
                     
                   ),
                   Container(
-                    padding: EdgeInsets.all(12),
+                    padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
                       color: Colors.white,
@@ -114,11 +115,11 @@ class _gymworkState extends State<gymwork> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20,),
+                    const SizedBox(height: 20,),
                     
                     Container(
-                      padding: EdgeInsets.all(12),
-                    decoration: BoxDecoration(
+                      padding: const EdgeInsets.all(12),
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(12)),
                       color: Colors.white,
                     ),
@@ -145,7 +146,7 @@ class _gymworkState extends State<gymwork> {
               margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
               padding: const EdgeInsets.all(16.0),
               decoration: BoxDecoration(
-              color: Color.fromARGB(255, 168, 219, 249),
+              color: const Color.fromARGB(255, 168, 219, 249),
               borderRadius: BorderRadius.circular(12),
               ),
               child: Column(
@@ -160,7 +161,7 @@ class _gymworkState extends State<gymwork> {
                     
                   ),
                   Container(
-                    padding: EdgeInsets.all(12),
+                    padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
                       color: Colors.white,
@@ -184,11 +185,11 @@ class _gymworkState extends State<gymwork> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20,),
+                    const SizedBox(height: 20,),
                     
                     Container(
-                      padding: EdgeInsets.all(12),
-                    decoration: BoxDecoration(
+                      padding: const EdgeInsets.all(12),
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(12)),
                       color: Colors.white,
                     ),
@@ -215,7 +216,7 @@ class _gymworkState extends State<gymwork> {
               margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
               padding: const EdgeInsets.all(16.0),
               decoration: BoxDecoration(
-              color: Color.fromARGB(255, 168, 219, 249),
+              color: const Color.fromARGB(255, 168, 219, 249),
               borderRadius: BorderRadius.circular(12),
               ),
               child: Column(
@@ -230,7 +231,7 @@ class _gymworkState extends State<gymwork> {
                     
                   ),
                   Container(
-                    padding: EdgeInsets.all(12),
+                    padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
                       color: Colors.white,
@@ -254,11 +255,11 @@ class _gymworkState extends State<gymwork> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20,),
+                    const SizedBox(height: 20,),
                     
                     Container(
-                      padding: EdgeInsets.all(12),
-                    decoration: BoxDecoration(
+                      padding: const EdgeInsets.all(12),
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(12)),
                       color: Colors.white,
                     ),
@@ -285,7 +286,7 @@ class _gymworkState extends State<gymwork> {
               margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
               padding: const EdgeInsets.all(16.0),
               decoration: BoxDecoration(
-              color: Color.fromARGB(255, 168, 219, 249),
+              color: const Color.fromARGB(255, 168, 219, 249),
               borderRadius: BorderRadius.circular(12),
               ),
               child: Column(
@@ -300,7 +301,7 @@ class _gymworkState extends State<gymwork> {
                     
                   ),
                   Container(
-                    padding: EdgeInsets.all(12),
+                    padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
                       color: Colors.white,
@@ -326,11 +327,11 @@ class _gymworkState extends State<gymwork> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20,),
+                    const SizedBox(height: 20,),
                     
                     Container(
-                      padding: EdgeInsets.all(12),
-                    decoration: BoxDecoration(
+                      padding: const EdgeInsets.all(12),
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(12)),
                       color: Colors.white,
                     ),
@@ -355,9 +356,9 @@ class _gymworkState extends State<gymwork> {
            
             ],),
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: Footer(),
+      bottomNavigationBar: const BottomAppBar(
         color: Color.fromARGB(255, 88, 185, 209),
+        child: Footer(),
 
       ),
                 

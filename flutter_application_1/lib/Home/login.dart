@@ -11,7 +11,7 @@ import 'package:flutter_social_button/flutter_social_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart'; // Add this import
 
 class LoginPage extends StatefulWidget {
-  LoginPage({super.key});
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -36,10 +36,11 @@ class _LoginPageState extends State<LoginPage> {
             email: tcUsername.text.trim(),
             password: tcPassword.text.toString())
         .then((value) {
+          print(value.user?.uid);
       Utils().toasMessage("Login Succesfully");
       Navigator.of(context).pushReplacement(
         PageTransition(
-          page:  Homepage(name1: tcUsername.text, password1:tcPassword.text, phone: '', dateOfBirth: '', email: tcUsername.text,), beginOffset: Offset(1.0,0.0),endOffset: Offset.zero,
+          page:  Homepage(userId: value.user?.uid), beginOffset: const Offset(1.0,0.0),endOffset: Offset.zero,
         ),
       );
     }).onError((error, stackTrace) {
@@ -69,7 +70,7 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                 ),
-                Text(
+                const Text(
                   'Login Page',
                   style: TextStyle(
                     fontFamily: 'sans-serif',
@@ -77,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
                     fontSize: 30,
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 TextFormField(
                   controller: tcUsername,
                   decoration: InputDecoration(
@@ -86,7 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(50),
                     ),
-                    prefixIcon: Icon(Icons.person),
+                    prefixIcon: const Icon(Icons.person),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -95,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                     return null;
                   },
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 TextFormField(
                   controller: tcPassword,
                   obscureText: isObscure,
@@ -105,7 +106,7 @@ class _LoginPageState extends State<LoginPage> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(50),
                     ),
-                    prefixIcon: Icon(Icons.lock),
+                    prefixIcon: const Icon(Icons.lock),
                     suffixIcon: IconButton(
                       onPressed: () {
                         setState(() {
@@ -127,50 +128,50 @@ class _LoginPageState extends State<LoginPage> {
                     return null;
                   },
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ElevatedButton(
                       style: ButtonStyle(
-                        foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
-                        backgroundColor: MaterialStateProperty.all<Color>(Colors.lightBlue),
+                        foregroundColor: WidgetStateProperty.all<Color>(Colors.black),
+                        backgroundColor: WidgetStateProperty.all<Color>(Colors.lightBlue),
                       ),
                       onPressed: () {
                         if (_formKey.currentState?.validate() == true) {
                           login();
                         }
                       },
-                      child: Text('Login'),
+                      child: const Text('Login'),
                     ),
                     ElevatedButton(
                       style: ButtonStyle(
-                        foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
-                        backgroundColor: MaterialStateProperty.all<Color>(Colors.lightBlue),
+                        foregroundColor: WidgetStateProperty.all<Color>(Colors.black),
+                        backgroundColor: WidgetStateProperty.all<Color>(Colors.lightBlue),
                       ),
                       onPressed: () {
                         Navigator.of(context).push(
                           PageTransition(
                             page: Registration(),
-                            beginOffset: Offset(-1.0, -1.0),
+                            beginOffset: const Offset(-1.0, -1.0),
                             endOffset: Offset.zero,
                           ),
                         );
                       },
-                      child: Text('Registration'),
+                      child: const Text('Registration'),
                     ),
                   ],
                 ),
-                SizedBox(height: 10),
-                Text("- or Sign in With -"),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
+                const Text("- or Sign in With -"),
+                const SizedBox(height: 10),
                 TextButton(
                   style: TextButton.styleFrom(
                     foregroundColor: Colors.black,
                     backgroundColor: Colors.lightBlue,
                   ),
                   onPressed: () {},
-                  child: Row(
+                  child: const Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Icon(Icons.facebook),
@@ -179,14 +180,14 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 TextButton(
                   style: TextButton.styleFrom(
                     foregroundColor: Colors.black,
                     backgroundColor: Colors.lightBlue,
                   ),
                   onPressed: () {},
-                  child: Row(
+                  child: const Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Icon(FontAwesomeIcons.google),

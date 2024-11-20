@@ -20,12 +20,12 @@ class _StrengthState extends State<Strength> {
     _deadliftcontroller = YoutubePlayerController(
       initialVideoId: YoutubePlayer.convertUrlToId(
           "https://www.youtube.com/watch?v=hYo72r8Ivso")!, // Deadlift video
-      flags: YoutubePlayerFlags(autoPlay: true, mute: false),
+      flags: const YoutubePlayerFlags(autoPlay: true, mute: false),
     );
     _tbarcontroller = YoutubePlayerController(
       initialVideoId: YoutubePlayer.convertUrlToId(
           "https://www.youtube.com/watch?v=B7bqAsxee4I")!, // Replace with your video URL
-      flags: YoutubePlayerFlags(
+      flags: const YoutubePlayerFlags(
         autoPlay: false,
         mute: false,
       ),
@@ -38,6 +38,7 @@ class _StrengthState extends State<Strength> {
     super.dispose();
   }
   
+  @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final screenHeight = mediaQuery.size.height;
@@ -45,11 +46,11 @@ class _StrengthState extends State<Strength> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Gym Workouts"),
+        title: const Text("Gym Workouts"),
 
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           
           children: [
@@ -58,7 +59,7 @@ class _StrengthState extends State<Strength> {
               margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
               padding: const EdgeInsets.all(16.0),
               decoration: BoxDecoration(
-              color: Color.fromARGB(255, 168, 219, 249),
+              color: const Color.fromARGB(255, 168, 219, 249),
               borderRadius: BorderRadius.circular(12),
               ),
               child: Column(
@@ -87,7 +88,7 @@ class _StrengthState extends State<Strength> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20,),
+                    const SizedBox(height: 20,),
                     YoutubePlayer(controller: _deadliftcontroller,
                     showVideoProgressIndicator: false,
                     
@@ -101,7 +102,7 @@ class _StrengthState extends State<Strength> {
 margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
               padding: const EdgeInsets.all(16.0),
               decoration: BoxDecoration(
-              color: Color.fromARGB(255, 168, 219, 249),
+              color: const Color.fromARGB(255, 168, 219, 249),
               borderRadius: BorderRadius.circular(12),
               ),
               child: Column(
@@ -112,7 +113,7 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
                       borderRadius: BorderRadius.circular(12),
                       color: Colors.pink,
                     ),
-                  child:  Column(
+                  child:  const Column(
                     children: [
                       Text(
                         "Back: T-Bar Row",
@@ -140,7 +141,7 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
                         ),
                       ),
                     ),
-                    SizedBox(height: 20,),
+                    const SizedBox(height: 20,),
                     YoutubePlayer(controller: _tbarcontroller,
                     showVideoProgressIndicator: false,
                     
@@ -154,7 +155,7 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
 margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
               padding: const EdgeInsets.all(16.0),
               decoration: BoxDecoration(
-              color: Color.fromARGB(255, 168, 219, 249),
+              color: const Color.fromARGB(255, 168, 219, 249),
               borderRadius: BorderRadius.circular(12),
               ),
               child: Column(
@@ -165,7 +166,7 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
                       borderRadius: BorderRadius.circular(12),
                       color: Colors.pink,
                     ),
-                  child:  Column(
+                  child:  const Column(
                     children: [
                       Text(
                         "Back: “The Bird-Dog” aka One-Arm, One-Leg Plank",
@@ -193,7 +194,7 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
                         ),
                       ),
                     ),
-                    SizedBox(height: 20,),
+                    const SizedBox(height: 20,),
                     YoutubePlayer(controller: _tbarcontroller,
                     showVideoProgressIndicator: false,
                     
@@ -207,7 +208,7 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
 margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
               padding: const EdgeInsets.all(16.0),
               decoration: BoxDecoration(
-              color: Color.fromARGB(255, 168, 219, 249),
+              color: const Color.fromARGB(255, 168, 219, 249),
               borderRadius: BorderRadius.circular(12),
               ),
               child: Column(
@@ -218,7 +219,7 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
                       borderRadius: BorderRadius.circular(12),
                       // color: Colors.pink,
                     ),
-                  child:  Column(
+                  child:  const Column(
                     children: [
                       Text(
                         "Back: T-Bar Row",
@@ -246,7 +247,7 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
                         ),
                       ),
                     ),
-                    SizedBox(height: 20,),
+                    const SizedBox(height: 20,),
                     YoutubePlayer(controller: _tbarcontroller,
                     showVideoProgressIndicator: false,
                     
@@ -258,9 +259,9 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
            
             ],),
       ),
-      bottomNavigationBar: BottomAppBar(
+      bottomNavigationBar: const BottomAppBar(
+        color: Color.fromARGB(255, 88, 185, 209),
         child: Footer(),
-                color: Color.fromARGB(255, 88, 185, 209),
 
       ),
                 

@@ -63,12 +63,12 @@ class _AlamscreenState extends State<Alamscreen> {
             });
           }
         },
-        child: const Icon(Icons.add, color: Colors.white),
         backgroundColor: Colors.blue,
+        child: const Icon(Icons.add, color: Colors.white),
       ),
       bottomNavigationBar: const BottomAppBar(
-        child: Footer(),
         color: Color.fromARGB(255, 88, 185, 209),
+        child: Footer(),
       ),
     );
   }
@@ -125,7 +125,7 @@ class AlarmsTile extends StatelessWidget {
   final Function(bool) onToggle;
   final Function() onEdit;
 
-  AlarmsTile({required this.alarm, required this.onToggle, required this.onEdit});
+  const AlarmsTile({super.key, required this.alarm, required this.onToggle, required this.onEdit});
 
   @override
   Widget build(BuildContext context) {

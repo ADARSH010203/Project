@@ -9,10 +9,10 @@ class Drawerbar extends StatelessWidget {
   final String email;
 
   const Drawerbar({
-    Key? key,
+    super.key,
     required this.name,
     required this.email,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class Drawerbar extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ProfileImage(),
+                    const ProfileImage(),
                     ProfileText(name: name, email: email),
                   ],
                 ),
@@ -45,11 +45,11 @@ class Drawerbar extends StatelessWidget {
           _buildListTile(context, Icons.language, 'App Language', () => Navigator.pop(context)),
           _buildListTile(context, Icons.help, 'Help', () => Navigator.pop(context)),
           _buildListTile(context, Icons.calculate_rounded, 'BMI Calculator', () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => BgmiCalc()));
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const BgmiCalc()));
           }),
           _buildListTile(context, Icons.settings, 'Settings', () => Navigator.pop(context)),
           _buildListTile(context, Icons.local_drink_sharp, 'Hydration', () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Hydration()));
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Hydration()));
           }),
           _buildListTile(context, Icons.notifications, 'Notification', () {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginPage()));
@@ -67,7 +67,7 @@ class Drawerbar extends StatelessWidget {
       leading: Icon(icon, color: Colors.black54),
       title: Text(
         title,
-        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black87),
+        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black87),
       ),
       onTap: onTap,
     );
@@ -80,11 +80,11 @@ class ProfileImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(color: Colors.white, width: 4),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             color: Colors.black26,
             blurRadius: 10,
@@ -109,10 +109,10 @@ class ProfileText extends StatelessWidget {
   final String email;
 
   const ProfileText({
-    Key? key,
+    super.key,
     required this.name,
     required this.email,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -122,14 +122,14 @@ class ProfileText extends StatelessWidget {
         children: [
           Text(
             'Name: $name',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
           ),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           Text(
             'Email: $email',
-            style: TextStyle(fontSize: 14, color: Colors.white70),
+            style: const TextStyle(fontSize: 14, color: Colors.white70),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           ElevatedButton(
             onPressed: () {
               Navigator.of(context).push(
@@ -142,7 +142,7 @@ class ProfileText extends StatelessWidget {
               backgroundColor: Colors.white,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             ),
-            child: Text(
+            child: const Text(
               'View Profile',
               style: TextStyle(fontSize: 16, color: Color(0xFF4A90E2)),
             ),

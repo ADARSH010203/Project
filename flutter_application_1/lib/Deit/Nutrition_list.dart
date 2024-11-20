@@ -15,7 +15,7 @@ class _NListState extends State<NList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
+        title: const Row(
           
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -26,17 +26,17 @@ class _NListState extends State<NList> {
 
         ],
       ),),
-      backgroundColor: Color.fromRGBO(255, 233, 169, 1),
+      backgroundColor: const Color.fromRGBO(255, 233, 169, 1),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.all(12),
-              margin: EdgeInsets.all(8),
+              padding: const EdgeInsets.all(12),
+              margin: const EdgeInsets.all(8),
               child: Row(
                 children: [
                   Image.asset("profile.png",height: 70,width: 70,),
-                  SizedBox(width: 15,),
+                  const SizedBox(width: 15,),
                   Column(
                     crossAxisAlignment:CrossAxisAlignment.start,
                     children: [
@@ -68,26 +68,26 @@ class _NListState extends State<NList> {
                       child: Container(
                         height: 250,
                         width: 200,
-                        margin: EdgeInsets.all(20),
+                        margin: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
                           color: Colors.white,
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               color: Colors.black,
                               blurRadius: 10,
-                              offset: const Offset(0, 5),
+                              offset: Offset(0, 5),
                             ),
                           ],
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.all(16.0),
+                            const Padding(
+                              padding: EdgeInsets.all(16.0),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
+                                children: [
                                   Text(
                                     "Food: Sandwich",
                                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
@@ -105,7 +105,7 @@ class _NListState extends State<NList> {
                                 ],
                               ),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             SizedBox(
                               width: double.infinity,
                               height: 50,
@@ -143,26 +143,26 @@ class _NListState extends State<NList> {
                       child: Container(
                         height: 250,
                         width: 200,
-                        margin: EdgeInsets.all(20),
+                        margin: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
                           color: Colors.white,
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               color: Colors.black,
                               blurRadius: 10,
-                              offset: const Offset(0, 5),
+                              offset: Offset(0, 5),
                             ),
                           ],
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.all(16.0),
+                            const Padding(
+                              padding: EdgeInsets.all(16.0),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
+                                children: [
                                   Text(
                                     "Food: Sandwich",
                                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
@@ -180,7 +180,7 @@ class _NListState extends State<NList> {
                                 ],
                               ),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             SizedBox(
                               width: double.infinity,
                               height: 50,
@@ -225,26 +225,26 @@ class _NListState extends State<NList> {
                       child: Container(
                         height: 200,
                         width: 500,
-                        margin: EdgeInsets.all(20),
+                        margin: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
                           color: Colors.white,
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               color: Colors.black,
                               blurRadius: 10,
-                              offset: const Offset(0, 5),
+                              offset: Offset(0, 5),
                             ),
                           ],
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.all(16.0),
+                            const Padding(
+                              padding: EdgeInsets.all(16.0),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
+                                children: [
                                   Text(
                                     "Food: Sandwich",
                                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
@@ -262,7 +262,7 @@ class _NListState extends State<NList> {
                                 ],
                               ),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             SizedBox(
                               width: double.infinity,
                               height: 50,
@@ -297,7 +297,7 @@ class _NListState extends State<NList> {
                     style: TextStyle(
                       fontSize: 20,
                       fontFamily: GoogleFonts.istokWeb().fontFamily,
-                      color: Color.fromRGBO(58, 58, 58, 1),
+                      color: const Color.fromRGBO(58, 58, 58, 1),
                       ),
                       ),
               ],
@@ -307,8 +307,7 @@ class _NListState extends State<NList> {
         ),
         
       ),
-      bottomNavigationBar: BottomAppBar(child: Footer(),
-      color: Color.fromRGBO(98, 169, 221, 1),),
+      bottomNavigationBar: const BottomAppBar(color: Color.fromRGBO(98, 169, 221, 1),child: Footer(),),
     );
 
   }

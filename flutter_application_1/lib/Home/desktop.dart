@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Home/homepage.dart';
 import 'package:flutter_application_1/Home/login.dart';
@@ -12,34 +13,35 @@ class Desktop extends StatefulWidget {
 }
 
 class _DesktopState extends State<Desktop> {
+  final auth = FirebaseAuth.instance;
+
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3), () async {
-      final SharedPreferences prefs = await SharedPreferences.getInstance();
-      String username = prefs.getString('username') ?? '';
-      String password = prefs.getString('password') ?? '';
+    _navigateBasedOnAuthStatus();
+  }
 
-      if (username.isEmpty) {
-        Navigator.of(context).push(
+  Future<void> _navigateBasedOnAuthStatus() async {
+    final user = auth.currentUser;
+
+    // Example of retrieving username and password from SharedPreferences (optional)
+    final prefs = await SharedPreferences.getInstance();
+    String username = prefs.getString('username') ?? '';
+    String password = prefs.getString('password') ?? '';
+
+    // Navigate to different screens based on authentication status
+    Timer(const Duration(seconds: 3), () {
+      if (user != null) {
+        // User is signed in, navigate to homepage (replace `LoginPage` with your homepage if needed)
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => LoginPage()), // Replace with actual Homepage if required
+        );
+      } else {
+        // User not signed in, navigate to login page
+        Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => LoginPage()),
         );
-       } 
-      //  else {
-        // Navigator.of(context).push(
-        //   MaterialPageRoute(
-        //     // builder: (context) => Homepage(
-        //     //   name1: username,
-        //     //   password1: password,
-        //     //   email: '',
-        //     //   phone: '',
-        //     //   dateOfBirth: '',
-        //     //   themeMode: ThemeMode,
-
-        //     ),
-        //   ),
-        // );
-      // }
+      }
     });
   }
 
@@ -47,21 +49,21 @@ class _DesktopState extends State<Desktop> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [Color(0xFF66c3d6), Color(0xFF3b9ab8)],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
         ),
-        padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ClipOval(
                 child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black26,
@@ -78,8 +80,8 @@ class _DesktopState extends State<Desktop> {
                   ),
                 ),
               ),
-              SizedBox(height: 40),
-              Text(
+              const SizedBox(height: 40),
+              const Text(
                 "Welcome Back!",
                 style: TextStyle(
                   fontSize: 28,
@@ -87,17 +89,15 @@ class _DesktopState extends State<Desktop> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 10),
-              Text(
+              const SizedBox(height: 10),
+              const Text(
                 "Swipe to continue to the login page",
                 style: TextStyle(
                   fontSize: 16,
                   color: Colors.white70,
                 ),
               ),
-              SizedBox(height: 80),
-              
-                
+              const SizedBox(height: 80),
             ],
           ),
         ),

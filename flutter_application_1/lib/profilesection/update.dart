@@ -1,3 +1,5 @@
+
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -14,6 +16,9 @@ class Update extends StatefulWidget {
 }
 
 class _UpdateState extends State<Update> {
+  
+
+
   TextEditingController tc = TextEditingController();
   TextEditingController UserName = TextEditingController();
   TextEditingController flag = TextEditingController();
@@ -46,7 +51,7 @@ class _UpdateState extends State<Update> {
                 },
                 child: CircleAvatar(
                   radius: 60,
-                  backgroundImage: AssetImage('assets/Adarsh2.png'),
+                  backgroundImage: const AssetImage('assets/Adarsh2.png'),
                   backgroundColor: Colors.teal.shade100,
                 ),
               ),
@@ -74,6 +79,7 @@ class _UpdateState extends State<Update> {
               const SizedBox(height: 24),
               ElevatedButton.icon(
                 onPressed: () {
+                 
                   Navigator.of(context).push(PageTransition(
                     page:Information(
                       name: tc.text,
@@ -87,7 +93,7 @@ class _UpdateState extends State<Update> {
                       gender: gender.text,
                       height: hg.text,
                       weight: wc.text, userName: '',
-                    ), beginOffset: Offset(-1,-1),
+                    ), beginOffset: const Offset(-1,-1),
                     endOffset: Offset.zero,
                     
                   ));
