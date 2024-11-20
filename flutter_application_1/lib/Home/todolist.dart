@@ -19,7 +19,7 @@ class _TodoScreenState extends State<TodoScreen> {
 
   void _selectCategory(String category) {
     setState(() {
-      selectedCategory = "Hello, ${widget.name1}, you selected " + category;
+      selectedCategory = "Hello, ${widget.name1}, you selected $category";
     });
   }
 
@@ -44,7 +44,7 @@ class _TodoScreenState extends State<TodoScreen> {
                 MaterialPageRoute(builder: (context) => LoginPage()),
               );
             },
-            icon: Icon(Icons.search),
+            icon: const Icon(Icons.search),
           ),
           IconButton(
             onPressed: () {
@@ -52,14 +52,14 @@ class _TodoScreenState extends State<TodoScreen> {
                 MaterialPageRoute(builder: (context) => LoginPage()),
               );
             },
-            icon: Icon(Icons.notifications),
+            icon: const Icon(Icons.notifications),
           ),
         ],
       ),
       body: SingleChildScrollView(
         child: Center(
           child: Container(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -70,7 +70,7 @@ class _TodoScreenState extends State<TodoScreen> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 25),
+                const SizedBox(height: 25),
                 Text(
                   "CATEGORIES",
                   style: GoogleFonts.poppins(
@@ -78,7 +78,7 @@ class _TodoScreenState extends State<TodoScreen> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 // Horizontal scroll for categories
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -93,7 +93,7 @@ class _TodoScreenState extends State<TodoScreen> {
                     ],
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -113,7 +113,7 @@ class _TodoScreenState extends State<TodoScreen> {
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Row(
                   children: [
                     Expanded(
@@ -131,10 +131,10 @@ class _TodoScreenState extends State<TodoScreen> {
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ListView.builder(
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: todos.length,
                   itemBuilder: (context, index) => Card(
                     shape: RoundedRectangleBorder(
@@ -142,7 +142,7 @@ class _TodoScreenState extends State<TodoScreen> {
                     ),
                     elevation: 5,
                     color: todos[index]['isCompleted']
-                        ? Color.fromRGBO(223, 241, 217, 1)
+                        ? const Color.fromRGBO(223, 241, 217, 1)
                         : Colors.white,
                     child: CheckboxListTile(
                       controlAffinity: ListTileControlAffinity.leading,
@@ -174,7 +174,7 @@ class _TodoScreenState extends State<TodoScreen> {
                                 selId = todos[index]['id'];
                               });
                             }),
-                            SizedBox(width: 10,),
+                            const SizedBox(width: 10,),
                             _buildIconButton(Icons.delete, Colors.red, () {
                               setState(() {
                                 todos.removeWhere(
@@ -217,10 +217,10 @@ class _TodoScreenState extends State<TodoScreen> {
             setState(() {});
           }
         },
-        child: Icon(Icons.add),
         backgroundColor: Colors.pink,
+        child: Icon(Icons.add),
       ),
-      bottomNavigationBar: BottomAppBar(
+      bottomNavigationBar: const BottomAppBar(
         color: Color.fromRGBO(98, 169, 221, 1),
         child: Footer(),
       ),
@@ -233,12 +233,12 @@ class _TodoScreenState extends State<TodoScreen> {
       child: Container(
         height: isMobile ? 70 : 80,
         width: isMobile ? 110 : 130,
-        margin: EdgeInsets.symmetric(horizontal: 8),
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        margin: const EdgeInsets.symmetric(horizontal: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         decoration: BoxDecoration(
-          color: Color.fromARGB(255, 88, 185, 209),
+          color: const Color.fromARGB(255, 88, 185, 209),
           borderRadius: BorderRadius.circular(10),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               color: Colors.black26,
               blurRadius: 5,

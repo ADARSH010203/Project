@@ -10,7 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-
+import 'profilesection/update.dart';
 import 'Gym Workouts/Aerobic.dart';
 import 'Home/desktop.dart';
 import 'Home/theme/theme.dart';// Assuming your theme provider is in MyTheme.dart

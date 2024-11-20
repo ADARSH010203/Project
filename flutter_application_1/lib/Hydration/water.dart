@@ -47,7 +47,7 @@ class _HydrationState extends State<Hydration> {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Container(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
                 Row(
@@ -62,8 +62,8 @@ class _HydrationState extends State<Hydration> {
                         ),
                       ],
                     ),
-                    SizedBox(width: 20),
-                    Column(
+                    const SizedBox(width: 20),
+                    const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
@@ -88,11 +88,11 @@ class _HydrationState extends State<Hydration> {
                     ),
                   ],
                 ),
-                SizedBox(height: 40),
+                const SizedBox(height: 40),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     // Left Column
                     Expanded(
                       flex: 3,
@@ -106,7 +106,7 @@ class _HydrationState extends State<Hydration> {
                             decoration: BoxDecoration(
                               color: Colors.blue,
                               borderRadius: BorderRadius.circular(16.0),
-                              border: Border.symmetric(
+                              border: const Border.symmetric(
                                 vertical: BorderSide(
                                   width: 9,
                                   color: Color.fromARGB(255, 150, 207, 237),
@@ -123,12 +123,12 @@ class _HydrationState extends State<Hydration> {
                                   color: Colors.grey.withOpacity(0.5),
                                   spreadRadius: 2,
                                   blurRadius: 7,
-                                  offset: Offset(0, 3),
+                                  offset: const Offset(0, 3),
                                 ),
                               ],
                             ),
                             child: Container(
-                              padding: EdgeInsets.all(2),
+                              padding: const EdgeInsets.all(2),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(12),
@@ -139,7 +139,7 @@ class _HydrationState extends State<Hydration> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
                                     children: [
-                                      Text(
+                                      const Text(
                                         "Target Hydration",
                                         style: TextStyle(
                                           fontSize: 20,
@@ -151,14 +151,14 @@ class _HydrationState extends State<Hydration> {
                                           // Edit button action
                                           myname();
                                         },
-                                        child: Text("Edit"),
+                                        child: const Text("Edit"),
                                       ),
                                     ],
                                   ),
-                                  SizedBox(height: 10),
+                                  const SizedBox(height: 10),
                                   Text(
                                     "${targetHydration.toStringAsFixed(0)}ml",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 40,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -167,7 +167,7 @@ class _HydrationState extends State<Hydration> {
                               ),
                             ),
                           ),
-                          SizedBox(height: 20),
+                          const SizedBox(height: 20),
                           // Current Hydration
                           Container(
                             padding: const EdgeInsets.all(12.0),
@@ -176,7 +176,7 @@ class _HydrationState extends State<Hydration> {
                             decoration: BoxDecoration(
                               color: Colors.blue,
                               borderRadius: BorderRadius.circular(12.0),
-                              border: Border.symmetric(
+                              border: const Border.symmetric(
                                 vertical: BorderSide(
                                   width: 9,
                                   color: Color.fromARGB(255, 150, 207, 237),
@@ -193,19 +193,19 @@ class _HydrationState extends State<Hydration> {
                                   color: Colors.grey.withOpacity(0.5),
                                   spreadRadius: 2,
                                   blurRadius: 7,
-                                  offset: Offset(0, 3),
+                                  offset: const Offset(0, 3),
                                 ),
                               ],
                             ),
                             child: Container(
-                              padding: EdgeInsets.all(12),
+                              padding: const EdgeInsets.all(12),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.white,
                               ),
                               child: Column(
                                 children: [
-                                  Text(
+                                  const Text(
                                     "Current Hydration",
                                     style: TextStyle(
                                       fontSize: 20,
@@ -215,12 +215,12 @@ class _HydrationState extends State<Hydration> {
                                   LinearProgressIndicator(
                                     value: currentHydration / targetHydration,
                                     backgroundColor: Colors.green,
-                                    valueColor: AlwaysStoppedAnimation(Colors.black),
+                                    valueColor: const AlwaysStoppedAnimation(Colors.black),
                                   ),
-                                  SizedBox(height: 10),
+                                  const SizedBox(height: 10),
                                   Text(
                                     "${currentHydration.toStringAsFixed(0)}ml",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 40,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -232,13 +232,13 @@ class _HydrationState extends State<Hydration> {
                         ],
                       ),
                     ),
-                    SizedBox(width: 25),
+                    const SizedBox(width: 25),
                     // Right Progress Bar with Numbers
                     Container(
                       width: screenWidth * 0.2,
                       height: screenHeight * 0.52,
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 219, 211, 211),
+                        color: const Color.fromARGB(255, 219, 211, 211),
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       child: Stack(
@@ -264,7 +264,7 @@ class _HydrationState extends State<Hydration> {
                                       const EdgeInsets.symmetric(vertical: 8.0),
                                   child: Text(
                                     "- $labelValue",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 15, color: Colors.black),
                                   ),
                                 );
@@ -276,13 +276,13 @@ class _HydrationState extends State<Hydration> {
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Container(
-                  padding: EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         "Drink Log",
                         style: TextStyle(
                           fontSize: 30,
@@ -290,7 +290,7 @@ class _HydrationState extends State<Hydration> {
                         ),
                       ),
                       
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                      
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -313,7 +313,7 @@ class _HydrationState extends State<Hydration> {
                                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                                       children: [
                                         Text('${log['amount']}ml'),
-                                        SizedBox(
+                                        const SizedBox(
                                           width: 80,
                                         ),
                                         
@@ -331,7 +331,7 @@ class _HydrationState extends State<Hydration> {
                           ),
                         ],
                       ),
-                      Divider(
+                      const Divider(
                         thickness: 5,
                         color: Colors.black,
                       ),
@@ -351,7 +351,7 @@ class _HydrationState extends State<Hydration> {
                         onPressed: () {
                           _displayBottomSheet(context);
                         },
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.add,
                           color: Colors.white,
                         ),
@@ -364,9 +364,9 @@ class _HydrationState extends State<Hydration> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: Footer(),
+      bottomNavigationBar: const BottomAppBar(
         color: Color.fromARGB(255, 88, 185, 209),
+        child: Footer(),
       ),
     );
   }
@@ -376,12 +376,12 @@ class _HydrationState extends State<Hydration> {
     builder: (BuildContext context) {
       return Container(
         height: 400,
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
+            const Text(
               "Log Your Water Intake",
               style: TextStyle(
                 fontSize: 24,
@@ -390,7 +390,7 @@ class _HydrationState extends State<Hydration> {
               ),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -399,14 +399,14 @@ class _HydrationState extends State<Hydration> {
                 _logWaterIntake();
                 Navigator.pop(context);
               },
-              child: Text('Save', style: TextStyle(fontSize: 18)),
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromARGB(255, 110, 175, 228),
-                padding: EdgeInsets.symmetric(vertical: 15),
+                padding: const EdgeInsets.symmetric(vertical: 15),
               ),
+              child: Text('Save', style: TextStyle(fontSize: 18)),
             ),
-            SizedBox(width: 20,),
-                Text(
+            const SizedBox(width: 20,),
+                const Text(
                   "Water Amount:",
                   style: TextStyle(fontSize: 18),
                 ),
@@ -428,7 +428,7 @@ class _HydrationState extends State<Hydration> {
                 ),
               
             
-            SizedBox(width: 20),
+            const SizedBox(width: 20),
             
             
             ElevatedButton(
@@ -436,11 +436,11 @@ class _HydrationState extends State<Hydration> {
                 _deleteWaterIntake();
                 Navigator.pop(context);
               },
-              child: Text('Delete', style: TextStyle(fontSize: 18)),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 128, 160, 231),
-                padding: EdgeInsets.symmetric(vertical: 15),
+                backgroundColor: const Color.fromARGB(255, 128, 160, 231),
+                padding: const EdgeInsets.symmetric(vertical: 15),
               ),
+              child: Text('Delete', style: TextStyle(fontSize: 18)),
             ),],
         ),],
         ),
@@ -479,11 +479,11 @@ void _showConfirmationDialog(String message) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Text('Confirmation'),
+        title: const Text('Confirmation'),
         content: Text(message),
         actions: [
           TextButton(
-            child: Text('OK'),
+            child: const Text('OK'),
             onPressed: () {
               Navigator.of(context).pop();
             },
@@ -527,7 +527,7 @@ Future<void> _loadSavedWaterIntake() async {
       builder: (BuildContext context) {
         double newTargetHydration = targetHydration;
         return AlertDialog(
-          title: Text('Edit Target Hydration'),
+          title: const Text('Edit Target Hydration'),
           content: Row(
             children: [
               Expanded(
@@ -545,13 +545,13 @@ Future<void> _loadSavedWaterIntake() async {
           ),
           actions: [
             TextButton(
-              child: Text('Cancel'),
+              child: const Text('Cancel'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: Text('Save'),
+              child: const Text('Save'),
               onPressed: () {
                 setState(() {
                   targetHydration = newTargetHydration;

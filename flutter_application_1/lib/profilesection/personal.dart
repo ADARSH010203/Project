@@ -74,7 +74,7 @@ class _InformationState extends State<Information> {
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                           color: Colors.black26,
                           blurRadius: 10,
@@ -82,7 +82,7 @@ class _InformationState extends State<Information> {
                         ),
                       ],
                     ),
-                    padding: EdgeInsets.all(4),
+                    padding: const EdgeInsets.all(4),
                     child: ClipOval(
                       child: Image.asset(
                         "assets/profile.png",
@@ -94,7 +94,7 @@ class _InformationState extends State<Information> {
                   ),
                 ),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               Center(
                 child: Text(
                   widget.name,
@@ -105,9 +105,9 @@ class _InformationState extends State<Information> {
                   ),
                 ),
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               Container(
-                padding: EdgeInsets.all(12),
+                padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   color: Colors.white.withOpacity(0.9),
                   borderRadius: BorderRadius.circular(16),
@@ -116,7 +116,7 @@ class _InformationState extends State<Information> {
                       color: Colors.teal.withOpacity(0.1),
                       spreadRadius: 5,
                       blurRadius: 10,
-                      offset: Offset(0, 5),
+                      offset: const Offset(0, 5),
                     ),
                   ],
                 ),
@@ -159,7 +159,7 @@ class _InformationState extends State<Information> {
       child: Row(
         children: [
           Icon(icon, color: Colors.teal[400], size: 24),
-          SizedBox(width: 12),
+          const SizedBox(width: 12),
           Expanded(
             child: Text(
               label,

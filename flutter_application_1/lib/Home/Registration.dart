@@ -9,7 +9,7 @@ import 'package:flutter_social_button/flutter_social_button.dart';
 import 'package:random_string/random_string.dart';
 
 class Registration extends StatefulWidget {
-  Registration({super.key});
+  const Registration({super.key});
 
   @override
   State<Registration> createState() => _RegistrationState();
@@ -41,11 +41,12 @@ class _RegistrationState extends State<Registration> {
       password: tcPassword.text.trim(),
     )
         .then((value) {
+          print(value.user?.uid);
       setState(() {
         isLoading = false;
-        String user_id = randomNumeric(5);
+        String? userId = value.user?.uid;
         Map<String, dynamic> userData = {
-          'user_id': user_id,
+          'user_id': userId,
           'user_name': tcUsername.text.trim(),
           'user_email':tcEmail.text.trim(),
           'user_password': tcPassword.text.trim(),
@@ -53,13 +54,13 @@ class _RegistrationState extends State<Registration> {
           'user_phone': tcNumber.text.trim(),
           'user_dateofbirth':tcDateofBirth.text.trim(),
         };
-        DatabaseMethods().addUserDetails(userData, user_id);
+        DatabaseMethods().addUserDetails(userData, userId!);
         Utils().toasMessage("Registered Successfully");
         Navigator.of(context).push(
                               PageTransition(
                                 page: LoginPage(
                                 ),
-                                beginOffset: Offset(1.0,0.0),
+                                beginOffset: const Offset(1.0,0.0),
                                 endOffset: Offset.zero
                               ),
                             );
@@ -82,14 +83,14 @@ class _RegistrationState extends State<Registration> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset('assets/APX.jpg'),
-            Text(
+            const Text(
               'Create An Account',
               style: TextStyle(
                 fontStyle: FontStyle.normal,
                 fontSize: 30,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Form(
               key: _formKey,
               child: Column(
@@ -102,7 +103,7 @@ class _RegistrationState extends State<Registration> {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(50),
                       ),
-                      prefixIcon:Icon(Icons.person),
+                      prefixIcon:const Icon(Icons.person),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -111,7 +112,7 @@ class _RegistrationState extends State<Registration> {
                       return null;
                     },
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   TextFormField(
                     controller: tcEmail,
                     decoration: InputDecoration(
@@ -120,10 +121,10 @@ class _RegistrationState extends State<Registration> {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(50),
                       ),
-                      prefixIcon: Icon(Icons.email),
+                      prefixIcon: const Icon(Icons.email),
                     ),
                     keyboardType: TextInputType.emailAddress,
-                    autofillHints: [AutofillHints.email],
+                    autofillHints: const [AutofillHints.email],
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter email';
@@ -135,7 +136,7 @@ class _RegistrationState extends State<Registration> {
                       
                     },
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   TextFormField(
                     controller: tcPassword,
                     obscureText: isObscure,
@@ -145,7 +146,7 @@ class _RegistrationState extends State<Registration> {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(50),
                       ),
-                      prefixIcon: Icon(Icons.lock),
+                      prefixIcon: const Icon(Icons.lock),
                       suffixIcon: IconButton(
                         onPressed: () {
                           setState(() {
@@ -167,7 +168,7 @@ class _RegistrationState extends State<Registration> {
                       return null;
                     },
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   TextFormField(
                     controller: tcGender,
                     decoration: InputDecoration(
@@ -177,11 +178,11 @@ class _RegistrationState extends State<Registration> {
                         borderRadius: BorderRadius.circular(50),
                       ),
                       // prefixIconColor:Colors.red,
-                      prefixIcon: Icon(Icons.male_rounded)
+                      prefixIcon: const Icon(Icons.male_rounded)
                     ),
                     
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   TextFormField(
                     controller: tcNumber,
                     decoration: InputDecoration(
@@ -190,10 +191,10 @@ class _RegistrationState extends State<Registration> {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(50),
                       ),
-                      prefixIcon: Icon(Icons.phone)
+                      prefixIcon: const Icon(Icons.phone)
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   TextFormField(
                     controller: tcDateofBirth,
                     decoration: InputDecoration(
@@ -202,7 +203,7 @@ class _RegistrationState extends State<Registration> {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(50),
                       ),
-                      prefixIcon: Icon(Icons.calendar_month)
+                      prefixIcon: const Icon(Icons.calendar_month)
                     ),
                     readOnly: true,
                     onTap: () async {
@@ -219,7 +220,7 @@ class _RegistrationState extends State<Registration> {
                       }
                     },
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -233,36 +234,36 @@ class _RegistrationState extends State<Registration> {
                             register();
                           }
                         },
-                        child: Text('Register'),
+                        child: const Text('Register'),
                       ),
                       ElevatedButton(
                         style: ButtonStyle(
                           foregroundColor: WidgetStateProperty.all<Color>(Colors.black),
                           backgroundColor: WidgetStateProperty.all<Color>(Colors.lightBlue),
-                          animationDuration: Duration(seconds: 2),
+                          animationDuration: const Duration(seconds: 2),
                         ),
                         onPressed: () {
                           Navigator.of(context).push(
                             PageTransition(
                               page:LoginPage(),
-                            beginOffset:Offset(0.0, -1.0),
+                            beginOffset:const Offset(0.0, -1.0),
                             endOffset:Offset.zero,
                             ),);
                           
                         },
-                        child: Text('Login'),
+                        child: const Text('Login'),
                       ),
                     ],
                   ),
-                  Text("Or Sign In With"),
-                  SizedBox(height: 18),
+                  const Text("Or Sign In With"),
+                  const SizedBox(height: 18),
                   ElevatedButton(
                     style: ButtonStyle(
                       foregroundColor: WidgetStateProperty.all<Color>(Colors.black),
                       backgroundColor: WidgetStateProperty.all<Color>(Colors.lightBlue),
                     ),
                     onPressed: () {},
-                    child: Row(
+                    child: const Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Icon(Icons.facebook),
@@ -271,7 +272,7 @@ class _RegistrationState extends State<Registration> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   ElevatedButton(
                     style: ButtonStyle(
                       foregroundColor: WidgetStateProperty.all<Color>(Colors.black),
@@ -282,7 +283,7 @@ class _RegistrationState extends State<Registration> {
                       //   MaterialPageRoute(builder: (context)=>LoginPage(),)
                       // );
                     },
-                    child: Row(
+                    child: const Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Icon(FontAwesomeIcons.google),

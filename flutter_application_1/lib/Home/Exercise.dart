@@ -15,7 +15,7 @@ class Exercise extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
+        title: const Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children:  [
             Text(
@@ -39,7 +39,7 @@ class Exercise extends StatelessWidget {
             label: 'Gym Workouts',
             onTap: () {
               Navigator.of(context).push(
-                PageTransition(page:gymwork(),beginOffset: Offset(-1.0,-1.0),endOffset: Offset.zero),
+                PageTransition(page:const gymwork(),beginOffset: const Offset(-1.0,-1.0),endOffset: Offset.zero),
               );
             },
           ),
@@ -49,7 +49,7 @@ class Exercise extends StatelessWidget {
             
             onTap: () {              
               Navigator.of(context).push(
-                PageTransition(page: Aerobic(), beginOffset: Offset(-1.0,-1.0),endOffset: Offset.zero),
+                PageTransition(page: const Aerobic(), beginOffset: const Offset(-1.0,-1.0),endOffset: Offset.zero),
               );
             },
           ),
@@ -58,7 +58,7 @@ class Exercise extends StatelessWidget {
             label: 'Balance',
             onTap: () {
               Navigator.of(context).push(
-                PageTransition(page:  Balance(),beginOffset: Offset(-1.0,-1.0),endOffset: Offset.zero),
+                PageTransition(page:  const Balance(),beginOffset: const Offset(-1.0,-1.0),endOffset: Offset.zero),
               );
             },
           ),
@@ -67,7 +67,7 @@ class Exercise extends StatelessWidget {
             label: 'Strength Training',
             onTap: () {
               Navigator.of(context).push(
-                PageTransition(page:Stretching(),beginOffset: Offset(-1.0,-1.0),endOffset: Offset.zero),
+                PageTransition(page:const Stretching(),beginOffset: const Offset(-1.0,-1.0),endOffset: Offset.zero),
               );
             },
           ),
@@ -77,14 +77,14 @@ class Exercise extends StatelessWidget {
             onTap: () {
               // Handle Stretching tap
                Navigator.of(context).push(
-                PageTransition(page:Stretching(),beginOffset: Offset(-1.0,-1.0),endOffset: Offset.zero),);
+                PageTransition(page:const Stretching(),beginOffset: const Offset(-1.0,-1.0),endOffset: Offset.zero),);
             },
           ),
         ],
       ),
-      bottomNavigationBar: BottomAppBar(
+      bottomNavigationBar: const BottomAppBar(
+        color: Color.fromARGB(255, 88, 185, 209),
         child: Footer(),
-        color: const Color.fromARGB(255, 88, 185, 209),
       ),
     );
   }
@@ -95,7 +95,7 @@ class ExerciseCategory extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
 
-  const ExerciseCategory({
+  const ExerciseCategory({super.key, 
     required this.image,
     required this.label,
     required this.onTap, // Corrected this to be a required named parameter

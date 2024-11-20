@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Home/footer.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-final Email = "https://www.youtube.com/watch?v=hYo72r8Ivso";
+const Email = "https://www.youtube.com/watch?v=hYo72r8Ivso";
 
 class Balance extends StatefulWidget {
   const Balance({super.key});
@@ -25,8 +25,8 @@ class _BalanceState extends State<Balance> {
       flags: const YoutubePlayerFlags(autoPlay: false, mute: false),
     );
     _tbarcontroller = YoutubePlayerController(
-      initialVideoId: emailId!, // Replace with your video URL
-      flags: YoutubePlayerFlags(
+      initialVideoId: emailId, // Replace with your video URL
+      flags: const YoutubePlayerFlags(
         autoPlay: false,
         mute: false,
       ),
@@ -34,6 +34,7 @@ class _BalanceState extends State<Balance> {
   }
  
   
+  @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final screenHeight = mediaQuery.size.height;
@@ -41,11 +42,11 @@ class _BalanceState extends State<Balance> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Gym Workouts"),
+        title: const Text("Gym Workouts"),
 
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           
           children: [
@@ -54,7 +55,7 @@ class _BalanceState extends State<Balance> {
               margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
               padding: const EdgeInsets.all(10.0),
               decoration: BoxDecoration(
-              color: Color.fromARGB(255, 168, 219, 249),
+              color: const Color.fromARGB(255, 168, 219, 249),
               borderRadius: BorderRadius.circular(12),
               ),
               child: Column(
@@ -69,11 +70,11 @@ class _BalanceState extends State<Balance> {
                     ),
                     
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Container(
-                    padding: EdgeInsets.all(12),
+                    padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
                       color: Colors.white,
@@ -86,7 +87,7 @@ class _BalanceState extends State<Balance> {
                     InkWell(
                       onTap: (){
                         Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context)=>Balance()),
+                          MaterialPageRoute(builder: (context)=>const Balance()),
                         );
                       },
                       child: const Text(
@@ -98,10 +99,10 @@ class _BalanceState extends State<Balance> {
                       ),
                     ),
                     
-                    SizedBox(height: 20,),
+                    const SizedBox(height: 20,),
                   Container(
-                    padding: EdgeInsets.all(12),
-                    decoration: BoxDecoration(
+                    padding: const EdgeInsets.all(12),
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(12)),
                       color: Colors.white,
                     ),
@@ -138,7 +139,7 @@ class _BalanceState extends State<Balance> {
               margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
               padding: const EdgeInsets.all(10.0),
               decoration: BoxDecoration(
-              color: Color.fromARGB(255, 168, 219, 249),
+              color: const Color.fromARGB(255, 168, 219, 249),
               borderRadius: BorderRadius.circular(12),
               ),
               child: Column(
@@ -149,7 +150,7 @@ class _BalanceState extends State<Balance> {
                       borderRadius: BorderRadius.circular(12),
                       // color: const Color.fromARGB(255, 131, 112, 118),
                     ),
-                  child:  Column(
+                  child:  const Column(
                     children: [
                       Text(
                         "Balance: Bosu Ball",
@@ -162,9 +163,9 @@ class _BalanceState extends State<Balance> {
                       ),
                     ],
                   ),),
-                  SizedBox(height: 20,),
+                  const SizedBox(height: 20,),
                   Container(
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),color: Colors.white,
                     ),
@@ -185,9 +186,9 @@ class _BalanceState extends State<Balance> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20,),
+                    const SizedBox(height: 20,),
                     Container(
-                       padding: EdgeInsets.all(12),
+                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(12),
@@ -213,7 +214,7 @@ class _BalanceState extends State<Balance> {
 margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
               padding: const EdgeInsets.all(10.0),
               decoration: BoxDecoration(
-              color: Color.fromARGB(255, 168, 219, 249),
+              color: const Color.fromARGB(255, 168, 219, 249),
               borderRadius: BorderRadius.circular(12),
               ),
               child: Column(
@@ -224,7 +225,7 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
                       borderRadius: BorderRadius.circular(12),
                       // color: Colors.pink,
                     ),
-                  child:  Column(
+                  child:  const Column(
                     children: [
                       Text(
 'Balance: Tai Chi',                        style: TextStyle(
@@ -237,7 +238,7 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
                     ],
                   ),),
                   Container(
-                     padding: EdgeInsets.all(10),
+                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),color: Colors.white,
                     ),
@@ -261,9 +262,9 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
                         ),
                       ),
                     ),
-                    SizedBox(height: 20,),
+                    const SizedBox(height: 20,),
                     Container(
-                       padding: EdgeInsets.all(12),
+                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(12),
@@ -286,7 +287,7 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
 margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
               padding: const EdgeInsets.all(10.0),
               decoration: BoxDecoration(
-              color: Color.fromARGB(255, 168, 219, 249),
+              color: const Color.fromARGB(255, 168, 219, 249),
               borderRadius: BorderRadius.circular(12),
               ),
               child: Column(
@@ -297,7 +298,7 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
                       borderRadius: BorderRadius.circular(12),
                       // color: Colors.pink,
                     ),
-                  child:  Column(
+                  child:  const Column(
                     children: [
                       Text(
                         "Balance: Stability Ball Exercises",
@@ -310,9 +311,9 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
                       ),
                     ],
                   ),),
-                  SizedBox(height: 20,),
+                  const SizedBox(height: 20,),
                   Container(
-                     padding: EdgeInsets.all(10),
+                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),color: Colors.white,
                     ),
@@ -334,9 +335,9 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
                         ),
                       ),
                     ),
-                    SizedBox(height: 20,),
+                    const SizedBox(height: 20,),
                     Container(
-                      padding: EdgeInsets.all(12),
+                      padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(12),
@@ -360,9 +361,9 @@ margin: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8.0),
            
             ],),
       ),
-      bottomNavigationBar: BottomAppBar(
+      bottomNavigationBar: const BottomAppBar(
+        color: Color.fromARGB(255, 88, 185, 209),
         child: Footer(),
-                color: Color.fromARGB(255, 88, 185, 209),
 
       ),
                 

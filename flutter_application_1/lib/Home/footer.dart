@@ -14,36 +14,36 @@ class Footer extends StatelessWidget {
     return Scaffold(
       // backgroundColor: Color.fromARGB(255, 88, 185, 209),
       bottomNavigationBar: BottomAppBar(
-        color: Color.fromARGB(255, 88, 185, 209),
+        color: const Color.fromARGB(255, 88, 185, 209),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
            
             IconButton(
-              icon: Icon(Icons.home,
+              icon: const Icon(Icons.home,
               
               ),
               
               
               onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => Homepage(name1: '', password1: '', email: '', phone: '', dateOfBirth: '',)),
-                );
+                // Navigator.pushReplacement(
+                //   context,
+                //   MaterialPageRoute(builder: (context) => const Homepage()),
+                // );
               },
             ),
             
             IconButton(
-              icon: Icon(Icons.timer),
+              icon: const Icon(Icons.timer),
               onPressed: () {
                 // Navigate to the about page when the about button is pressed
                 Navigator.push(
                   context,
-                 MaterialPageRoute(builder: (context) => StopWatch()),
+                 MaterialPageRoute(builder: (context) => const StopWatch()),
                 );
               },
             ),
-            IconButton(icon: Icon(Icons.logout),
+            IconButton(icon: const Icon(Icons.person_sharp),
             onPressed: (){
               Navigator.push(
                   context,
@@ -52,7 +52,7 @@ class Footer extends StatelessWidget {
               
             }),
             IconButton(
-              icon: Icon(Icons.settings),
+              icon: const Icon(Icons.settings),
               onPressed: () {
                 // Navigate to the settings page when the settings button is pressed
                 // Navigator.push(
