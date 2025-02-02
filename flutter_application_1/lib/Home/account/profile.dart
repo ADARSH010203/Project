@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/home/favoritate.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ModernHomeScreen extends StatefulWidget {
   const ModernHomeScreen({super.key});
@@ -133,10 +132,7 @@ class _ModernHomeScreenState extends State<ModernHomeScreen> {
           : _favorites.add(product);
     });
   }
-void _removeFavorite(Map<String, dynamic> product) {
-    setState(() {
-      _favorites.remove(product);
-    });}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -416,23 +412,9 @@ void _removeFavorite(Map<String, dynamic> product) {
         onTap: (index) => setState(() => _selectedNavIndex = index),
         selectedItemColor: Colors.black,
         unselectedItemColor: Colors.grey,
-        items:  [
+        items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(
-            icon: IconButton(
-              icon: Icon(Icons.favorite),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => FavoritesPage(favoriteProducts: _favorites,
-                    
-                  )),
-                );
-              }
-              ), 
-          
-            
-            label: 'Favorites'),
+          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Favorites'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
       ),
